@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Church Songs</title>
+		<link rel="stylesheet" href="css/styles.css">
+	</head>
+	<body>
+		<header>
+			<h1>Church Song Collection</h1>
+		</header>
+
+		<main>
+			<!-- Search Bar -->
+			<div id="search-container">
+				<input type="text" id="search-bar" placeholder="Search for songs..." oninput="filterSongs()">
+			</div>
+
+			<!-- Dynamic Song List -->
+			<ul id="song-list"></ul>
+		</main>
+
+		<script src="js/songs.js"></script>
+		<!-- Load song data -->
+		<script src="js/script.js"></script>
+		<!-- Main logic -->
+	</body>
+</html>
