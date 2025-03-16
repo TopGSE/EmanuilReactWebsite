@@ -1,0 +1,603 @@
+.services-container {
+	width: 100%;
+	overflow-x: hidden;
+}
+
+/* Hero Section */
+.services-hero {
+	position: relative;
+	height: 60vh;
+	width: 100%;
+	background-image: url('/church-hero.jpg');
+	background-size: cover;
+	background-position: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: white;
+}
+
+.services-hero-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3));
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.services-hero-content {
+	max-width: 800px;
+	padding: 0 20px;
+	text-align: center;
+}
+
+.services-hero-content h1 {
+	font-size: 3.5rem;
+	margin-bottom: 20px;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.services-hero-content p {
+	font-size: 1.5rem;
+	text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Service Section Styling */
+.services-section {
+	padding: 80px 20px;
+	opacity: 0;
+	transform: translateY(30px);
+	transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.services-section.fade-in {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+.services-section-container {
+	display: flex;
+	max-width: 1200px;
+	margin: 0 auto;
+	gap: 50px;
+	align-items: center;
+}
+
+.services-section-container.reverse {
+	flex-direction: row-reverse;
+}
+
+.services-section-content {
+	flex: 1;
+}
+
+.services-section-image {
+	flex: 1;
+	height: 450px;
+	border-radius: 20px;
+	background-size: cover;
+	background-position: center;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+	transition: transform 0.5s ease, box-shadow 0.5s ease;
+	overflow: hidden;
+}
+
+.services-section-image:hover {
+	transform: scale(1.02);
+	box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.sunday-image {
+	background-image: url('/sunday-service.jpg');
+}
+
+.midweek-image {
+	background-image: url('/midweek-service.jpg');
+}
+
+.services-section-content h2 {
+	font-size: 2.5rem;
+	margin-bottom: 15px;
+	color: #333;
+	position: relative;
+	display: inline-block;
+}
+
+.services-section-content h2::after {
+	content: '';
+	position: absolute;
+	bottom: -10px;
+	left: 0;
+	width: 60px;
+	height: 3px;
+	background-color: #6366F1;
+}
+
+.services-tagline {
+	font-size: 1.2rem;
+	font-weight: 500;
+	color: #6366F1;
+	margin-bottom: 20px;
+	margin-top: 20px;
+}
+
+.services-section-content p {
+	font-size: 1.1rem;
+	line-height: 1.7;
+	color: #555;
+	margin-bottom: 25px;
+}
+
+/* Service Details Styling */
+.service-details {
+	display: flex;
+	gap: 30px;
+	margin: 30px 0;
+}
+
+.service-detail-item {
+	background-color: #f8f9fa;
+	border-radius: 10px;
+	padding: 25px;
+	flex: 1;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+	transition: transform 0.3s ease;
+}
+
+.service-detail-item:hover {
+	transform: translateY(-5px);
+}
+
+.service-icon {
+	width: 50px;
+	height: 50px;
+	margin-bottom: 15px;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.time-icon {
+	background-image: url('/icons/time-icon.svg');
+}
+
+.location-icon {
+	background-image: url('/icons/location-icon.svg');
+}
+
+.service-detail-item h3 {
+	font-size: 1.3rem;
+	margin-bottom: 10px;
+	color: #333;
+}
+
+.service-detail-item p {
+	font-size: 1.1rem;
+	margin-bottom: 0;
+	color: #666;
+}
+
+/* Schedule List */
+.service-schedule-list {
+	background-color: #f8f9fa;
+	border-radius: 10px;
+	padding: 25px;
+	margin-top: 30px;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.service-schedule-list h3 {
+	font-size: 1.5rem;
+	margin-bottom: 20px;
+	color: #333;
+}
+
+.schedule-item {
+	display: flex;
+	margin-bottom: 15px;
+	padding-bottom: 15px;
+	border-bottom: 1px dashed #ddd;
+}
+
+.schedule-item:last-child {
+	margin-bottom: 0;
+	padding-bottom: 0;
+	border-bottom: none;
+}
+
+.schedule-time {
+	min-width: 100px;
+	font-weight: 600;
+	color: #6366F1;
+}
+
+.schedule-activity {
+	flex: 1;
+}
+
+/* Topics List */
+.service-topics-list h3 {
+	font-size: 1.5rem;
+	margin-bottom: 20px;
+	color: #333;
+}
+
+.topic-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+	gap: 20px;
+	margin-top: 20px;
+}
+
+.topic-item {
+	background-color: #f8f9fa;
+	border-radius: 10px;
+	padding: 20px;
+	text-align: center;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+	transition: transform 0.3s ease;
+}
+
+.topic-item:hover {
+	transform: translateY(-5px);
+}
+
+.topic-icon {
+	width: 50px;
+	height: 50px;
+	margin: 0 auto 15px;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.bible-study {
+	background-image: url('/icons/bible-study-icon.svg');
+}
+
+.prayer {
+	background-image: url('/icons/prayer-icon.svg');
+}
+
+.fellowship {
+	background-image: url('/icons/fellowship-icon.svg');
+}
+
+.worship {
+	background-image: url('/icons/worship-icon.svg');
+}
+
+/* Special Services Section */
+.section-title {
+	font-size: 2.5rem;
+	text-align: center;
+	margin-bottom: 15px;
+	color: #333;
+}
+
+.section-description {
+	text-align: center;
+	max-width: 700px;
+	margin: 0 auto 50px;
+	font-size: 1.2rem;
+	color: #555;
+}
+
+.special-services-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+	gap: 30px;
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+.special-service-card {
+	background-color: white;
+	border-radius: 15px;
+	overflow: hidden;
+	box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+	transition: transform 0.3s ease;
+}
+
+.special-service-card:hover {
+	transform: translateY(-10px);
+}
+
+.special-service-image {
+	height: 200px;
+	background-size: cover;
+	background-position: center;
+}
+
+.communion-image {
+	background-image: url('/communion-service.jpg');
+}
+
+.baptism-image {
+	background-image: url('/baptism-service.jpg');
+}
+
+.holiday-image {
+	background-image: url('/holiday-service.jpg');
+}
+
+.special-service-content {
+	padding: 25px;
+}
+
+.special-service-content h3 {
+	font-size: 1.5rem;
+	margin-bottom: 15px;
+	color: #333;
+}
+
+.special-service-content p {
+	color: #555;
+	margin-bottom: 15px;
+}
+
+.special-service-time {
+	color: #6366F1;
+	font-weight: 600;
+}
+
+/* Participation Section */
+.participate-section {
+	background-color: #f8f9fa;
+}
+
+.participate-container {
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+.participate-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	gap: 30px;
+}
+
+.participate-card {
+	background-color: white;
+	border-radius: 15px;
+	padding: 30px;
+	text-align: center;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+	transition: transform 0.3s ease;
+}
+
+.participate-card:hover {
+	transform: translateY(-10px);
+}
+
+.participate-icon {
+	width: 70px;
+	height: 70px;
+	margin: 0 auto 20px;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.worship-team {
+	background-image: url('/icons/music-icon.svg');
+}
+
+.volunteering {
+	background-image: url('/icons/volunteer-icon.svg');
+}
+
+.prayer-team {
+	background-image: url('/icons/prayer-team-icon.svg');
+}
+
+.participate-card h3 {
+	font-size: 1.5rem;
+	margin-bottom: 15px;
+	color: #333;
+}
+
+.participate-card p {
+	color: #555;
+	margin-bottom: 20px;
+}
+
+.participate-button {
+	background-color: #6366F1;
+	color: white;
+	border: none;
+	padding: 10px 20px;
+	font-size: 1rem;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+.participate-button:hover {
+	background-color: #4F46E5;
+	transform: translateY(-2px);
+}
+
+/* Testimonies Section */
+.testimony-container {
+	max-width: 900px;
+	margin: 0 auto;
+}
+
+.testimonies-slider {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 40px;
+}
+
+.testimony-card {
+	background-color: white;
+	border-radius: 15px;
+	padding: 30px;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.testimony-quote {
+	margin-bottom: 30px;
+	position: relative;
+}
+
+.testimony-quote::before {
+	content: '"';
+	font-size: 100px;
+	line-height: 0;
+	color: rgba(99, 102, 241, 0.2);
+	position: absolute;
+	top: 30px;
+	left: -20px;
+	font-family: Georgia, serif;
+}
+
+.testimony-quote blockquote {
+	font-size: 1.1rem;
+	line-height: 1.7;
+	color: #555;
+	font-style: italic;
+	margin: 0;
+	padding-left: 30px;
+}
+
+.testimony-author {
+	display: flex;
+	align-items: center;
+}
+
+.testimony-image {
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	margin-right: 15px;
+	background-size: cover;
+	background-position: center;
+}
+
+.author1 {
+	background-image: url('/testimony-1.jpg');
+}
+
+.author2 {
+	background-image: url('/testimony-2.jpg');
+}
+
+.testimony-info h4 {
+	font-size: 1.2rem;
+	margin: 0 0 5px;
+	color: #333;
+}
+
+.testimony-info p {
+	font-size: 0.9rem;
+	color: #6366F1;
+	margin: 0;
+}
+
+/* CTA Section */
+.services-cta {
+	background-image: linear-gradient(rgba(99, 102, 241, 0.9), rgba(79, 70, 229, 0.9)), url('/cta-bg.jpg');
+	background-size: cover;
+	background-position: center;
+	color: white;
+	text-align: center;
+	padding: 80px 20px;
+	margin-top: 80px;
+}
+
+.cta-content {
+	max-width: 800px;
+	margin: 0 auto;
+}
+
+.cta-content h2 {
+	font-size: 2.5rem;
+	margin-bottom: 20px;
+}
+
+.cta-content p {
+	font-size: 1.2rem;
+	margin-bottom: 30px;
+	opacity: 0.9;
+}
+
+.cta-button {
+	background-color: white;
+	color: #6366F1;
+	border: none;
+	padding: 15px 30px;
+	font-size: 1.1rem;
+	border-radius: 50px;
+	cursor: pointer;
+	font-weight: 600;
+	transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+	transform: translateY(-3px);
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Media Queries */
+@media (max-width: 992px) {
+	.services-section-container {
+		flex-direction: column;
+	}
+
+	.services-section-container.reverse {
+		flex-direction: column;
+	}
+
+	.services-section-image {
+		width: 100%;
+		margin-top: 30px;
+		order: 2;
+	}
+
+	.service-details {
+		flex-direction: column;
+		gap: 20px;
+	}
+}
+
+@media (max-width: 768px) {
+	.services-hero-content h1 {
+		font-size: 2.5rem;
+	}
+
+	.services-hero-content p {
+		font-size: 1.2rem;
+	}
+
+	.services-section {
+		padding: 60px 20px;
+	}
+
+	.services-section-content h2 {
+		font-size: 2rem;
+	}
+
+	.section-title {
+		font-size: 2rem;
+	}
+
+	.special-services-grid {
+		grid-template-columns: 1fr;
+	}
+}
+
+@media (max-width: 576px) {
+	.services-hero-content h1 {
+		font-size: 2rem;
+	}
+
+	.services-section-content h2 {
+		font-size: 1.8rem;
+	}
+}

@@ -1,0 +1,41 @@
+.facebook-video-container {
+	position: relative;
+	width: 100%;
+	max-width: 800px;
+	margin: 40px auto;
+	border-radius: 10px;
+	overflow: hidden;
+	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.video-loader {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #f8f9fa;
+	color: #6366F1;
+	font-size: 1.2rem;
+	font-weight: 600;
+}
+
+.facebook-video-container iframe {
+	aspect-ratio: 16/9;
+	height: auto;
+	min-height: 300px;
+}
+
+@media (max-width: 768px) {
+	.facebook-video-container {
+		max-width: 100%;
+		margin: 30px auto;
+	}
+
+	.facebook-video-container iframe {
+		min-height: 240px;
+	}
+}
