@@ -1,6 +1,17 @@
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import "../styles/ServicesPage.css";
+// Add react-icons imports
+import {
+  FaClock,
+  FaMapMarkerAlt,
+  FaBible,
+  FaPray,
+  FaUsers,
+  FaMusic,
+  FaHands,
+  FaHandsHelping,
+} from "react-icons/fa";
 
 function ServicesPage() {
   const { t } = useTranslation();
@@ -66,12 +77,12 @@ function ServicesPage() {
             <p>{t("services.sunday.description")}</p>
             <div className="service-details">
               <div className="service-detail-item">
-                <div className="service-icon time-icon"></div>
+                <FaClock className="service-icon-react" />
                 <h3>{t("services.time")}</h3>
                 <p>{t("services.sunday.time")}</p>
               </div>
               <div className="service-detail-item">
-                <div className="service-icon location-icon"></div>
+                <FaMapMarkerAlt className="service-icon-react" />
                 <h3>{t("services.location")}</h3>
                 <p>{t("services.address")}</p>
               </div>
@@ -123,12 +134,12 @@ function ServicesPage() {
             <p>{t("services.midweek.description")}</p>
             <div className="service-details">
               <div className="service-detail-item">
-                <div className="service-icon time-icon"></div>
+                <FaClock className="service-icon-react" />
                 <h3>{t("services.time")}</h3>
                 <p>{t("services.midweek.time")}</p>
               </div>
               <div className="service-detail-item">
-                <div className="service-icon location-icon"></div>
+                <FaMapMarkerAlt className="service-icon-react" />
                 <h3>{t("services.location")}</h3>
                 <p>{t("services.address")}</p>
               </div>
@@ -137,19 +148,19 @@ function ServicesPage() {
               <h3>{t("services.midweek.topics")}</h3>
               <div className="topic-grid">
                 <div className="topic-item">
-                  <div className="topic-icon bible-study"></div>
+                  <FaBible className="service-icon-react" />
                   <p>{t("services.midweek.topicItems.bibleStudy")}</p>
                 </div>
                 <div className="topic-item">
-                  <div className="topic-icon prayer"></div>
+                  <FaPray className="service-icon-react" />
                   <p>{t("services.midweek.topicItems.prayer")}</p>
                 </div>
                 <div className="topic-item">
-                  <div className="topic-icon fellowship"></div>
+                  <FaUsers className="service-icon-react" />
                   <p>{t("services.midweek.topicItems.fellowship")}</p>
                 </div>
                 <div className="topic-item">
-                  <div className="topic-icon worship"></div>
+                  <FaMusic className="service-icon-react" />
                   <p>{t("services.midweek.topicItems.worship")}</p>
                 </div>
               </div>
@@ -221,7 +232,7 @@ function ServicesPage() {
 
           <div className="participate-grid">
             <div className="participate-card">
-              <div className="participate-icon worship-team"></div>
+              <FaMusic className="service-icon-react" />
               <h3>{t("services.participate.worship.title")}</h3>
               <p>{t("services.participate.worship.description")}</p>
               <button className="participate-button">
@@ -230,7 +241,7 @@ function ServicesPage() {
             </div>
 
             <div className="participate-card">
-              <div className="participate-icon volunteering"></div>
+              <FaHandsHelping className="service-icon-react" />
               <h3>{t("services.participate.volunteer.title")}</h3>
               <p>{t("services.participate.volunteer.description")}</p>
               <button className="participate-button">
@@ -239,7 +250,7 @@ function ServicesPage() {
             </div>
 
             <div className="participate-card">
-              <div className="participate-icon prayer-team"></div>
+              <FaHands className="service-icon-react" />
               <h3>{t("services.participate.prayer.title")}</h3>
               <p>{t("services.participate.prayer.description")}</p>
               <button className="participate-button">
