@@ -134,12 +134,3 @@ button {
 button:hover {
 	background-color: #4F46E5;
 }
-
-/* Make sure content wrappings account for fixed navbar */
-.kids-container,
-.about-container,
-.services-container,
-.events-container,
-.contact-container {
-	padding-top: 20px;
-}
