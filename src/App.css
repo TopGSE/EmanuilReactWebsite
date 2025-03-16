@@ -16,6 +16,8 @@ body {
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	background-color: #ffffff;
 	color: #333333;
+	padding-top: 80px;
+	/* Match navbar height */
 }
 
 main {
@@ -131,4 +133,13 @@ button {
 
 button:hover {
 	background-color: #4F46E5;
+}
+
+/* Make sure content wrappings account for fixed navbar */
+.kids-container,
+.about-container,
+.services-container,
+.events-container,
+.contact-container {
+	padding-top: 20px;
 }
