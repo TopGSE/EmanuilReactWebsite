@@ -1,0 +1,407 @@
+{
+  "main": {
+    "welcome": "Welcome to Our Church Community",
+    "join": "Join us in worship, fellowship, and spiritual growth",
+    "learnMore": "Learn More About Us"
+  },
+  "navbar": {
+    "home": "Home",
+    "about": "About Us",
+    "services": "Services",
+    "events": "Events",
+    "contact": "Contact",
+    "kids": "Kids"
+  },
+  "welcome": {
+    "title": "Welcome to Our Church",
+    "subtitle": "A place of worship, community, and spiritual growth",
+    "latestVideo": "Our Latest Service",
+    "cards": {
+      "service": {
+        "title": "Sunday Service",
+        "description": "Join us every Sunday at 10:00 AM",
+        "button": "Learn More"
+      },
+      "mission": {
+        "title": "Our Mission",
+        "description": "Spreading love, hope, and faith in our community",
+        "button": "About Us"
+      },
+      "involved": {
+        "title": "Get Involved",
+        "description": "Discover ways to participate in our ministry",
+        "button": "Join Us"
+      }
+    }
+  },
+  "footer": {
+    "church": "Църква Емануил",
+    "address": "123 Faith Street",
+    "city": "City, State 12345",
+    "phone": "Phone: (123) 456-7890",
+    "services": "Service Times",
+    "sunday": "Sunday: 10:00 AM",
+    "wednesday": "Wednesday: 7:00 PM",
+    "prayer": "Prayer Meeting: Tuesday 6:30 PM",
+    "connect": "Connect With Us",
+    "rights": "All Rights Reserved"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "We'd love to hear from you. Reach out to us with any questions or prayer requests.",
+    "visit": "Visit Us",
+    "email": "Email Us",
+    "call": "Call Us",
+    "follow": "Follow Us",
+    "form": {
+      "title": "Send Us a Message",
+      "name": "Your Name",
+      "email": "Email Address",
+      "phone": "Phone Number (Optional)",
+      "subject": "Subject",
+      "message": "Your Message",
+      "namePlace": "John Doe",
+      "emailPlace": "john@example.com",
+      "phonePlace": "(123) 456-7890",
+      "subjectPlace": "General Inquiry",
+      "messagePlace": "How can we help you today?",
+      "sending": "Sending...",
+      "success": "Message sent successfully! We'll get back to you soon.",
+      "error": "Something went wrong. Please try again later.",
+      "button": "Send Message"
+    },
+    "find": "Find Us"
+  },
+  "about": {
+    "title": "About Our Church",
+    "subtitle": "Serving our community with faith, love, and compassion since 1995",
+    "mission": {
+      "title": "Our Mission",
+      "p1": "At Църква Емануил, our mission is to share God's love with our community and beyond. We strive to create a welcoming environment where people from all walks of life can experience spiritual growth, healing, and community.",
+      "p2": "We are committed to serving others, spreading the gospel, and making a positive impact in our neighborhood and throughout the world."
+    },
+    "history": {
+      "title": "Our History",
+      "p1": "Founded in 1995, our church began as a small gathering in a living room with just a handful of devoted members. Over the years, we've grown into a vibrant community of believers.",
+      "p2": "Throughout our history, we've remained committed to our founding principles while adapting to meet the changing needs of our congregation and community."
+    },
+    "team": {
+      "title": "Our Leadership Team",
+      "intro": "Meet the dedicated individuals who guide our church community with wisdom, compassion, and vision."
+    },
+    "beliefs": {
+      "title": "Our Core Beliefs",
+      "cards": {
+        "love": {
+          "title": "Love",
+          "description": "We believe in showing God's love to all people without condition."
+        },
+        "community": {
+          "title": "Community",
+          "description": "We foster a supportive community where everyone belongs and grows together."
+        },
+        "scripture": {
+          "title": "Scripture",
+          "description": "We are rooted in Biblical teaching as our guide for faith and practice."
+        },
+        "service": {
+          "title": "Service",
+          "description": "We are called to serve others following Christ's example of selfless love."
+        }
+      }
+    },
+    "cta": {
+      "title": "Join Us This Sunday",
+      "text": "We'd love to welcome you to our church family. Come experience worship, fellowship, and spiritual growth with us.",
+      "button": "Plan Your Visit"
+    }
+  },
+  "kids": {
+    "title": "Kids Ministry",
+    "subtitle": "Where faith, fun, and friendship come together!",
+    "intro": {
+      "title": "Welcome to Our Kids Ministry",
+      "description1": "Our kids ministry is a vibrant, fun, and safe place where children learn about God's love through engaging activities, Bible lessons, and meaningful relationships.",
+      "description2": "We believe that children are an important part of our church family, and we're committed to helping them grow in their faith in age-appropriate ways."
+    },
+    "gallery": {
+      "title": "This Week's Activities",
+      "description": "Take a look at the fun and learning our kids experienced this week!",
+      "slides": {
+        "0": {
+          "title": "Bible Story Time",
+          "description": "Learning about the good Samaritan and helping others."
+        },
+        "1": {
+          "title": "Art & Crafts",
+          "description": "Creating beautiful artwork to express our faith."
+        },
+        "2": {
+          "title": "Worship & Music",
+          "description": "Praising God with joyful songs and dance."
+        },
+        "3": {
+          "title": "Outdoor Games",
+          "description": "Building friendship through fun team activities."
+        },
+        "4": {
+          "title": "Group Prayer",
+          "description": "Learning to talk to God and share our hearts."
+        }
+      }
+    },
+    "activities": {
+      "title": "What We Do",
+      "bible": {
+        "title": "Bible Stories",
+        "description": "Interactive Bible lessons that bring God's Word to life in ways children can understand and apply."
+      },
+      "crafts": {
+        "title": "Creative Arts",
+        "description": "Hands-on crafts and activities that help reinforce the lessons and allow kids to express themselves."
+      },
+      "games": {
+        "title": "Fun Games",
+        "description": "Engaging games that teach teamwork, build friendships, and create lasting memories."
+      },
+      "music": {
+        "title": "Worship & Music",
+        "description": "Lively songs and movements that help children connect with God and express their joy."
+      }
+    },
+    "schedule": {
+      "title": "Our Weekly Schedule",
+      "sunday": {
+        "title": "Sunday Morning",
+        "time": "10:00 AM - 11:30 AM",
+        "description": "Kids worship and Bible adventure during the main service."
+      },
+      "wednesday": {
+        "title": "Wednesday Evening",
+        "time": "7:00 PM - 8:30 PM",
+        "description": "Midweek club with games, Bible lessons, and activities."
+      },
+      "special": {
+        "title": "Special Events",
+        "time": "Varies",
+        "description": "Seasonal celebrations, family fun nights, and more!"
+      }
+    },
+    "team": {
+      "title": "Meet Our Kids Team",
+      "leader": "Children's Director",
+      "assistant": "Assistant Director",
+      "volunteer": "Lead Volunteer",
+      "leader1Description": "Passionate about creating engaging experiences for kids to encounter God's love.",
+      "leader2Description": "Dedicated to making each child feel welcome and valued in our church family.",
+      "leader3Description": "Brings creativity and joy to every activity and lesson with the children."
+    },
+    "cta": {
+      "title": "Join Us This Sunday!",
+      "description": "We'd love to welcome your children to our Kids Ministry where they can learn, grow, and have fun in a safe, loving environment.",
+      "register": "Register Your Child",
+      "contact": "Contact Our Team"
+    }
+  },
+  "language": {
+    "english": "English",
+    "bulgarian": "Bulgarian"
+  },
+  "services": {
+    "title": "Our Church Services",
+    "subtitle": "Join us in worship, prayer, fellowship, and spiritual growth",
+    "time": "Service Time",
+    "location": "Location",
+    "address": "123 Faith Street, City, State 12345",
+
+    "sunday": {
+      "title": "Sunday Service",
+      "tagline": "Celebrate, Worship, and Grow Together",
+      "description": "Our Sunday services are a time for the whole church family to gather in worship, hear an inspiring message from God's Word, and connect with one another in fellowship. Each service is designed to encourage, challenge, and equip you in your spiritual journey.",
+      "time": "Sundays at 10:00 AM",
+      "schedule": "Service Schedule",
+      "scheduleItems": {
+        "worship": "Worship Service Begins",
+        "message": "Main Message",
+        "fellowship": "Fellowship and Coffee",
+        "children": "Children's Ministry"
+      }
+    },
+
+    "midweek": {
+      "title": "Midweek Gatherings",
+      "tagline": "Deepen Your Faith During the Week",
+      "description": "Our Wednesday evening gatherings offer a more intimate setting for deeper Bible study, prayer, and community building. These services help you apply biblical principles to everyday life and grow closer to God and each other throughout the week.",
+      "time": "Wednesdays at 7:00 PM",
+      "topics": "What to Expect",
+      "topicItems": {
+        "bibleStudy": "Bible Study",
+        "prayer": "Prayer Groups",
+        "fellowship": "Fellowship",
+        "worship": "Worship"
+      }
+    },
+
+    "special": {
+      "title": "Special Services",
+      "description": "Throughout the year, we hold special services to celebrate important occasions in the Christian calendar and in our church life.",
+      "communion": {
+        "title": "Communion Service",
+        "description": "A sacred time to remember Christ's sacrifice through the Lord's Supper together as a church family.",
+        "time": "First Sunday of each month"
+      },
+      "baptism": {
+        "title": "Baptism Service",
+        "description": "Celebrate with those who have decided to publicly declare their faith in Jesus Christ.",
+        "time": "Quarterly (as scheduled)"
+      },
+      "holiday": {
+        "title": "Holiday Services",
+        "description": "Special services during Easter, Christmas, and other significant Christian holidays.",
+        "time": "See church calendar for details"
+      }
+    },
+
+    "participate": {
+      "title": "How to Participate",
+      "description": "There are many ways to get involved in our church services. Whether you have musical talents, technical skills, or a heart for hospitality, your gifts can help create a welcoming worship environment.",
+      "worship": {
+        "title": "Worship Team",
+        "description": "Join our worship team as a musician, singer, or technical support person.",
+        "button": "Join Team"
+      },
+      "volunteer": {
+        "title": "Hospitality Team",
+        "description": "Help create a warm, welcoming environment for everyone attending our services.",
+        "button": "Volunteer"
+      },
+      "prayer": {
+        "title": "Prayer Ministry",
+        "description": "Be part of our prayer team, supporting the congregation through prayer.",
+        "button": "Learn More"
+      }
+    },
+
+    "testimonies": {
+      "title": "Testimonies",
+      "description": "Hear how our services have impacted the lives of our church members.",
+      "quote1": "The Sunday services at Църква Емануил have completely transformed my spiritual life. The worship lifts my soul and the messages speak directly to my heart each week.",
+      "author1": "Maria Stoyanova",
+      "role1": "Church Member since 2018",
+      "quote2": "I found a true spiritual home in the midweek gatherings. The deep Bible studies and close fellowship have helped me grow in ways I never imagined possible.",
+      "author2": "Peter Dimitrov",
+      "role2": "Youth Group Leader"
+    },
+
+    "cta": {
+      "title": "Join Us This Sunday",
+      "text": "We'd love to welcome you to our church family. Come experience the love, joy, and peace that comes from worshiping together.",
+      "button": "Plan Your Visit"
+    }
+  },
+  "events": {
+    "title": "Church Events",
+    "subtitle": "Connect, grow, and serve with us through our various events and gatherings",
+    "register": "Register Now",
+    "learnMore": "Learn More",
+
+    "featured": {
+      "label": "Featured Event",
+      "title": "Annual Church Retreat",
+      "date": "August 14-16, 2024",
+      "time": "Friday 6PM - Sunday 2PM",
+      "location": "Mountain View Retreat Center",
+      "description": "Join us for a weekend of spiritual renewal, fellowship, and fun activities for all ages. This year's theme is 'Growing Together in Faith.'"
+    },
+
+    "upcoming": {
+      "title": "Upcoming Events",
+      "description": "Find out what's happening in our church community and join us for these special gatherings.",
+      "event1": {
+        "title": "Worship Night",
+        "date": "June 18, 2024",
+        "time": "7:00 PM - 9:00 PM",
+        "location": "Main Sanctuary",
+        "description": "An evening dedicated to worship through music and prayer."
+      },
+      "event2": {
+        "title": "Bible Study Series",
+        "date": "June 25, 2024",
+        "time": "6:30 PM - 8:00 PM",
+        "location": "Fellowship Hall",
+        "description": "Beginning our six-week study on the book of Romans."
+      },
+      "event3": {
+        "title": "Community Outreach",
+        "date": "July 2, 2024",
+        "time": "10:00 AM - 2:00 PM",
+        "location": "City Park",
+        "description": "Serving our community with free food and family activities."
+      },
+      "event4": {
+        "title": "Youth Camp Registration",
+        "date": "July 10, 2024",
+        "time": "After service",
+        "location": "Youth Room",
+        "description": "Last chance to register for the summer youth camp."
+      }
+    },
+
+    "filters": {
+      "all": "All Events",
+      "worship": "Worship",
+      "bible": "Bible Study",
+      "community": "Community",
+      "youth": "Youth"
+    },
+
+    "regular": {
+      "title": "Regular Gatherings",
+      "description": "Join us for these weekly opportunities to worship, learn, and grow together.",
+      "sunday": {
+        "day": "Sunday",
+        "title": "Sunday Worship Service",
+        "time": "10:00 AM",
+        "description": "Our main weekly gathering for worship, teaching, and fellowship."
+      },
+      "wednesday": {
+        "day": "Wednesday",
+        "title": "Midweek Bible Study",
+        "time": "7:00 PM",
+        "description": "A deeper dive into Scripture with discussion and prayer."
+      },
+      "friday": {
+        "day": "Friday",
+        "title": "Youth Fellowship",
+        "time": "7:30 PM",
+        "description": "Fun, fellowship, and faith development for teenagers."
+      }
+    },
+
+    "past": {
+      "title": "Event Gallery",
+      "description": "Memories from our recent church gatherings and celebrations.",
+      "event1": "Easter Celebration",
+      "event2": "Church Anniversary",
+      "event3": "Christmas Concert",
+      "event4": "Baptism Service",
+      "event5": "Family Day",
+      "event6": "Missions Conference"
+    },
+
+    "calendar": {
+      "title": "Event Calendar",
+      "description": "View our full calendar of upcoming events and plan your participation.",
+      "embed": "Church Calendar",
+      "instruction": "Click the button below to view our full interactive calendar with all upcoming events.",
+      "view": "View Full Calendar"
+    },
+
+    "cta": {
+      "title": "Stay Updated on Church Events",
+      "description": "Never miss an event! Sign up for our newsletter or contact us for more information about any upcoming gatherings.",
+      "subscribe": "Subscribe to Updates",
+      "contact": "Contact Us"
+    }
+  }
+}

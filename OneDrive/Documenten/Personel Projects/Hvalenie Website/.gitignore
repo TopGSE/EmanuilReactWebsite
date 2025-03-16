@@ -1,0 +1,20 @@
+# Ignore system files and folders
+/Application Data/
+/Cookies/
+/Documents/
+/AppData/
+/Favorites/
+/Music/
+/Videos/
+/Downloads/
+/Desktop/
+/NTUSER.*
+/VirtualBox VMs/
+/Saved Games/
+/Searches/
+
+# Ignore any other files outside the project scope
+../../*
+
+# Ignore node_modules if you're using npm
+/node_modules/
