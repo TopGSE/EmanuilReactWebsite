@@ -1,0 +1,750 @@
+.kids-container {
+	width: 100%;
+	background-color: #fff;
+	overflow-x: hidden;
+}
+
+/* Hero Section */
+.kids-hero {
+	position: relative;
+	height: 70vh;
+	width: 100%;
+	background-image: url('/kids-hero.jpg');
+	background-size: cover;
+	background-position: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: white;
+	text-align: center;
+	overflow: hidden;
+}
+
+.kids-hero-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: linear-gradient(to right, rgba(99, 102, 241, 0.7), rgba(167, 139, 250, 0.7));
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+}
+
+.kids-hero-content {
+	position: relative;
+	max-width: 800px;
+	padding: 0 20px;
+	z-index: 2;
+}
+
+@keyframes colorChange {
+	0% {
+		color: #FF9AA2;
+	}
+
+	25% {
+		color: #FFDAC1;
+	}
+
+	50% {
+		color: #E2F0CB;
+	}
+
+	75% {
+		color: #B5EAD7;
+	}
+
+	100% {
+		color: #C7CEEA;
+	}
+}
+
+.animated-title {
+	font-size: 4rem;
+	font-family: 'Comic Sans MS', cursive, sans-serif;
+	margin-bottom: 20px;
+	text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.2);
+	animation: colorChange 8s infinite;
+}
+
+@keyframes slideIn {
+	0% {
+		transform: translateY(50px);
+		opacity: 0;
+	}
+
+	100% {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+
+.subtitle-animation {
+	font-size: 1.8rem;
+	text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+	animation: slideIn 1s ease-out forwards;
+}
+
+/* Floating Balloons */
+.floating-balloons {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	pointer-events: none;
+}
+
+.balloon {
+	position: absolute;
+	width: 60px;
+	height: 70px;
+	border-radius: 50%;
+	top: 100%;
+}
+
+@keyframes float {
+	0% {
+		transform: translateY(0) rotate(0deg);
+	}
+
+	50% {
+		transform: translateY(-100vh) rotate(20deg);
+	}
+
+	100% {
+		transform: translateY(-200vh) rotate(-10deg);
+	}
+}
+
+.balloon-red {
+	background-color: #ff6b6b;
+	animation: float 15s infinite linear;
+	left: 10%;
+}
+
+.balloon-blue {
+	background-color: #48dbfb;
+	animation: float 18s infinite linear 2s;
+	left: 30%;
+}
+
+.balloon-yellow {
+	background-color: #feca57;
+	animation: float 17s infinite linear 5s;
+	left: 50%;
+}
+
+.balloon-green {
+	background-color: #1dd1a1;
+	animation: float 20s infinite linear 1s;
+	left: 70%;
+}
+
+.balloon-purple {
+	background-color: #c8a2c8;
+	animation: float 16s infinite linear 3s;
+	left: 85%;
+}
+
+/* Section styling */
+.kids-section {
+	padding: 80px 20px;
+	opacity: 0;
+	transform: translateY(30px);
+	transition: opacity 0.8s ease, transform 0.8s ease;
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+.kids-section.fade-in {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+/* Introduction Section */
+.section-container {
+	display: flex;
+	gap: 40px;
+	align-items: center;
+}
+
+.section-content {
+	flex: 1;
+}
+
+.section-image {
+	flex: 1;
+	height: 400px;
+	border-radius: 20px;
+	background-size: cover;
+	background-position: center;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+	transition: transform 0.5s ease;
+}
+
+.section-image:hover {
+	transform: scale(1.02);
+}
+
+.happy-kids-image {
+	background-image: url('/picture-emanuil-kids-hero.jpg');
+}
+
+.section-content h2 {
+	font-size: 2.5rem;
+	color: #6366F1;
+	margin-bottom: 20px;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.section-content p {
+	font-size: 1.1rem;
+	line-height: 1.7;
+	color: #555;
+	margin-bottom: 20px;
+}
+
+/* Gallery Section */
+.gallery-section {
+	text-align: center;
+	padding: 80px 20px;
+	background-color: #f8f9fa;
+	border-radius: 30px;
+	margin: 40px auto;
+}
+
+.gallery-title {
+	font-size: 2.5rem;
+	color: #6366F1;
+	margin-bottom: 20px;
+}
+
+.gallery-description {
+	font-size: 1.2rem;
+	max-width: 700px;
+	margin: 0 auto 30px;
+	color: #555;
+}
+
+.carousel-container {
+	max-width: 900px;
+	margin: 0 auto;
+	position: relative;
+}
+
+.carousel-wrapper {
+	display: flex;
+	align-items: center;
+	position: relative;
+}
+
+.carousel-content {
+	position: relative;
+	width: 100%;
+	height: 500px;
+	overflow: hidden;
+	border-radius: 15px;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-slide {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	transition: opacity 0.5s ease-in-out;
+}
+
+.carousel-slide.active {
+	opacity: 1;
+}
+
+.carousel-slide img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.slide-caption {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+	color: white;
+	padding: 20px;
+	text-align: left;
+}
+
+.slide-caption h3 {
+	font-size: 1.5rem;
+	margin-bottom: 5px;
+}
+
+.carousel-btn {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	background-color: rgba(255, 255, 255, 0.5);
+	color: #333;
+	border: none;
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	font-size: 1.5rem;
+	cursor: pointer;
+	z-index: 10;
+	transition: all 0.3s ease;
+}
+
+.carousel-btn:hover {
+	background-color: rgba(255, 255, 255, 0.8);
+}
+
+.carousel-btn.prev {
+	left: -25px;
+}
+
+.carousel-btn.next {
+	right: -25px;
+}
+
+.carousel-dots {
+	display: flex;
+	justify-content: center;
+	margin-top: 20px;
+}
+
+.dot {
+	width: 12px;
+	height: 12px;
+	margin: 0 5px;
+	border-radius: 50%;
+	background-color: #bbb;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+.dot.active {
+	background-color: #6366F1;
+}
+
+/* What We Do Section */
+.what-we-do-section {
+	text-align: center;
+}
+
+.what-we-do-section h2 {
+	font-size: 2.5rem;
+	color: #6366F1;
+	margin-bottom: 40px;
+}
+
+.activities-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	gap: 30px;
+}
+
+.activity-card {
+	background-color: white;
+	border-radius: 15px;
+	padding: 30px 20px;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.activity-card:hover {
+	transform: translateY(-10px);
+	box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.activity-icon {
+	width: 80px;
+	height: 80px;
+	margin: 0 auto 20px;
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.bible {
+	background-image: url('/icons/bible-icon.svg');
+}
+
+.crafts {
+	background-image: url('/icons/crafts-icon.svg');
+}
+
+.games {
+	background-image: url('/icons/games-icon.svg');
+}
+
+.music {
+	background-image: url('/icons/music-icon.svg');
+}
+
+.activity-card h3 {
+	font-size: 1.5rem;
+	margin-bottom: 10px;
+	color: #333;
+}
+
+.activity-card p {
+	color: #555;
+}
+
+/* Schedule Section */
+.schedule-section {
+	position: relative;
+	background-color: #E0F7FA;
+	border-radius: 30px;
+	padding: 80px 20px;
+	margin-top: 80px;
+	overflow: hidden;
+}
+
+.clouds-background {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+}
+
+@keyframes cloudMove1 {
+	0% {
+		transform: translateX(-100%);
+	}
+
+	100% {
+		transform: translateX(100vw);
+	}
+}
+
+@keyframes cloudMove2 {
+	0% {
+		transform: translateX(-100%);
+	}
+
+	100% {
+		transform: translateX(100vw);
+	}
+}
+
+@keyframes cloudMove3 {
+	0% {
+		transform: translateX(100vw);
+	}
+
+	100% {
+		transform: translateX(-100%);
+	}
+}
+
+.cloud {
+	position: absolute;
+	background-image: url('/icons/cloud.svg');
+	background-size: contain;
+	background-repeat: no-repeat;
+	opacity: 0.7;
+}
+
+.cloud1 {
+	width: 120px;
+	height: 70px;
+	top: 20%;
+	animation: cloudMove1 30s linear infinite;
+}
+
+.cloud2 {
+	width: 160px;
+	height: 90px;
+	top: 50%;
+	animation: cloudMove2 35s linear infinite;
+	animation-delay: 10s;
+}
+
+.cloud3 {
+	width: 140px;
+	height: 80px;
+	top: 70%;
+	animation: cloudMove3 40s linear infinite;
+	animation-delay: 5s;
+}
+
+.schedule-content {
+	position: relative;
+	z-index: 1;
+	text-align: center;
+}
+
+.schedule-content h2 {
+	font-size: 2.5rem;
+	color: #6366F1;
+	margin-bottom: 40px;
+}
+
+.schedule-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	gap: 30px;
+}
+
+.schedule-card {
+	background-color: white;
+	border-radius: 15px;
+	padding: 30px;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+	transition: transform 0.3s ease;
+}
+
+.schedule-card:hover {
+	transform: translateY(-10px);
+}
+
+.day-icon {
+	width: 70px;
+	height: 70px;
+	margin: 0 auto 15px;
+	border-radius: 50%;
+	background-size: cover;
+	background-position: center;
+}
+
+.sunday {
+	background-image: url('/icons/sunday-icon.svg');
+}
+
+.wednesday {
+	background-image: url('/icons/wednesday-icon.svg');
+}
+
+.special {
+	background-image: url('/icons/special-icon.svg');
+}
+
+.schedule-card h3 {
+	font-size: 1.5rem;
+	margin-bottom: 10px;
+	color: #333;
+}
+
+.schedule-card p {
+	color: #555;
+	margin-bottom: 10px;
+}
+
+/* Team Section */
+.team-section {
+	text-align: center;
+	margin-top: 80px;
+}
+
+.team-section h2 {
+	font-size: 2.5rem;
+	color: #6366F1;
+	margin-bottom: 40px;
+}
+
+.team-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+	gap: 30px;
+}
+
+.team-member {
+	background-color: white;
+	border-radius: 15px;
+	padding: 30px;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+	transition: transform 0.3s ease;
+}
+
+.team-member:hover {
+	transform: translateY(-10px);
+}
+
+.team-image-wrapper {
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+	margin: 0 auto 20px;
+	border: 3px solid #6366F1;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.team-photo {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.team-image {
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+	margin: 0 auto 20px;
+	background-size: cover;
+	background-position: center;
+	border: 3px solid #6366F1;
+}
+
+.leader1 {
+	background-image: url('/kids-leader-1.jpg');
+}
+
+.leader2 {
+	background-image: url('/kids-leader-2.jpg');
+}
+
+.leader3 {
+	background-image: url('/kids-leader-3.jpg');
+}
+
+.team-role {
+	color: #6366F1;
+	font-weight: 600;
+	margin-bottom: 15px;
+}
+
+/* CTA Section */
+.kids-cta {
+	margin-top: 80px;
+	background-image: linear-gradient(to right, #FFA5A5, #FFDAA5, #B5EAD7, #C7CEEA);
+	color: #333;
+	text-align: center;
+	padding: 60px 20px;
+	border-radius: 30px;
+}
+
+.cta-content {
+	max-width: 800px;
+	margin: 0 auto;
+}
+
+.cta-content h2 {
+	font-size: 2.5rem;
+	margin-bottom: 20px;
+}
+
+.cta-content p {
+	font-size: 1.2rem;
+	margin-bottom: 30px;
+}
+
+.cta-buttons {
+	display: flex;
+	justify-content: center;
+	gap: 20px;
+}
+
+.cta-button {
+	border: none;
+	padding: 15px 30px;
+	font-size: 1.1rem;
+	border-radius: 50px;
+	cursor: pointer;
+	font-weight: 600;
+	transition: all 0.3s ease;
+}
+
+.cta-button.register {
+	background-color: #6366F1;
+	color: white;
+}
+
+.cta-button.contact {
+	background-color: white;
+	color: #6366F1;
+}
+
+.cta-button:hover {
+	transform: translateY(-3px);
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Media Queries */
+@media (max-width: 992px) {
+	.section-container {
+		flex-direction: column;
+	}
+
+	.animated-title {
+		font-size: 3rem;
+	}
+
+	.subtitle-animation {
+		font-size: 1.5rem;
+	}
+}
+
+@media (max-width: 768px) {
+	.kids-hero {
+		height: 60vh;
+	}
+
+	.carousel-content {
+		height: 400px;
+	}
+
+	.carousel-btn.prev {
+		left: 10px;
+	}
+
+	.carousel-btn.next {
+		right: 10px;
+	}
+
+	.cta-buttons {
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.kids-section {
+		padding: 60px 20px;
+	}
+}
+
+@media (max-width: 576px) {
+	.animated-title {
+		font-size: 2.5rem;
+	}
+
+	.subtitle-animation {
+		font-size: 1.2rem;
+	}
+
+	.section-content h2,
+	.gallery-title,
+	.what-we-do-section h2,
+	.schedule-content h2,
+	.team-section h2,
+	.cta-content h2 {
+		font-size: 2rem;
+	}
+
+	.section-image {
+		height: 300px;
+	}
+
+	.carousel-content {
+		height: 300px;
+	}
+
+	.activity-card,
+	.schedule-card,
+	.team-member {
+		padding: 20px;
+	}
+}
