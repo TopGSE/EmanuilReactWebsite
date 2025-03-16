@@ -1,3 +1,7 @@
+html {
+	scroll-behavior: smooth;
+}
+
 .services-container {
 	width: 100%;
 	overflow-x: hidden;
@@ -23,7 +27,7 @@
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3));
+	background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.4));
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -105,6 +109,8 @@
 	color: #333;
 	position: relative;
 	display: inline-block;
+	font-weight: 700;
+	letter-spacing: -0.03em;
 }
 
 .services-section-content h2::after {
@@ -118,11 +124,13 @@
 }
 
 .services-tagline {
-	font-size: 1.2rem;
-	font-weight: 500;
+	font-size: 0.95rem;
+	font-weight: 600;
 	color: #6366F1;
 	margin-bottom: 20px;
 	margin-top: 20px;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
 }
 
 .services-section-content p {
@@ -167,6 +175,13 @@
 
 .location-icon {
 	background-image: url('/icons/location-icon.svg');
+}
+
+/* Add this for React Icons */
+.service-icon-react {
+	font-size: 2.5rem;
+	color: #6366F1;
+	margin-bottom: 15px;
 }
 
 .service-detail-item h3 {
@@ -277,6 +292,22 @@
 	text-align: center;
 	margin-bottom: 15px;
 	color: #333;
+	position: relative;
+	padding-bottom: 20px;
+	margin-bottom: 30px;
+}
+
+.section-title::after {
+	content: "✝";
+	/* Cross symbol */
+	position: absolute;
+	bottom: -15px;
+	left: 50%;
+	transform: translateX(-50%);
+	font-size: 1.5rem;
+	color: #6366F1;
+	background: white;
+	padding: 0 15px;
 }
 
 .section-description {
@@ -285,6 +316,7 @@
 	margin: 0 auto 50px;
 	font-size: 1.2rem;
 	color: #555;
+	line-height: 1.8;
 }
 
 .special-services-grid {
@@ -300,17 +332,29 @@
 	border-radius: 15px;
 	overflow: hidden;
 	box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-	transition: transform 0.3s ease;
+	transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
 }
 
 .special-service-card:hover {
-	transform: translateY(-10px);
+	transform: translateY(-10px) scale(1.02);
+	box-shadow: 0 15px 30px rgba(99, 102, 241, 0.2);
 }
 
 .special-service-image {
 	height: 200px;
 	background-size: cover;
 	background-position: center;
+	position: relative;
+}
+
+.special-service-image::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3));
 }
 
 .communion-image {
@@ -348,6 +392,7 @@
 /* Participation Section */
 .participate-section {
 	background-color: #f8f9fa;
+	background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%236366f1' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 }
 
 .participate-container {
@@ -372,6 +417,10 @@
 
 .participate-card:hover {
 	transform: translateY(-10px);
+}
+
+.participate-card:hover .participate-icon {
+	transform: scale(1.1) rotate(5deg);
 }
 
 .participate-icon {
@@ -429,16 +478,26 @@
 }
 
 .testimonies-slider {
-	display: grid;
-	grid-template-columns: 1fr;
-	gap: 40px;
+	position: relative;
+	padding: 2rem 3rem;
+}
+
+.testimonies-slider::before {
+	content: '"';
+	position: absolute;
+	font-size: 12rem;
+	opacity: 0.1;
+	font-family: Georgia, serif;
+	color: #6366F1;
+	top: -2rem;
+	left: 0;
 }
 
 .testimony-card {
-	background-color: white;
-	border-radius: 15px;
-	padding: 30px;
-	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+	position: relative;
+	z-index: 1;
+	background: white;
+	box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
 }
 
 .testimony-quote {
@@ -599,5 +658,142 @@
 
 	.services-section-content h2 {
 		font-size: 1.8rem;
+	}
+}
+
+.featured-image,
+.special-service-image {
+	position: relative;
+}
+
+.featured-image::after,
+.special-service-image::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3));
+}
+
+.service-detail-item,
+.topic-item,
+.participate-card {
+	background-color: rgba(255, 255, 255, 0.8);
+	backdrop-filter: blur(10px);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+@keyframes fadeInUp {
+	from {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.special-services-grid>div:nth-child(1) {
+	animation: fadeInUp 0.6s 0.1s both;
+}
+
+.special-services-grid>div:nth-child(2) {
+	animation: fadeInUp 0.6s 0.3s both;
+}
+
+.special-services-grid>div:nth-child(3) {
+	animation: fadeInUp 0.6s 0.5s both;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	letter-spacing: -0.02em;
+}
+
+.cta-button,
+.participate-button {
+	border-radius: 12px;
+	padding: 16px 32px;
+	font-weight: 600;
+	letter-spacing: 0.02em;
+	transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+	box-shadow: 0 4px 14px rgba(99, 102, 241, 0.3);
+	position: relative;
+	overflow: hidden;
+}
+
+.cta-button:hover,
+.participate-button:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 10px 25px rgba(99, 102, 241, 0.4);
+}
+
+.cta-button::after,
+.participate-button::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(255, 255, 255, 0.2);
+	transform: translateX(-100%);
+	transition: transform 0.4s ease;
+}
+
+.cta-button:hover::after,
+.participate-button:hover::after {
+	transform: translateX(0);
+}
+
+.special-service-card,
+.participate-card,
+.testimony-card {
+	border-radius: 16px;
+	overflow: hidden;
+	box-shadow: rgba(99, 102, 241, 0.05) 0px 10px 20px,
+		rgba(0, 0, 0, 0.05) 0px 5px 10px;
+}
+
+.scroll-reveal {
+	opacity: 0;
+	transform: translateY(30px);
+	transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.scroll-reveal.revealed {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+.nav-links.active::after {
+	content: '';
+	position: absolute;
+	bottom: -5px;
+	left: 0;
+	width: 100%;
+	height: 3px;
+	border-radius: 3px;
+	background-color: #6366F1;
+	animation: navIndicator 0.3s ease;
+}
+
+@keyframes navIndicator {
+	from {
+		width: 0;
+		left: 50%;
+	}
+
+	to {
+		width: 100%;
+		left: 0;
 	}
 }
