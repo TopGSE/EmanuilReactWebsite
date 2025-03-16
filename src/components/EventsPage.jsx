@@ -1,6 +1,12 @@
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import "../styles/EventsPage.css";
+import {
+  FaCalendarAlt,
+  FaClock,
+  FaMapMarkerAlt,
+  FaCalendarDay,
+} from "react-icons/fa";
 
 function EventsPage() {
   const { t } = useTranslation();
@@ -51,7 +57,7 @@ function EventsPage() {
       time: t("events.upcoming.event1.time"),
       location: t("events.upcoming.event1.location"),
       description: t("events.upcoming.event1.description"),
-      image: "/event-worship.jpg",
+      image: "/picture-emanuil-kids-hero.jpg", // Using existing image
       category: "worship",
     },
     {
@@ -61,7 +67,7 @@ function EventsPage() {
       time: t("events.upcoming.event2.time"),
       location: t("events.upcoming.event2.location"),
       description: t("events.upcoming.event2.description"),
-      image: "/event-bible.jpg",
+      image: "/picture-emanuil-kids-aleks.jpg", // Using existing image
       category: "bible",
     },
     {
@@ -71,7 +77,7 @@ function EventsPage() {
       time: t("events.upcoming.event3.time"),
       location: t("events.upcoming.event3.location"),
       description: t("events.upcoming.event3.description"),
-      image: "/event-community.jpg",
+      image: "/picture-emanuil-kids-kartiza8mimart.jpg", // Using existing image
       category: "community",
     },
     {
@@ -81,7 +87,7 @@ function EventsPage() {
       time: t("events.upcoming.event4.time"),
       location: t("events.upcoming.event4.location"),
       description: t("events.upcoming.event4.description"),
-      image: "/event-youth.jpg",
+      image: "/picture-leader-aleks.jpg", // Using existing image
       category: "youth",
     },
   ];
@@ -116,15 +122,15 @@ function EventsPage() {
             <div className="featured-label">{t("events.featured.label")}</div>
             <h2>{t("events.featured.title")}</h2>
             <p className="featured-date">
-              <span className="event-icon date-icon"></span>
+              <FaCalendarAlt className="event-icon" />
               {t("events.featured.date")}
             </p>
             <p className="featured-time">
-              <span className="event-icon time-icon"></span>
+              <FaClock className="event-icon" />
               {t("events.featured.time")}
             </p>
             <p className="featured-location">
-              <span className="event-icon location-icon"></span>
+              <FaMapMarkerAlt className="event-icon" />
               {t("events.featured.location")}
             </p>
             <p className="featured-description">
@@ -196,14 +202,13 @@ function EventsPage() {
               <div className="event-content">
                 <h3>{event.title}</h3>
                 <p className="event-info">
-                  <span className="event-icon date-icon"></span> {event.date}
+                  <FaCalendarAlt className="event-icon" /> {event.date}
                 </p>
                 <p className="event-info">
-                  <span className="event-icon time-icon"></span> {event.time}
+                  <FaClock className="event-icon" /> {event.time}
                 </p>
                 <p className="event-info">
-                  <span className="event-icon location-icon"></span>{" "}
-                  {event.location}
+                  <FaMapMarkerAlt className="event-icon" /> {event.location}
                 </p>
                 <p className="event-description">{event.description}</p>
                 <button className="event-button">
@@ -320,7 +325,7 @@ function EventsPage() {
 
           <div className="calendar-embed">
             <div className="calendar-placeholder">
-              <div className="calendar-icon"></div>
+              <FaCalendarDay className="calendar-icon" />
               <h3>{t("events.calendar.embed")}</h3>
               <p>{t("events.calendar.instruction")}</p>
               <a

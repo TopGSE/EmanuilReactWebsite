@@ -118,26 +118,19 @@
 	color: #555;
 }
 
+/* Update icon styling for React Icons */
 .event-icon {
-	width: 20px;
-	height: 20px;
 	margin-right: 10px;
-	background-size: contain;
-	background-position: center;
-	background-repeat: no-repeat;
+	color: #6366F1;
+	font-size: 1.1rem;
 }
 
-.date-icon {
-	background-image: url('/icons/calendar-icon.svg');
-}
-
-.time-icon {
-	background-image: url('/icons/clock-icon.svg');
-}
-
+/* Remove these background-image properties that are no longer needed */
+/*.date-icon,
+.time-icon,
 .location-icon {
-	background-image: url('/icons/location-icon.svg');
-}
+  /* Remove background-image properties as we're using React icons */
+/**/
 
 .featured-description {
 	margin: 20px 0;
@@ -164,10 +157,12 @@
 	box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
 }
 
+/* Line ~154: Featured image */
 .featured-image {
 	flex: 1;
 	height: 500px;
-	background-image: url('/featured-event.jpg');
+	background-image: url('/church-hero.jpg');
+	/* Using existing church hero image */
 	background-size: cover;
 	background-position: center;
 }
@@ -373,28 +368,29 @@
 	margin: 0;
 }
 
+/* Past events gallery items - using existing images in rotation */
 .gallery-item-1 {
-	background-image: url('/past-event-1.jpg');
+	background-image: url('/picture-emanuil-kids-hero.jpg');
 }
 
 .gallery-item-2 {
-	background-image: url('/past-event-2.jpg');
+	background-image: url('/picture-emanuil-kids-aleks.jpg');
 }
 
 .gallery-item-3 {
-	background-image: url('/past-event-3.jpg');
+	background-image: url('/picture-emanuil-kids-kartiza8mimart.jpg');
 }
 
 .gallery-item-4 {
-	background-image: url('/past-event-4.jpg');
+	background-image: url('/picture-leader-aleks.jpg');
 }
 
 .gallery-item-5 {
-	background-image: url('/past-event-5.jpg');
+	background-image: url('/picture-emanuil-kids-hero.jpg');
 }
 
 .gallery-item-6 {
-	background-image: url('/past-event-6.jpg');
+	background-image: url('/picture-emanuil-kids-aleks.jpg');
 }
 
 /* Calendar Section */
@@ -415,14 +411,11 @@
 	text-align: center;
 }
 
+/* Update icon styling for React Icons */
 .calendar-icon {
-	width: 80px;
-	height: 80px;
-	margin: 0 auto 20px;
-	background-image: url('/icons/calendar-large.svg');
-	background-size: contain;
-	background-position: center;
-	background-repeat: no-repeat;
+	font-size: 3rem;
+	color: #6366F1;
+	margin-bottom: 20px;
 }
 
 .calendar-placeholder h3 {
@@ -458,7 +451,7 @@
 /* CTA Section */
 .events-cta {
 	margin-top: 80px;
-	background-image: linear-gradient(rgba(99, 102, 241, 0.9), rgba(79, 70, 229, 0.9)), url('/cta-bg.jpg');
+	background-image: linear-gradient(rgba(99, 102, 241, 0.9), rgba(79, 70, 229, 0.9)), url('/church-hero.jpg');
 	background-size: cover;
 	background-position: center;
 	color: white;

@@ -7,7 +7,7 @@
 	position: relative;
 	height: 60vh;
 	width: 100%;
-	background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/about-hero.jpg');
+	background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/church-hero.jpg');
 	background-size: cover;
 	background-position: center;
 	background-attachment: fixed;
@@ -78,11 +78,11 @@
 }
 
 .mission-image {
-	background-image: url('/mission-image.jpg');
+	background-image: url('/picture-emanuil-kids-hero.jpg');
 }
 
 .history-image {
-	background-image: url('/history-image.jpg');
+	background-image: url('/picture-emanuil-kids-kartiza8mimart.jpg');
 }
 
 .section-content h2 {
@@ -196,15 +196,15 @@
 }
 
 .pastor {
-	background-image: url('/pastor.jpg');
+	background-image: url('/picture-leader-aleks.jpg');
 }
 
 .elder1 {
-	background-image: url('/elder1.jpg');
+	background-image: url('/picture-emanuil-kids-aleks.jpg');
 }
 
 .elder2 {
-	background-image: url('/elder2.jpg');
+	background-image: url('/picture-emanuil-kids-hero.jpg');
 }
 
 .member-role {
@@ -235,13 +235,16 @@
 }
 
 .belief-icon {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	width: 60px;
 	height: 60px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+	border-radius: 50%;
+	background-color: rgba(99, 102, 241, 0.1);
 	margin: 0 auto 20px;
 	color: #6366F1;
+	font-size: 28px;
 }
 
 .belief-icon svg {
@@ -256,7 +259,8 @@
 
 /* CTA Section */
 .about-cta {
-	background-image: linear-gradient(rgba(99, 102, 241, 0.9), rgba(79, 70, 229, 0.9)), url('/cta-bg.jpg');
+	margin-top: 80px;
+	background-image: linear-gradient(rgba(99, 102, 241, 0.9), rgba(79, 70, 229, 0.9)), url('/church-hero.jpg');
 	background-size: cover;
 	background-position: center;
 	color: white;
