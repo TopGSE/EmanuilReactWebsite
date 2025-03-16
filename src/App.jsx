@@ -9,6 +9,7 @@ import AboutUs from "./components/AboutUs";
 import Contact from "./components/Contact";
 import KidsPage from "./components/KidsPage";
 import ServicesPage from "./components/ServicesPage";
+import EventsPage from "./components/EventsPage"; // Add this import
 
 function App() {
   const { t } = useTranslation();

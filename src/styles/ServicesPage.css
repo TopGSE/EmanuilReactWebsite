@@ -92,11 +92,11 @@
 }
 
 .sunday-image {
-	background-image: url('/sunday-service.jpg');
+	background-image: url('/picture-emanuil-kids-hero.jpg');
 }
 
 .midweek-image {
-	background-image: url('/midweek-service.jpg');
+	background-image: url('/picture-leader-aleks.jpg');
 }
 
 .services-section-content h2 {
@@ -314,15 +314,15 @@
 }
 
 .communion-image {
-	background-image: url('/communion-service.jpg');
+	background-image: url('/picture-emanuil-kids-aleks.jpg');
 }
 
 .baptism-image {
-	background-image: url('/baptism-service.jpg');
+	background-image: url('/picture-emanuil-kids-hero.jpg');
 }
 
 .holiday-image {
-	background-image: url('/holiday-service.jpg');
+	background-image: url('/picture-emanuil-kids-kartiza8mimart.jpg');
 }
 
 .special-service-content {
@@ -481,11 +481,11 @@
 }
 
 .author1 {
-	background-image: url('/testimony-1.jpg');
+	background-image: url('/picture-emanuil-kids-aleks.jpg');
 }
 
 .author2 {
-	background-image: url('/testimony-2.jpg');
+	background-image: url('/picture-leader-aleks.jpg');
 }
 
 .testimony-info h4 {
@@ -502,13 +502,13 @@
 
 /* CTA Section */
 .services-cta {
-	background-image: linear-gradient(rgba(99, 102, 241, 0.9), rgba(79, 70, 229, 0.9)), url('/cta-bg.jpg');
+	margin-top: 80px;
+	background-image: linear-gradient(rgba(99, 102, 241, 0.9), rgba(79, 70, 229, 0.9)), url('/church-hero.jpg');
 	background-size: cover;
 	background-position: center;
 	color: white;
 	text-align: center;
 	padding: 80px 20px;
-	margin-top: 80px;
 }
 
 .cta-content {
