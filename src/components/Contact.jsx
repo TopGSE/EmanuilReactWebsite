@@ -204,7 +204,9 @@ function Contact() {
             <div className="info-content">
               <h3>{t("contact.email")}</h3>
               <p>
-                <a href="mailto:info@churchname.org">info@churchname.org</a>
+                <a href="mailto:info@churchname.org">
+                  bec.emanuil.gent@gmail.com
+                </a>
               </p>
             </div>
           </div>
