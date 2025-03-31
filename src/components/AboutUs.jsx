@@ -84,21 +84,21 @@ function AboutUs() {
               <div className="timeline-item">
                 <div className="timeline-marker"></div>
                 <div className="timeline-content">
-                  <h4>1995</h4>
+                  <h4>2011</h4>
                   <p>Church foundation</p>
                 </div>
               </div>
               <div className="timeline-item">
                 <div className="timeline-marker"></div>
                 <div className="timeline-content">
-                  <h4>2005</h4>
+                  <h4>2015</h4>
                   <p>Building our current sanctuary</p>
                 </div>
               </div>
               <div className="timeline-item">
                 <div className="timeline-marker"></div>
                 <div className="timeline-content">
-                  <h4>2015</h4>
+                  <h4>2020</h4>
                   <p>Community outreach expansion</p>
                 </div>
               </div>
