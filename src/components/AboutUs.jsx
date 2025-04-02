@@ -127,10 +127,10 @@ function AboutUs() {
         <div className="team-grid">
           <div className="team-member">
             <div className="member-image pastor"></div>
-            <h3>Pastor John Doe</h3>
+            <h3>Pastor Angel Ekov</h3>
             <p className="member-role">Lead Pastor</p>
             <p>
-              Leading our congregation with 20+ years of experience and a heart
+              Leading our congregation with 10+ years of experience and a heart
               for community service.
             </p>
           </div>
