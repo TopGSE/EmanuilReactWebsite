@@ -13,23 +13,24 @@ import EventsPage from "./components/EventsPage"; // Add this import
 
 function App() {
   const { t } = useTranslation();
-  // Simple client-side routing
   const [currentPage, setCurrentPage] = useState(window.location.pathname);
 
-  // Listen for route changes
+  // Listen for route changes and browser navigation
   useEffect(() => {
-    const handlePopstate = () => {
+    const handleLocation = () => {
       setCurrentPage(window.location.pathname);
     };
 
-    window.addEventListener("popstate", handlePopstate);
+    window.addEventListener("popstate", handleLocation);
+    window.addEventListener("pushstate", handleLocation);
 
     return () => {
-      window.removeEventListener("popstate", handlePopstate);
+      window.removeEventListener("popstate", handleLocation);
+      window.removeEventListener("pushstate", handleLocation);
     };
   }, []);
 
-  // Custom navigation function
+  // Custom navigation function with proper history management
   const navigate = (path) => {
     window.history.pushState({}, "", path);
     setCurrentPage(path);
