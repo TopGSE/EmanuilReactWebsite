@@ -9,13 +9,12 @@ import AboutUs from "./components/AboutUs";
 import Contact from "./components/Contact";
 import KidsPage from "./components/KidsPage";
 import ServicesPage from "./components/ServicesPage";
-import EventsPage from "./components/EventsPage"; // Add this import
+import EventsPage from "./components/EventsPage";
 
 function App() {
   const { t } = useTranslation();
   const [currentPage, setCurrentPage] = useState(window.location.pathname);
 
-  // Listen for route changes and browser navigation
   useEffect(() => {
     const handleLocation = () => {
       setCurrentPage(window.location.pathname);
@@ -30,13 +29,11 @@ function App() {
     };
   }, []);
 
-  // Custom navigation function with proper history management
   const navigate = (path) => {
     window.history.pushState({}, "", path);
     setCurrentPage(path);
   };
 
-  // Render appropriate page based on route
   const renderPage = () => {
     switch (currentPage) {
       case "/about":
