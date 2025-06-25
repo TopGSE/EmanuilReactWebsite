@@ -99,16 +99,12 @@ function EventsPage() {
       : upcomingEvents.filter((event) => event.category === activeTab);
 
   return (
-    <div className="events-container">
-      {/* Hero Section */}
-      <section className="events-hero">
-        <div className="events-hero-overlay">
-          <div className="events-hero-content">
-            <h1>{t("events.title")}</h1>
-            <p>{t("events.subtitle")}</p>
-          </div>
-        </div>
-      </section>
+    <div className="events-container no-hero">
+      {/* Content starts immediately - no hero section */}
+      <div className="events-intro">
+        <h1>{t("events.title")}</h1>
+        <p className="events-description">{t("events.subtitle")}</p>
+      </div>
 
       {/* Featured Event */}
       <section

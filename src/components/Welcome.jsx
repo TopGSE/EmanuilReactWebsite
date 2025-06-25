@@ -1,24 +1,13 @@
 import { useTranslation } from "react-i18next";
 import "../styles/Welcome.css";
-import FacebookVideo from "./FacebookVideo";
 
 function Welcome() {
   const { t } = useTranslation();
 
-  // Replace this URL with your most recent Facebook video URL
-  const latestVideoUrl = "https://fb.watch/yj95JNTSZ_/";
-
   return (
     <section className="welcome-section">
       <div className="welcome-container">
-        <h1 className="welcome-title">{t("welcome.title")}</h1>
-        <p className="welcome-subtitle">{t("welcome.subtitle")}</p>
-
-        {/* Facebook Video */}
-        <div className="welcome-video-section">
-          <h2>{t("welcome.latestVideo")}</h2>
-          <FacebookVideo videoUrl={latestVideoUrl} />
-        </div>
+        {/* Title, subtitle, and video section removed */}
 
         <div className="welcome-content">
           <div className="welcome-card">

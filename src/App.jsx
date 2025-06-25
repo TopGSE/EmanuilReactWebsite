@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import "./App.css";
+import "./styles/shared.css"; // Add this import
 import "./i18n/i18n"; // Import i18n configuration
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
@@ -10,6 +11,7 @@ import Contact from "./components/Contact";
 import KidsPage from "./components/KidsPage";
 import ServicesPage from "./components/ServicesPage";
 import EventsPage from "./components/EventsPage";
+import GalleryPage from "./components/GalleryPage"; // Add import for new Gallery page
 
 function App() {
   const { t } = useTranslation();
@@ -40,8 +42,10 @@ function App() {
         return <AboutUs />;
       case "/contact":
         return <Contact />;
-      case "/kids":
+      case "/kids": // Keep this route for direct access
         return <KidsPage />;
+      case "/gallery": // Add new gallery route
+        return <GalleryPage />;
       case "/services":
         return <ServicesPage />;
       case "/events":

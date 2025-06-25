@@ -46,16 +46,8 @@ function AboutUs() {
   }, []);
 
   return (
-    <div className="about-container">
-      {/* Hero Section */}
-      <section className="about-hero">
-        <div className="about-hero-content">
-          <h1>{t("about.title")}</h1>
-          <p>{t("about.subtitle")}</p>
-        </div>
-      </section>
-
-      {/* Mission Section */}
+    <div className="about-container no-hero">
+      {/* Mission Section - Starting immediately without intro */}
       <section
         className={`about-section ${isVisible.mission ? "fade-in" : ""}`}
         data-section="mission"
@@ -70,7 +62,7 @@ function AboutUs() {
         </div>
       </section>
 
-      {/* History Section */}
+      {/* History Section - Timeline removed */}
       <section
         className={`about-section ${isVisible.history ? "fade-in" : ""}`}
         data-section="history"
@@ -80,36 +72,7 @@ function AboutUs() {
             <h2>{t("about.history.title")}</h2>
             <p>{t("about.history.p1")}</p>
             <p>{t("about.history.p2")}</p>
-            <div className="timeline">
-              <div className="timeline-item">
-                <div className="timeline-marker"></div>
-                <div className="timeline-content">
-                  <h4>2011</h4>
-                  <p>Church foundation</p>
-                </div>
-              </div>
-              <div className="timeline-item">
-                <div className="timeline-marker"></div>
-                <div className="timeline-content">
-                  <h4>2015</h4>
-                  <p>Building our current sanctuary</p>
-                </div>
-              </div>
-              <div className="timeline-item">
-                <div className="timeline-marker"></div>
-                <div className="timeline-content">
-                  <h4>2020</h4>
-                  <p>Community outreach expansion</p>
-                </div>
-              </div>
-              <div className="timeline-item">
-                <div className="timeline-marker"></div>
-                <div className="timeline-content">
-                  <h4>Today</h4>
-                  <p>Continuing our mission</p>
-                </div>
-              </div>
-            </div>
+            <p>{t("about.history.p3")}</p>
           </div>
           <div className="section-image history-image"></div>
         </div>
@@ -127,30 +90,21 @@ function AboutUs() {
         <div className="team-grid">
           <div className="team-member">
             <div className="member-image pastor"></div>
-            <h3>Pastor Angel Ekov</h3>
-            <p className="member-role">Lead Pastor</p>
-            <p>
-              Leading our congregation with 10+ years of experience and a heart
-              for community service.
-            </p>
+            <h3>{t("about.team.pastor.name")}</h3>
+            <p className="member-role">{t("about.team.pastor.role")}</p>
+            <p>{t("about.team.pastor.description")}</p>
           </div>
           <div className="team-member">
             <div className="member-image elder1"></div>
-            <h3>Jane Smith</h3>
-            <p className="member-role">Worship Director</p>
-            <p>
-              Bringing our worship services to life with passion and musical
-              talent since 2010.
-            </p>
+            <h3>{t("about.team.deacon.name")}</h3>
+            <p className="member-role">{t("about.team.deacon.role")}</p>
+            <p>{t("about.team.deacon.description")}</p>
           </div>
           <div className="team-member">
             <div className="member-image elder2"></div>
-            <h3>Michael Johnson</h3>
-            <p className="member-role">Youth Pastor</p>
-            <p>
-              Dedicated to guiding our youth through their faith journey with
-              energy and understanding.
-            </p>
+            <h3>{t("about.team.worship.name")}</h3>
+            <p className="member-role">{t("about.team.worship.role")}</p>
+            <p>{t("about.team.worship.description")}</p>
           </div>
         </div>
       </section>
@@ -192,15 +146,6 @@ function AboutUs() {
             <h3>{t("about.beliefs.cards.service.title")}</h3>
             <p>{t("about.beliefs.cards.service.description")}</p>
           </div>
-        </div>
-      </section>
-
-      {/* Call to Action */}
-      <section className="about-cta">
-        <div className="cta-content">
-          <h2>{t("about.cta.title")}</h2>
-          <p>{t("about.cta.text")}</p>
-          <button className="cta-button">{t("about.cta.button")}</button>
         </div>
       </section>
     </div>

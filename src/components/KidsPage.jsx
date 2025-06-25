@@ -11,12 +11,11 @@ import {
 
 function KidsPage() {
   const { t } = useTranslation();
-  const [activeSlide, setActiveSlide] = useState(0);
   const [isVisible, setIsVisible] = useState({
     intro: false,
     whatWeDo: false,
-    gallery: false,
     schedule: false,
+    gallery: false,
     team: false,
   });
 
@@ -125,50 +124,12 @@ function KidsPage() {
   };
 
   return (
-    <div className="kids-container">
-      {/* Hero Section with Enhanced Animations */}
-      <section className="kids-hero">
-        <div className="kids-hero-overlay">
-          <div className="rainbow-border"></div>
-          <div className="kids-hero-content">
-            <h1 className="animated-title">{t("kids.title")}</h1>
-            <p className="subtitle-animation">{t("kids.subtitle")}</p>
-
-            {/* Interactive floating elements */}
-            <div className="floating-elements">
-              <div className="floating-balloons">
-                <div className="balloon balloon-red bounce"></div>
-                <div className="balloon balloon-blue bounce-delay-1"></div>
-                <div className="balloon balloon-yellow bounce-delay-2"></div>
-                <div className="balloon balloon-green bounce-delay-3"></div>
-                <div className="balloon balloon-purple bounce-delay-4"></div>
-              </div>
-
-              {/* Interactive bubbles */}
-              {bubblePositions.map((bubble, index) => (
-                <div
-                  key={`bubble-${index}`}
-                  className={`bubble ${bubble.popped ? "popping" : ""}`}
-                  style={{
-                    left: bubble.left,
-                    top: bubble.top,
-                    width: bubble.size,
-                    height: bubble.size,
-                    animationDelay: bubble.delay,
-                    animationDuration: bubble.duration,
-                  }}
-                  onClick={() => handleBubblePop(index)}
-                ></div>
-              ))}
-
-              {/* Flying star */}
-              <div className={`flying-star ${showStar ? "show" : ""}`}>
-                <FaStar />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+    <div className="kids-container no-hero">
+      {/* Content starts immediately - no hero section */}
+      <div className="kids-intro">
+        <h1>{t("kids.title")}</h1>
+        <p className="kids-description">{t("kids.subtitle")}</p>
+      </div>
 
       {/* Introduction Section with Playful Elements */}
       <section
