@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import "../styles/ServicesPage.css";
-// Add react-icons imports
 import {
   FaClock,
   FaMapMarkerAlt,
@@ -9,8 +8,8 @@ import {
   FaPray,
   FaUsers,
   FaMusic,
-  FaHands,
   FaHandsHelping,
+  FaHands,
 } from "react-icons/fa";
 
 function ServicesPage() {
@@ -20,7 +19,6 @@ function ServicesPage() {
     midweek: false,
     special: false,
     participate: false,
-    testimony: false,
   });
 
   // Animation when sections come into view
@@ -53,11 +51,7 @@ function ServicesPage() {
 
   return (
     <div className="services-container no-hero">
-      {/* Content starts immediately - no hero section */}
-      <div className="services-intro">
-        <h1>{t("services.title")}</h1>
-        <p className="services-description">{t("services.content.title")}</p>
-      </div>
+      {/* Services intro removed - content starts with first section */}
 
       {/* Sunday Service Section */}
       <section
@@ -75,38 +69,32 @@ function ServicesPage() {
               <div className="service-detail-item">
                 <FaClock className="service-icon-react" />
                 <h3>{t("services.time")}</h3>
-                <p>{t("services.sunday.time")}</p>
+                <p>11:00 AM</p>
               </div>
               <div className="service-detail-item">
                 <FaMapMarkerAlt className="service-icon-react" />
                 <h3>{t("services.location")}</h3>
-                <p>{t("services.address")}</p>
+                <p>Land van Waaslaan 76, 9040 Sint-Amandsberg</p>
               </div>
             </div>
             <div className="service-schedule-list">
               <h3>{t("services.sunday.schedule")}</h3>
               <div className="schedule-item">
-                <span className="schedule-time">9:30 AM</span>
+                <span className="schedule-time">11:00 AM</span>
                 <span className="schedule-activity">
                   {t("services.sunday.scheduleItems.worship")}
                 </span>
               </div>
               <div className="schedule-item">
-                <span className="schedule-time">10:00 AM</span>
+                <span className="schedule-time">12:00 PM</span>
                 <span className="schedule-activity">
                   {t("services.sunday.scheduleItems.message")}
                 </span>
               </div>
               <div className="schedule-item">
-                <span className="schedule-time">11:15 AM</span>
+                <span className="schedule-time">13:00 PM</span>
                 <span className="schedule-activity">
                   {t("services.sunday.scheduleItems.fellowship")}
-                </span>
-              </div>
-              <div className="schedule-item">
-                <span className="schedule-time">11:30 AM</span>
-                <span className="schedule-activity">
-                  {t("services.sunday.scheduleItems.children")}
                 </span>
               </div>
             </div>
@@ -132,12 +120,14 @@ function ServicesPage() {
               <div className="service-detail-item">
                 <FaClock className="service-icon-react" />
                 <h3>{t("services.time")}</h3>
-                <p>{t("services.midweek.time")}</p>
+                <p>19:00 PM</p>{" "}
+                {/* Hardcoded time instead of using translation */}
               </div>
               <div className="service-detail-item">
                 <FaMapMarkerAlt className="service-icon-react" />
                 <h3>{t("services.location")}</h3>
-                <p>{t("services.address")}</p>
+                <p>Land van Waaslaan 76, 9040 Sint-Amandsberg</p>{" "}
+                {/* Same location as Sunday service */}
               </div>
             </div>
             <div className="service-topics-list">
@@ -257,57 +247,7 @@ function ServicesPage() {
         </div>
       </section>
 
-      {/* Testimonies Section */}
-      <section
-        className={`services-section testimony-section ${
-          isVisible.testimony ? "fade-in" : ""
-        }`}
-        data-section="testimony"
-      >
-        <div className="testimony-container">
-          <h2 className="section-title">{t("services.testimonies.title")}</h2>
-          <p className="section-description">
-            {t("services.testimonies.description")}
-          </p>
-
-          <div className="testimonies-slider">
-            <div className="testimony-card">
-              <div className="testimony-quote">
-                <blockquote>{t("services.testimonies.quote1")}</blockquote>
-              </div>
-              <div className="testimony-author">
-                <div className="testimony-image author1"></div>
-                <div className="testimony-info">
-                  <h4>{t("services.testimonies.author1")}</h4>
-                  <p>{t("services.testimonies.role1")}</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="testimony-card">
-              <div className="testimony-quote">
-                <blockquote>{t("services.testimonies.quote2")}</blockquote>
-              </div>
-              <div className="testimony-author">
-                <div className="testimony-image author2"></div>
-                <div className="testimony-info">
-                  <h4>{t("services.testimonies.author2")}</h4>
-                  <p>{t("services.testimonies.role2")}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Call to Action */}
-      <section className="services-cta">
-        <div className="cta-content">
-          <h2>{t("services.cta.title")}</h2>
-          <p>{t("services.cta.text")}</p>
-          <button className="cta-button">{t("services.cta.button")}</button>
-        </div>
-      </section>
+      {/* Call to Action section removed */}
     </div>
   );
 }

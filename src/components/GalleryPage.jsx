@@ -104,11 +104,7 @@ function GalleryPage() {
 
   return (
     <div className="gallery-container no-hero">
-      {/* Content starts immediately - no hero section */}
-      <div className="gallery-intro">
-        <h1>{t("gallery.title")}</h1>
-        <p className="gallery-description">{t("gallery.subtitle")}</p>
-      </div>
+      {/* Gallery intro removed - content starts with main section */}
 
       {/* Main Gallery View with Featured Image and Thumbnails */}
       <section
