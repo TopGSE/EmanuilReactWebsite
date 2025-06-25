@@ -6,8 +6,9 @@
   },
   "navbar": {
     "home": "Home",
-    "about": "About Us",
+    "about": "About",
     "services": "Services",
+    "gallery": "Gallery",
     "events": "Events",
     "contact": "Contact",
     "kids": "Kids"
@@ -19,7 +20,7 @@
     "cards": {
       "service": {
         "title": "Sunday Service",
-        "description": "Join us every Sunday at 10:00 AM",
+        "description": "Join us every Sunday at 11:00 AM",
         "button": "Learn More"
       },
       "mission": {
@@ -28,22 +29,21 @@
         "button": "About Us"
       },
       "involved": {
-        "title": "Get Involved",
+        "title": "Sunday Bible School",
         "description": "Discover ways to participate in our ministry",
         "button": "Join Us"
       }
     }
   },
   "footer": {
-    "church": "Църква Емануил",
+    "church": "Christian Center Emmanuel",
     "address": "Land van Waaslaan 76, 9040 Sint-Amandsberg",
     "city": "Ghent, Belgium",
     "phone": "Телефон: +32 485 08 99 66",
     "services": "Service Times",
-    "sunday": "Sunday: 10:00 AM",
-    "wednesday": "Wednesday: 7:00 PM",
-    "prayer": "Prayer Meeting: Tuesday 6:30 PM",
-    "connect": "Connect With Us",
+    "sunday": "Sunday: 11:00 AM",
+    "wednesday": "Wednesday: 18:00 PM",
+    "connect": "Social Media",
     "rights": "All Rights Reserved"
   },
   "contact": {
@@ -86,11 +86,26 @@
       "p2": "Throughout our history, we've remained committed to our founding principles while adapting to meet the changing needs of our congregation and community."
     },
     "team": {
-      "title": "Our Leadership Team",
-      "intro": "Meet the dedicated individuals who guide our church community with wisdom, compassion, and vision."
+      "title": "Leadership Team",
+      "intro": "Meet the dedicated individuals who guide our church community with wisdom, compassion, and vision.",
+      "pastor": {
+        "name": "Pastor Angel Ekov",
+        "role": "Lead Pastor",
+        "description": "Leading our congregation with 10+ years of experience and a heart for community service."
+      },
+      "deacon": {
+        "name": "Aleksandar Asenov",
+        "role": "Deacon",
+        "description": "Serving the church family and overseeing various ministries with dedication and care."
+      },
+      "worship": {
+        "name": "Solomon Ekov",
+        "role": "Worship Director",
+        "description": "Bringing our worship services to life with passion and musical talent."
+      }
     },
     "beliefs": {
-      "title": "Our Core Beliefs",
+      "title": "Foundation of our faith",
       "cards": {
         "love": {
           "title": "Love",
@@ -208,11 +223,13 @@
     "bulgarian": "Bulgarian"
   },
   "services": {
-    "title": "Our Church Services",
-    "subtitle": "Join us in worship, prayer, fellowship, and spiritual growth",
-    "time": "Service Time",
-    "location": "Location",
-    "address": "123 Faith Street, City, State 12345",
+    "title": "Church Services",
+    "content": {
+      "title": "Join us in worship, prayer, fellowship, and spiritual growth",
+      "time": "Service Time",
+      "location": "Location",
+      "address": "123 Faith Street, City, State 12345"
+    },
 
     "sunday": {
       "title": "Sunday Service",
@@ -402,6 +419,13 @@
       "description": "Never miss an event! Sign up for our newsletter or contact us for more information about any upcoming gatherings.",
       "subscribe": "Subscribe to Updates",
       "contact": "Contact Us"
+    }
+  },
+  "gallery": {
+    "title": "Our Gallery",
+    "subtitle": "View moments from our church life and activities",
+    "mainGallery": {
+      "title": "Browse All Photos"
     }
   }
 }

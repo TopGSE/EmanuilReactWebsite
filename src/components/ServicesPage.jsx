@@ -52,16 +52,12 @@ function ServicesPage() {
   }, []);
 
   return (
-    <div className="services-container">
-      {/* Hero Section */}
-      <section className="services-hero">
-        <div className="services-hero-overlay">
-          <div className="services-hero-content">
-            <h1>{t("services.title")}</h1>
-            <p>{t("services.subtitle")}</p>
-          </div>
-        </div>
-      </section>
+    <div className="services-container no-hero">
+      {/* Content starts immediately - no hero section */}
+      <div className="services-intro">
+        <h1>{t("services.title")}</h1>
+        <p className="services-description">{t("services.content.title")}</p>
+      </div>
 
       {/* Sunday Service Section */}
       <section

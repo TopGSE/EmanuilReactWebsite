@@ -66,11 +66,11 @@ function Navbar({ onNavigate }) {
           </li>
           <li className="nav-item">
             <a
-              href="/kids"
+              href="/gallery"
               className="nav-links"
-              onClick={(e) => handleNavClick("/kids", e)}
+              onClick={(e) => handleNavClick("/gallery", e)}
             >
-              {t("navbar.kids")}
+              {t("navbar.gallery")}
             </a>
           </li>
           <li className="nav-item">

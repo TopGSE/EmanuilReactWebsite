@@ -1,0 +1,59 @@
+/* Shared intro styles for pages without hero sections */
+.no-hero {
+	padding-top: 40px;
+}
+
+.about-intro,
+.services-intro,
+.gallery-intro,
+.events-intro,
+.kids-intro,
+.contact-intro {
+	text-align: center;
+	max-width: 800px;
+	margin: 0 auto 60px;
+	padding: 0 20px;
+}
+
+.about-intro h1,
+.services-intro h1,
+.gallery-intro h1,
+.events-intro h1,
+.kids-intro h1,
+.contact-intro h1 {
+	font-size: 3rem;
+	color: #333;
+	margin-bottom: 20px;
+}
+
+.about-description,
+.services-description,
+.gallery-description,
+.events-description,
+.kids-description,
+.contact-description {
+	font-size: 1.2rem;
+	color: #666;
+	line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+
+	.about-intro h1,
+	.services-intro h1,
+	.gallery-intro h1,
+	.events-intro h1,
+	.kids-intro h1,
+	.contact-intro h1 {
+		font-size: 2.5rem;
+	}
+
+	.about-description,
+	.services-description,
+	.gallery-description,
+	.events-description,
+	.kids-description,
+	.contact-description {
+		font-size: 1.1rem;
+	}
+}

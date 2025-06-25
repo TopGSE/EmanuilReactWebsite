@@ -1,14 +1,18 @@
 .welcome-section {
-	padding: 60px 24px;
+	padding: 30px 24px;
+	/* Reduced from 60px to 30px */
 	background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)),
 		url('/church-bg.jpg') center/cover no-repeat;
-	min-height: calc(100vh - 80px);
+	min-height: auto;
+	/* Removed fixed height to adapt to content */
+	display: flex;
+	align-items: center;
 }
 
 .welcome-container {
 	max-width: 1200px;
 	margin: 0 auto;
-	text-align: center;
+	width: 100%;
 }
 
 .welcome-title {
@@ -27,13 +31,16 @@
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
-	gap: 30px;
+	gap: 20px;
+	/* Reduced from 30px to 20px */
+	margin-top: 0;
 }
 
 .welcome-card {
 	background-color: white;
 	border-radius: 10px;
-	padding: 30px;
+	padding: 25px;
+	/* Reduced from 30px to 25px */
 	width: 300px;
 	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 	transition: transform 0.3s ease;
@@ -45,13 +52,15 @@
 
 .welcome-card h2 {
 	font-size: 1.5rem;
-	margin-bottom: 15px;
+	margin-bottom: 12px;
+	/* Reduced from 15px to 12px */
 	color: #444;
 }
 
 .welcome-card p {
 	color: #666;
-	margin-bottom: 20px;
+	margin-bottom: 15px;
+	/* Reduced from 20px to 15px */
 }
 
 .btn-primary {
@@ -59,7 +68,8 @@
 	color: white;
 	border: none;
 	border-radius: 5px;
-	padding: 12px 24px;
+	padding: 10px 20px;
+	/* Reduced from 12px 24px to 10px 20px */
 	font-size: 1rem;
 	cursor: pointer;
 	transition: background-color 0.3s ease;
@@ -81,6 +91,11 @@
 }
 
 @media screen and (max-width: 768px) {
+	.welcome-section {
+		padding: 20px 15px;
+		/* Even less padding for mobile */
+	}
+
 	.welcome-title {
 		font-size: 2.5rem;
 	}
@@ -97,6 +112,8 @@
 	.welcome-card {
 		width: 100%;
 		max-width: 400px;
+		padding: 20px;
+		/* Further reduced padding for mobile */
 	}
 
 	.welcome-video-section h2 {
