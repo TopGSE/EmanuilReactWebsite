@@ -14,7 +14,6 @@ function EventsPage() {
     featured: false,
     upcoming: false,
     regular: false,
-    past: false,
     calendar: false,
   });
 
@@ -262,50 +261,6 @@ function EventsPage() {
         </div>
       </section>
 
-      {/* Past Events */}
-      <section
-        className={`events-section past-section ${
-          isVisible.past ? "fade-in" : ""
-        }`}
-        data-section="past"
-      >
-        <h2 className="section-title">{t("events.past.title")}</h2>
-        <p className="section-description">{t("events.past.description")}</p>
-
-        <div className="past-events-gallery">
-          <div className="gallery-item gallery-item-1">
-            <div className="gallery-overlay">
-              <h4>{t("events.past.event1")}</h4>
-            </div>
-          </div>
-          <div className="gallery-item gallery-item-2">
-            <div className="gallery-overlay">
-              <h4>{t("events.past.event2")}</h4>
-            </div>
-          </div>
-          <div className="gallery-item gallery-item-3">
-            <div className="gallery-overlay">
-              <h4>{t("events.past.event3")}</h4>
-            </div>
-          </div>
-          <div className="gallery-item gallery-item-4">
-            <div className="gallery-overlay">
-              <h4>{t("events.past.event4")}</h4>
-            </div>
-          </div>
-          <div className="gallery-item gallery-item-5">
-            <div className="gallery-overlay">
-              <h4>{t("events.past.event5")}</h4>
-            </div>
-          </div>
-          <div className="gallery-item gallery-item-6">
-            <div className="gallery-overlay">
-              <h4>{t("events.past.event6")}</h4>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Calendar */}
       <section
         className={`events-section calendar-section ${
@@ -333,22 +288,6 @@ function EventsPage() {
                 {t("events.calendar.view")}
               </a>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="events-cta">
-        <div className="cta-content">
-          <h2>{t("events.cta.title")}</h2>
-          <p>{t("events.cta.description")}</p>
-          <div className="cta-buttons">
-            <a href="#" className="cta-button primary">
-              {t("events.cta.subscribe")}
-            </a>
-            <a href="#" className="cta-button secondary">
-              {t("events.cta.contact")}
-            </a>
           </div>
         </div>
       </section>

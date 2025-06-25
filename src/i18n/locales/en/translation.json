@@ -1,6 +1,6 @@
 {
   "main": {
-    "welcome": "Welcome to Our Church Center",
+    "welcome": "Christian Center Emmanuel",
     "join": "Join us in worship, fellowship, and spiritual growth",
     "learnMore": "Learn More About Us"
   },
@@ -225,94 +225,75 @@
   "services": {
     "title": "Church Services",
     "content": {
-      "title": "Join us in worship, prayer, fellowship, and spiritual growth",
-      "time": "Service Time",
-      "location": "Location",
-      "address": "123 Faith Street, City, State 12345"
+      "title": "Join us in worship, prayer, fellowship, and spiritual growth"
     },
-
+    "time": "Service Time",
+    "location": "Location",
+    "address": "Land van Waaslaan 76, 9040 Sint-Amandsberg",
     "sunday": {
       "title": "Sunday Service",
-      "tagline": "Celebrate, Worship, and Grow Together",
-      "description": "Our Sunday services are a time for the whole church family to gather in worship, hear an inspiring message from God's Word, and connect with one another in fellowship. Each service is designed to encourage, challenge, and equip you in your spiritual journey.",
-      "time": "Sundays at 10:00 AM",
+      "tagline": "A time of worship, teaching, and fellowship",
+      "description": "Our Sunday service is the heartbeat of our church community. We gather to worship God together, hear His Word, and encourage one another in faith.",
       "schedule": "Service Schedule",
       "scheduleItems": {
         "worship": "Worship Service Begins",
-        "message": "Main Message",
-        "fellowship": "Fellowship and Coffee",
-        "children": "Children's Ministry"
+        "message": "Sermon",
+        "fellowship": "Fellowship & Refreshments"
       }
     },
-
     "midweek": {
-      "title": "Midweek Gatherings",
-      "tagline": "Deepen Your Faith During the Week",
-      "description": "Our Wednesday evening gatherings offer a more intimate setting for deeper Bible study, prayer, and community building. These services help you apply biblical principles to everyday life and grow closer to God and each other throughout the week.",
-      "time": "Wednesdays at 7:00 PM",
-      "topics": "What to Expect",
+      "title": "Wednesday Evening",
+      "tagline": "Prayer & Bible Study",
+      "description": "Join us on Wednesday evenings for a time of prayer, Bible study, and fellowship. This mid-week gathering helps us stay connected and grow in our faith together.",
+      "topics": "What We Cover",
       "topicItems": {
         "bibleStudy": "Bible Study",
-        "prayer": "Prayer Groups",
+        "prayer": "Prayer Time",
         "fellowship": "Fellowship",
         "worship": "Worship"
       }
     },
-
     "special": {
       "title": "Special Services",
-      "description": "Throughout the year, we hold special services to celebrate important occasions in the Christian calendar and in our church life.",
+      "description": "Throughout the year, we hold special services to celebrate important events in the Christian calendar and in the life of our church.",
       "communion": {
         "title": "Communion Service",
-        "description": "A sacred time to remember Christ's sacrifice through the Lord's Supper together as a church family.",
+        "description": "Monthly observance of the Lord's Supper, remembering Christ's sacrifice.",
         "time": "First Sunday of each month"
       },
       "baptism": {
-        "title": "Baptism Service",
-        "description": "Celebrate with those who have decided to publicly declare their faith in Jesus Christ.",
-        "time": "Quarterly (as scheduled)"
+        "title": "Baptism Services",
+        "description": "Public declaration of faith through baptism, celebrating new life in Christ.",
+        "time": "Quarterly (as announced)"
       },
       "holiday": {
-        "title": "Holiday Services",
-        "description": "Special services during Easter, Christmas, and other significant Christian holidays.",
-        "time": "See church calendar for details"
+        "title": "Holiday Celebrations",
+        "description": "Special services for Easter, Christmas, and other significant Christian holidays.",
+        "time": "Seasonal"
       }
     },
-
     "participate": {
-      "title": "How to Participate",
-      "description": "There are many ways to get involved in our church services. Whether you have musical talents, technical skills, or a heart for hospitality, your gifts can help create a welcoming worship environment.",
+      "title": "Ways to Participate",
+      "description": "There are many ways to get involved in our church community beyond attending services. Here are some opportunities to serve and connect.",
       "worship": {
         "title": "Worship Team",
-        "description": "Join our worship team as a musician, singer, or technical support person.",
-        "button": "Join Team"
+        "description": "Use your musical talents to lead the congregation in worship through singing or playing instruments.",
+        "button": "Join the Team"
       },
       "volunteer": {
-        "title": "Hospitality Team",
-        "description": "Help create a warm, welcoming environment for everyone attending our services.",
-        "button": "Volunteer"
+        "title": "Volunteer Opportunities",
+        "description": "Serve in various capacities including greeting, children's ministry, setup, and more.",
+        "button": "Start Serving"
       },
       "prayer": {
         "title": "Prayer Ministry",
-        "description": "Be part of our prayer team, supporting the congregation through prayer.",
+        "description": "Join our prayer team to intercede for the needs of our church, community, and world.",
         "button": "Learn More"
       }
     },
-
-    "testimonies": {
-      "title": "Testimonies",
-      "description": "Hear how our services have impacted the lives of our church members.",
-      "quote1": "The Sunday services at Църква Емануил have completely transformed my spiritual life. The worship lifts my soul and the messages speak directly to my heart each week.",
-      "author1": "Maria Stoyanova",
-      "role1": "Church Member since 2018",
-      "quote2": "I found a true spiritual home in the midweek gatherings. The deep Bible studies and close fellowship have helped me grow in ways I never imagined possible.",
-      "author2": "Peter Dimitrov",
-      "role2": "Youth Group Leader"
-    },
-
     "cta": {
       "title": "Join Us This Sunday",
-      "text": "We'd love to welcome you to our church family. Come experience the love, joy, and peace that comes from worshiping together.",
+      "text": "We'd love to welcome you to our church family. Come experience worship, fellowship, and spiritual growth with us.",
       "button": "Plan Your Visit"
     }
   },
@@ -377,21 +358,21 @@
       "description": "Join us for these weekly opportunities to worship, learn, and grow together.",
       "sunday": {
         "day": "Sunday",
-        "title": "Sunday Worship Service",
-        "time": "10:00 AM",
+        "title": "Sunday Worship",
+        "time": "11:00 AM",
         "description": "Our main weekly gathering for worship, teaching, and fellowship."
       },
       "wednesday": {
         "day": "Wednesday",
         "title": "Midweek Bible Study",
-        "time": "7:00 PM",
+        "time": "6:00 PM",
         "description": "A deeper dive into Scripture with discussion and prayer."
       },
       "friday": {
         "day": "Friday",
-        "title": "Youth Fellowship",
-        "time": "7:30 PM",
-        "description": "Fun, fellowship, and faith development for teenagers."
+        "title": "Midweek Bible Study",
+        "time": "6:00 PM",
+        "description": "A deeper dive into Scripture with discussion and prayer."
       }
     },
 
