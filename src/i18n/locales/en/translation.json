@@ -74,55 +74,56 @@
     "find": "Find Us"
   },
   "about": {
+    "heroTitle": "About Us",
     "title": "About Our Church",
     "subtitle": "Serving our community with faith, love, and compassion since 1995",
     "mission": {
       "title": "Our Mission",
-      "p1": "At Църква Емануил, our mission is to share God's love with our community and beyond. We strive to create a welcoming environment where people from all walks of life can experience spiritual growth, healing, and community.",
-      "p2": "We are committed to serving others, spreading the gospel, and making a positive impact in our neighborhood and throughout the world."
+      "p1": "We strive to create a welcoming community where people can grow in their faith and relationship with God.",
+      "p2": "Through worship, fellowship, and service, we seek to spread the love of Christ to all people."
     },
     "history": {
       "title": "Our History",
-      "p1": "Founded in 1995, our church began as a small gathering in a living room with just a handful of devoted members. Over the years, we've grown into a vibrant community of believers.",
-      "p2": "Throughout our history, we've remained committed to our founding principles while adapting to meet the changing needs of our congregation and community."
+      "p1": "Our church was founded in 1995 by a small group of dedicated believers committed to spreading the Gospel in Bulgaria.",
+      "p2": "Over the years, we've grown from a small gathering to a vibrant community of faith serving the spiritual needs of our city."
     },
     "team": {
       "title": "Leadership Team",
-      "intro": "Meet the dedicated individuals who guide our church community with wisdom, compassion, and vision.",
+      "intro": "Our church is blessed with dedicated leaders who serve with passion and integrity.",
       "pastor": {
-        "name": "Pastor Angel Ekov",
+        "name": "Pastor Aleks Popov",
         "role": "Lead Pastor",
-        "description": "Leading our congregation with 10+ years of experience and a heart for community service."
+        "description": "Pastor Aleks has been leading our church for 15 years with wisdom, compassion, and a deep love for Scripture."
       },
       "deacon": {
-        "name": "Aleksandar Asenov",
-        "role": "Deacon",
-        "description": "Serving the church family and overseeing various ministries with dedication and care."
+        "name": "Ivan Petrov",
+        "role": "Head Deacon",
+        "description": "Ivan oversees our community outreach programs and has a heart for serving those in need."
       },
       "worship": {
-        "name": "Solomon Ekov",
-        "role": "Worship Director",
-        "description": "Bringing our worship services to life with passion and musical talent."
+        "name": "Maria Ivanova",
+        "role": "Worship Leader",
+        "description": "Maria has been leading our worship team for 10 years, bringing creativity and devotion to our services."
       }
     },
     "beliefs": {
-      "title": "Foundation of our faith",
+      "title": "Core Beliefs",
       "cards": {
         "love": {
           "title": "Love",
-          "description": "We believe in showing God's love to all people without condition."
+          "description": "We believe in loving God and loving our neighbors as ourselves, following Christ's example of unconditional love."
         },
         "community": {
           "title": "Community",
-          "description": "We foster a supportive community where everyone belongs and grows together."
+          "description": "We value authentic relationships and believe that spiritual growth happens best in the context of community."
         },
         "scripture": {
           "title": "Scripture",
-          "description": "We are rooted in Biblical teaching as our guide for faith and practice."
+          "description": "We believe the Bible is God's inspired Word and the ultimate authority for our faith and practice."
         },
         "service": {
           "title": "Service",
-          "description": "We are called to serve others following Christ's example of selfless love."
+          "description": "We are committed to serving others and meeting needs in our community as an expression of our faith."
         }
       }
     },
