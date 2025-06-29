@@ -22,6 +22,8 @@ function KidsPage() {
   // Interactive elements state
   const [bubblePositions, setBubblePositions] = useState([]);
   const [showStar, setShowStar] = useState(false);
+  // Add the missing activeSlide state
+  const [activeSlide, setActiveSlide] = useState(0);
 
   // Sample images for the gallery - replace with your actual images
   const galleryImages = [
