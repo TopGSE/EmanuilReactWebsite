@@ -139,7 +139,20 @@
     "intro": {
       "title": "Welcome to Our Kids Ministry",
       "description1": "Our kids ministry is a vibrant, fun, and safe place where children learn about God's love through engaging activities, Bible lessons, and meaningful relationships.",
-      "description2": "We believe that children are an important part of our church family, and we're committed to helping them grow in their faith in age-appropriate ways."
+      "description2": "We believe that children are an important part of our church family, and we're committed to helping them grow in their faith in age-appropriate ways.",
+      "funFactTitle": "Bible Verse of the Day:",
+      "bibleVerses": [
+        "\"Let the little children come to me.\" - Matthew 19:14",
+        "\"I can do all things through Christ who strengthens me.\" - Philippians 4:13",
+        "\"Be kind to one another.\" - Ephesians 4:32",
+        "\"God is love.\" - 1 John 4:8",
+        "\"Children are a gift from the Lord.\" - Psalm 127:3",
+        "\"Jesus Christ is the same yesterday and today and forever.\" - Hebrews 13:8",
+        "\"Trust in the Lord with all your heart.\" - Proverbs 3:5",
+        "\"The Lord is my shepherd.\" - Psalm 23:1",
+        "\"Shine like stars in the universe.\" - Philippians 2:15",
+        "\"Give thanks to the Lord, for he is good.\" - Psalm 107:1"
+      ]
     },
     "gallery": {
       "title": "This Week's Activities",
