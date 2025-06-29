@@ -1,39 +1,68 @@
 .about-container {
 	width: 100%;
-	max-width: 100vw;
+	max-width: 100%;
+	/* Remove any fixed height that might be causing the scrollbar */
+	height: auto;
+	/* Change overflow-y to visible or auto */
+	overflow-y: visible;
 	overflow-x: hidden;
+	/* Keep this to prevent horizontal scrolling */
+	box-sizing: border-box;
 }
 
 /* Hero Section */
 .about-hero {
 	position: relative;
-	height: 60vh;
+	height: 40vh;
 	width: 100%;
-	background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/church-hero.jpg');
+	background-image: url('/church-hero.jpg');
 	background-size: cover;
 	background-position: center;
-	background-attachment: fixed;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	color: white;
 	text-align: center;
+	overflow: hidden;
+	/* Hide any overflow from the hero */
+}
+
+.about-hero-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: linear-gradient(to right, rgba(99, 102, 241, 0.8), rgba(137, 114, 240, 0.8));
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .about-hero-content {
 	max-width: 800px;
 	padding: 0 20px;
+	z-index: 2;
 }
 
 .about-hero-content h1 {
 	font-size: 3.5rem;
-	margin-bottom: 20px;
-	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+	margin-bottom: 0;
+	animation: fadeInDown 0.8s ease-out;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.about-hero-content p {
-	font-size: 1.5rem;
-	text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+/* Animation for title */
+@keyframes fadeInDown {
+	from {
+		opacity: 0;
+		transform: translateY(-20px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
 
 /* Section styling */
@@ -42,6 +71,7 @@
 	opacity: 0;
 	transform: translateY(30px);
 	transition: opacity 0.6s ease, transform 0.6s ease;
+	margin-bottom: 60px;
 }
 
 .about-section.fade-in {
@@ -57,6 +87,9 @@
 	gap: 40px;
 	align-items: center;
 	flex-wrap: wrap;
+	min-height: auto;
+	height: auto;
+	overflow: visible;
 }
 
 .section-container.reverse {
@@ -78,6 +111,8 @@
 	background-position: center;
 	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 	transition: transform 0.5s ease;
+	max-height: none;
+	/* Remove any max-height constraints */
 }
 
 .section-image:hover {
@@ -177,6 +212,8 @@
 	gap: 30px;
 	max-width: 1200px;
 	margin: 0 auto;
+	height: auto;
+	overflow: visible;
 }
 
 .team-member {
@@ -227,6 +264,8 @@
 	gap: 30px;
 	max-width: 1200px;
 	margin: 40px auto 0;
+	height: auto;
+	overflow: visible;
 }
 
 .belief-card {
@@ -327,6 +366,10 @@
 }
 
 @media (max-width: 768px) {
+	.about-hero {
+		height: 30vh;
+	}
+
 	.about-hero-content h1 {
 		font-size: 2.5rem;
 	}

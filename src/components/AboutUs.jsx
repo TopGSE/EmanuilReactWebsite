@@ -46,8 +46,17 @@ function AboutUs() {
   }, []);
 
   return (
-    <div className="about-container no-hero">
-      {/* Mission Section - Starting immediately without intro */}
+    <div className="about-container">
+      {/* Hero Section - Updated to use translation */}
+      <section className="about-hero">
+        <div className="about-hero-overlay">
+          <div className="about-hero-content">
+            <h1>{t("about.heroTitle")}</h1>
+          </div>
+        </div>
+      </section>
+
+      {/* Mission Section */}
       <section
         className={`about-section ${isVisible.mission ? "fade-in" : ""}`}
         data-section="mission"
@@ -62,7 +71,7 @@ function AboutUs() {
         </div>
       </section>
 
-      {/* History Section - Timeline removed */}
+      {/* History Section */}
       <section
         className={`about-section ${isVisible.history ? "fade-in" : ""}`}
         data-section="history"
@@ -72,7 +81,6 @@ function AboutUs() {
             <h2>{t("about.history.title")}</h2>
             <p>{t("about.history.p1")}</p>
             <p>{t("about.history.p2")}</p>
-            <p>{t("about.history.p3")}</p>
           </div>
           <div className="section-image history-image"></div>
         </div>

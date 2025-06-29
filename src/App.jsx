@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import "./App.css";
-import "./styles/shared.css"; // Add this import
+import "./styles/shared.css";
 import "./i18n/i18n"; // Import i18n configuration
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
@@ -11,13 +11,25 @@ import Contact from "./components/Contact";
 import KidsPage from "./components/KidsPage";
 import ServicesPage from "./components/ServicesPage";
 import EventsPage from "./components/EventsPage";
-import GalleryPage from "./components/GalleryPage"; // Add import for new Gallery page
+import GalleryPage from "./components/GalleryPage";
+import LanguagePopup from "./components/LanguagePopup"; // Import the new component
 
 function App() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [currentPage, setCurrentPage] = useState(window.location.pathname);
 
+  // Always show the popup on refresh for testing purposes
+  const [showLanguagePopup, setShowLanguagePopup] = useState(true);
+
   useEffect(() => {
+    // Remove the localStorage check so popup always appears
+    // (The original code is commented out below for reference)
+
+    // const hasSelectedLanguage = localStorage.getItem("hasSelectedLanguage");
+    // if (!hasSelectedLanguage) {
+    //   setShowLanguagePopup(true);
+    // }
+
     const handleLocation = () => {
       setCurrentPage(window.location.pathname);
     };
@@ -36,15 +48,25 @@ function App() {
     setCurrentPage(path);
   };
 
+  const handleLanguageSelect = (language) => {
+    i18n.changeLanguage(language);
+
+    // Still save the preference, but don't check it on load
+    localStorage.setItem("hasSelectedLanguage", "true");
+    localStorage.setItem("preferredLanguage", language);
+
+    setShowLanguagePopup(false);
+  };
+
   const renderPage = () => {
     switch (currentPage) {
       case "/about":
         return <AboutUs />;
       case "/contact":
         return <Contact />;
-      case "/kids": // Keep this route for direct access
+      case "/kids":
         return <KidsPage />;
-      case "/gallery": // Add new gallery route
+      case "/gallery":
         return <GalleryPage />;
       case "/services":
         return <ServicesPage />;
@@ -62,6 +84,12 @@ function App() {
 
   return (
     <div className="app">
+      <LanguagePopup
+        isOpen={showLanguagePopup}
+        onClose={() => setShowLanguagePopup(false)}
+        onSelectLanguage={handleLanguageSelect}
+      />
+
       <header>
         <Navbar onNavigate={navigate} />
       </header>
@@ -81,7 +109,6 @@ function App() {
             <h3>{t("footer.services")}</h3>
             <p>{t("footer.sunday")}</p>
             <p>{t("footer.wednesday")}</p>
-            <p>{t("footer.prayer")}</p>
           </div>
 
           <div className="footer-section">
