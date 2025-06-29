@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import "../styles/AboutUs.css";
-// Import icons
 import {
   FaHeart,
   FaGlobeAmericas,
@@ -45,9 +44,28 @@ function AboutUs() {
     };
   }, []);
 
+  // Format deacon names with line breaks
+  const formatDeaconNames = () => {
+    // Split the names at "&" and join with line breaks
+    const deaconNameString = t("about.team.deacon.name");
+    if (deaconNameString.includes("&")) {
+      const [firstName, secondName] = deaconNameString.split("&");
+      return (
+        <>
+          {firstName.trim()}
+          <br />
+          &
+          <br />
+          {secondName.trim()}
+        </>
+      );
+    }
+    return deaconNameString;
+  };
+
   return (
     <div className="about-container">
-      {/* Hero Section - Updated to use translation */}
+      {/* Hero Section */}
       <section className="about-hero">
         <div className="about-hero-overlay">
           <div className="about-hero-content">
@@ -97,19 +115,25 @@ function AboutUs() {
         <p className="team-intro">{t("about.team.intro")}</p>
         <div className="team-grid">
           <div className="team-member">
-            <div className="member-image pastor"></div>
+            <div className="member-image-placeholder">
+              <div className="placeholder-initials">AE</div>
+            </div>
             <h3>{t("about.team.pastor.name")}</h3>
             <p className="member-role">{t("about.team.pastor.role")}</p>
             <p>{t("about.team.pastor.description")}</p>
           </div>
           <div className="team-member">
-            <div className="member-image elder1"></div>
-            <h3>{t("about.team.deacon.name")}</h3>
+            <div className="member-image-placeholder">
+              <div className="placeholder-initials">AA</div>
+            </div>
+            <h3>{formatDeaconNames()}</h3>
             <p className="member-role">{t("about.team.deacon.role")}</p>
             <p>{t("about.team.deacon.description")}</p>
           </div>
           <div className="team-member">
-            <div className="member-image elder2"></div>
+            <div className="member-image-placeholder">
+              <div className="placeholder-initials">SE</div>
+            </div>
             <h3>{t("about.team.worship.name")}</h3>
             <p className="member-role">{t("about.team.worship.role")}</p>
             <p>{t("about.team.worship.description")}</p>

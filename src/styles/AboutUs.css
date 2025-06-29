@@ -239,6 +239,24 @@
 	border: 3px solid #6366F1;
 }
 
+.member-image-placeholder {
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+	margin: 0 auto 20px;
+	background-color: #f0f0f0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 3px solid #6366F1;
+}
+
+.placeholder-initials {
+	font-size: 3rem;
+	color: #6366F1;
+	font-weight: 700;
+}
+
 .pastor {
 	background-image: url('/picture-leader-aleks.jpg');
 }

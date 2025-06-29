@@ -5,7 +5,6 @@
 	justify-content: center;
 	align-items: center;
 	position: fixed;
-	/* Change from sticky to fixed */
 	top: 0;
 	left: 0;
 	right: 0;
@@ -60,23 +59,7 @@
 	color: #6366F1;
 }
 
-/* Active link styling */
-.nav-links.active {
-	color: #6366F1;
-	font-weight: 600;
-	position: relative;
-}
-
-.nav-links.active::after {
-	content: '';
-	position: absolute;
-	width: 70%;
-	height: 2px;
-	bottom: -5px;
-	left: 50%;
-	background-color: #6366F1;
-	transform: translateX(-50%);
-}
+/* Removed active link styling */
 
 /* Redesigned hamburger icon with improved transition */
 .menu-icon {
@@ -313,48 +296,21 @@
 		visibility: visible;
 	}
 
-	/* Animated underline for active menu item */
-	.nav-links {
-		display: inline-block;
-		position: relative;
-	}
-
-	.nav-links:after {
-		content: '';
-		position: absolute;
-		width: 0;
-		height: 2px;
-		bottom: -5px;
-		left: 50%;
-		background-color: #6366F1;
-		transition: all 0.3s ease;
-		transform: translateX(-50%);
-	}
-
-	.nav-links:hover:after {
-		width: 70%;
-	}
-
 	/* Language switcher positioning */
 	.language-dropdown {
 		margin: 20px auto;
 	}
 
-	.nav-links.active {
-		background-color: rgba(99, 102, 241, 0.08);
-		border-radius: 6px;
+	/* Removed all active link styling for mobile */
+}
+
+/* Desktop hover animation - simplified */
+@media screen and (min-width: 961px) {
+	.nav-links {
+		position: relative;
 	}
 
-	.nav-links.active::after {
-		width: 40px;
-		bottom: -2px;
-	}
-
-	/* Enhance the hover effect for non-active items */
-	.nav-links:not(.active):hover {
-		background-color: rgba(99, 102, 241, 0.04);
-		border-radius: 6px;
-	}
+	/* Removed special styling for active links */
 }
 
 /* Add padding to account for fixed navbar */
