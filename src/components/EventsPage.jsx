@@ -19,7 +19,6 @@ function EventsPage() {
 
   const [activeTab, setActiveTab] = useState("all");
 
-  // Animation when sections come into view
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -47,7 +46,6 @@ function EventsPage() {
     };
   }, []);
 
-  // Sample upcoming events data - replace with your real events
   const upcomingEvents = [
     {
       id: 1,

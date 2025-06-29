@@ -17,7 +17,7 @@ function Navbar({ onNavigate }) {
     <nav className="navbar">
       <div className="navbar-container">
         <div className="navbar-logo">
-          <h1>Християнски Център Емануил</h1>
+          <h1>{t("navbar.title")}</h1>
         </div>
 
         <div className="navbar-right">
