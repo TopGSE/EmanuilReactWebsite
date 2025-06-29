@@ -1496,3 +1496,54 @@
 		transform: translateY(-15px);
 	}
 }
+
+/* Add these styles for the Bible verse container */
+.bible-verse-container {
+	background-color: #E2F0CB;
+	border: 2px dashed #6366F1;
+	position: relative;
+}
+
+.quote-icon {
+	color: #6366F1;
+	font-size: 1.5rem;
+}
+
+.bible-verse {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+.verse-title {
+	font-family: 'Bubblegum Sans', cursive;
+	color: #6366F1;
+	font-size: 1.1rem;
+	margin: 0 0 5px 0;
+}
+
+.verse-text {
+	font-family: 'Comic Neue', cursive;
+	font-style: italic;
+	font-weight: bold;
+	color: #333;
+	margin: 0;
+	line-height: 1.3;
+}
+
+/* Animation for verse text */
+.verse-text {
+	animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(10px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
