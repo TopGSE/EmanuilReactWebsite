@@ -1,12 +1,28 @@
 /* General styling */
 @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Bubblegum+Sans&display=swap');
 
+html,
+body {
+	overflow-x: hidden;
+	width: 100%;
+}
+
+body {
+	overflow-y: auto;
+	position: relative;
+}
+
 .kids-container {
 	width: 100%;
 	background-color: #fff;
-	overflow-x: hidden;
+	/* Remove overflow-x: hidden; from here as it's already on the body */
 	font-family: 'Comic Neue', cursive, sans-serif;
 	color: #333;
+	/* Add this to prevent the inner scrollbar */
+	position: relative;
+	/* Remove any max-height that might be causing scroll issues */
+	max-height: none;
+	height: auto;
 }
 
 /* Hero Section Enhancement */

@@ -23,8 +23,8 @@ function KidsPage() {
   const [showStar, setShowStar] = useState(false);
   const [activeSlide, setActiveSlide] = useState(0);
 
-  // Random Bible verse
-  const [randomVerseIndex, setRandomVerseIndex] = useState(0);
+  // Daily Bible verse
+  const [dailyVerseIndex, setDailyVerseIndex] = useState(0);
 
   // Sample images for the gallery - replace with your actual images
   const galleryImages = [
@@ -63,7 +63,7 @@ function KidsPage() {
     };
   }, []);
 
-  // Generate random bubbles and select random Bible verse on load
+  // Generate random bubbles and select daily Bible verse on load
   useEffect(() => {
     // Generate random bubbles
     const bubbles = Array.from({ length: 15 }, () => ({
@@ -81,15 +81,26 @@ function KidsPage() {
       setShowStar(true);
     }, 2000);
 
-    // Set random Bible verse index
-    // Get the total number of verses
-    const verseCount = t("kids.intro.bibleVerses", {
-      returnObjects: true,
-    }).length;
-    // Generate random index between 0 and verse count-1
-    const randomIndex = Math.floor(Math.random() * verseCount);
-    setRandomVerseIndex(randomIndex);
+    // Get daily Bible verse based on the current date
+    const bibleVerses = t("kids.intro.bibleVerses", { returnObjects: true });
+    const verseCount = bibleVerses.length;
+
+    // Use current date to generate a consistent index for the day
+    const today = new Date();
+    const dayOfYear = getDayOfYear(today);
+
+    // Use the day of the year modulo the number of verses to get today's verse
+    const todayVerseIndex = dayOfYear % verseCount;
+    setDailyVerseIndex(todayVerseIndex);
   }, [t]);
+
+  // Helper function to get the day of the year (1-366)
+  const getDayOfYear = (date) => {
+    const start = new Date(date.getFullYear(), 0, 0);
+    const diff = date - start;
+    const oneDay = 1000 * 60 * 60 * 24;
+    return Math.floor(diff / oneDay);
+  };
 
   // Auto advance carousel every 5 seconds
   useEffect(() => {
@@ -154,7 +165,7 @@ function KidsPage() {
             <p className="handwritten-style">{t("kids.intro.description1")}</p>
             <p className="handwritten-style">{t("kids.intro.description2")}</p>
 
-            {/* Bible verse box - updated with random verse */}
+            {/* Bible verse box - updated with daily verse */}
             <div className="fun-fact-container bible-verse-container">
               <div className="fun-fact-icon">
                 <FaQuoteLeft className="quote-icon" />
@@ -162,7 +173,7 @@ function KidsPage() {
               <div className="bible-verse">
                 <p className="verse-title">{t("kids.intro.funFactTitle")}</p>
                 <p className="verse-text">
-                  {t(`kids.intro.bibleVerses.${randomVerseIndex}`)}
+                  {t(`kids.intro.bibleVerses.${dailyVerseIndex}`)}
                 </p>
               </div>
             </div>
