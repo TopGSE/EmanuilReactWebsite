@@ -45,35 +45,12 @@ function Navbar({ onNavigate }) {
   return (
     <nav className="navbar">
       <div className="navbar-container">
-        <div className="navbar-logo">
+        {/* Logo on the left */}
+        <div className="navbar-logo" onClick={(e) => handleNavClick("/", e)}>
           <h1>{t("navbar.title")}</h1>
         </div>
 
-        <div className="navbar-right">
-          <LanguageSwitcher />
-
-          <div
-            className={`menu-icon ${isOpen ? "active" : ""}`}
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            <span
-              className={isOpen ? "menu-icon-bar open" : "menu-icon-bar"}
-            ></span>
-            <span
-              className={isOpen ? "menu-icon-bar open" : "menu-icon-bar"}
-            ></span>
-            <span
-              className={isOpen ? "menu-icon-bar open" : "menu-icon-bar"}
-            ></span>
-          </div>
-        </div>
-
-        {/* Backdrop for mobile menu */}
-        <div
-          className={isOpen ? "menu-backdrop active" : "menu-backdrop"}
-          onClick={() => setIsOpen(false)}
-        ></div>
-
+        {/* Nav links in the center (desktop) */}
         <ul className={isOpen ? "nav-menu active" : "nav-menu"}>
           <li className="nav-item">
             <a
@@ -140,6 +117,32 @@ function Navbar({ onNavigate }) {
             </a>
           </li>
         </ul>
+
+        {/* Language switcher & hamburger menu on the far right */}
+        <div className="navbar-right">
+          <LanguageSwitcher />
+
+          <div
+            className={`menu-icon ${isOpen ? "active" : ""}`}
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            <span
+              className={isOpen ? "menu-icon-bar open" : "menu-icon-bar"}
+            ></span>
+            <span
+              className={isOpen ? "menu-icon-bar open" : "menu-icon-bar"}
+            ></span>
+            <span
+              className={isOpen ? "menu-icon-bar open" : "menu-icon-bar"}
+            ></span>
+          </div>
+        </div>
+
+        {/* Backdrop for mobile menu */}
+        <div
+          className={isOpen ? "menu-backdrop active" : "menu-backdrop"}
+          onClick={() => setIsOpen(false)}
+        ></div>
       </div>
     </nav>
   );
