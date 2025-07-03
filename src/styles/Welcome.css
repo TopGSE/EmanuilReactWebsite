@@ -1,18 +1,44 @@
 .welcome-section {
-	padding: 30px 24px;
-	/* Reduced from 60px to 30px */
-	background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)),
-		url('/church-bg.jpg') center/cover no-repeat;
-	min-height: auto;
-	/* Removed fixed height to adapt to content */
-	display: flex;
-	align-items: center;
+	position: relative;
+	padding: 60px 24px 80px;
+	background-color: #f8f9fa;
+	overflow: hidden;
+}
+
+.welcome-background-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(255, 255, 255, 0.8) 100%);
+	z-index: 0;
 }
 
 .welcome-container {
+	position: relative;
+	z-index: 1;
 	max-width: 1200px;
 	margin: 0 auto;
 	width: 100%;
+}
+
+.welcome-header {
+	text-align: center;
+	margin-bottom: 50px;
+	position: relative;
+}
+
+.welcome-header::after {
+	content: '';
+	position: absolute;
+	bottom: -15px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 80px;
+	height: 3px;
+	background: linear-gradient(to right, #6366F1, #818cf8);
+	border-radius: 3px;
 }
 
 .welcome-title {
@@ -23,100 +49,210 @@
 
 .welcome-subtitle {
 	font-size: 1.5rem;
-	margin-bottom: 48px;
-	color: #666;
+	color: #555;
+	font-weight: 500;
+	opacity: 0;
+	transform: translateY(20px);
+	transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.welcome-subtitle.animate-in {
+	opacity: 1;
+	transform: translateY(0);
 }
 
 .welcome-content {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
-	gap: 20px;
-	/* Reduced from 30px to 20px */
-	margin-top: 0;
+	gap: 30px;
+	margin-top: 30px;
 }
 
 .welcome-card {
 	background-color: white;
-	border-radius: 10px;
-	padding: 25px;
-	/* Reduced from 30px to 25px */
-	width: 300px;
-	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-	transition: transform 0.3s ease;
+	border-radius: 16px;
+	padding: 30px;
+	width: 320px;
+	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+	transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	border-top: 5px solid transparent;
+	opacity: 0;
+	transform: translateY(30px);
+}
+
+.cards-animate-in .welcome-card:nth-child(1) {
+	animation: cardFadeIn 0.6s 0.1s forwards;
+}
+
+.cards-animate-in .welcome-card:nth-child(2) {
+	animation: cardFadeIn 0.6s 0.3s forwards;
+}
+
+.cards-animate-in .welcome-card:nth-child(3) {
+	animation: cardFadeIn 0.6s 0.5s forwards;
+}
+
+@keyframes cardFadeIn {
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.service-card {
+	border-top-color: #6366F1;
+}
+
+.mission-card {
+	border-top-color: #ef4444;
+}
+
+.involved-card {
+	border-top-color: #10b981;
 }
 
 .welcome-card:hover {
 	transform: translateY(-10px);
+	box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.card-icon {
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	background-color: #f8f9fa;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 20px;
+	font-size: 24px;
+	color: #6366F1;
+	transition: all 0.3s ease;
+}
+
+.service-card .card-icon {
+	color: #6366F1;
+}
+
+.mission-card .card-icon {
+	color: #ef4444;
+}
+
+.involved-card .card-icon {
+	color: #10b981;
+}
+
+.welcome-card:hover .card-icon {
+	transform: scale(1.1) rotate(5deg);
+}
+
+.card-content {
+	flex-grow: 1;
 }
 
 .welcome-card h2 {
 	font-size: 1.5rem;
 	margin-bottom: 12px;
-	/* Reduced from 15px to 12px */
-	color: #444;
+	color: #333;
+	font-weight: 700;
 }
 
 .welcome-card p {
 	color: #666;
-	margin-bottom: 15px;
-	/* Reduced from 20px to 15px */
+	margin-bottom: 25px;
+	line-height: 1.6;
 }
 
 .btn-primary {
 	background-color: #6366F1;
 	color: white;
 	border: none;
-	border-radius: 5px;
-	padding: 10px 20px;
-	/* Reduced from 12px 24px to 10px 20px */
+	border-radius: 30px;
+	padding: 12px 24px;
 	font-size: 1rem;
 	cursor: pointer;
-	transition: background-color 0.3s ease;
+	transition: all 0.3s ease;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	align-self: flex-start;
+	box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+}
+
+.service-card .btn-primary {
+	background-color: #6366F1;
+}
+
+.mission-card .btn-primary {
+	background-color: #ef4444;
+}
+
+.involved-card .btn-primary {
+	background-color: #10b981;
 }
 
 .btn-primary:hover {
-	background-color: #4F46E5;
+	transform: translateY(-3px);
+	box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
 }
 
-.welcome-video-section {
-	margin: 20px auto 50px;
-	text-align: center;
+.btn-icon {
+	font-size: 0.8rem;
+	transition: transform 0.3s ease;
 }
 
-.welcome-video-section h2 {
-	font-size: 1.8rem;
-	margin-bottom: 20px;
-	color: #333;
+.btn-primary:hover .btn-icon {
+	transform: translateX(4px);
 }
 
+/* Add some decorative elements */
+.welcome-section::before {
+	content: '';
+	position: absolute;
+	top: 20px;
+	right: 10%;
+	width: 200px;
+	height: 200px;
+	background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+	border-radius: 50%;
+	z-index: 0;
+}
+
+.welcome-section::after {
+	content: '';
+	position: absolute;
+	bottom: 50px;
+	left: 5%;
+	width: 150px;
+	height: 150px;
+	background: radial-gradient(circle, rgba(239, 68, 68, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+	border-radius: 50%;
+	z-index: 0;
+}
+
+/* Media Queries */
 @media screen and (max-width: 768px) {
 	.welcome-section {
-		padding: 20px 15px;
-		/* Even less padding for mobile */
-	}
-
-	.welcome-title {
-		font-size: 2.5rem;
+		padding: 40px 15px 60px;
 	}
 
 	.welcome-subtitle {
-		font-size: 1.2rem;
+		font-size: 1.3rem;
 	}
 
 	.welcome-content {
 		flex-direction: column;
 		align-items: center;
+		gap: 25px;
 	}
 
 	.welcome-card {
 		width: 100%;
 		max-width: 400px;
-		padding: 20px;
-		/* Further reduced padding for mobile */
-	}
-
-	.welcome-video-section h2 {
-		font-size: 1.5rem;
 	}
 }

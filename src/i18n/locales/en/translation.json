@@ -40,12 +40,14 @@
     "church": "Christian Center Emmanuel",
     "address": "Land van Waaslaan 76, 9040 Sint-Amandsberg",
     "city": "Ghent, Belgium",
-    "phone": "Телефон: +32 485 08 99 66",
+    "phone": "Phone: +32 485 08 99 66",
     "services": "Service Times",
     "sunday": "Sunday: 11:00 AM",
     "wednesday": "Wednesday: 18:00 PM",
     "connect": "Social Media",
-    "rights": "All Rights Reserved"
+    "rights": "All Rights Reserved",
+    "terms": "Terms & Conditions",
+    "privacy": "Privacy Policy"
   },
   "contact": {
     "title": "Contact Us",
@@ -422,6 +424,16 @@
     "subtitle": "View moments from our church life and activities",
     "mainGallery": {
       "title": "Browse All Photos"
+    }
+  },
+  "legal": {
+    "terms": {
+      "title": "Terms and Conditions",
+      "content": "<p>Last updated: June 2024</p><h2>1. Introduction</h2><p>Welcome to Christian Center Emmanuel. By using our website, you agree to these Terms and Conditions.</p><h2>2. Intellectual Property</h2><p>All content on this website, including text, graphics, logos, and images, is the property of Christian Center Emmanuel and is protected by copyright laws.</p><h2>3. Limitation of Liability</h2><p>Christian Center Emmanuel shall not be liable for any direct, indirect, incidental, or consequential damages that result from the use of, or the inability to use, this website.</p><h2>4. Changes to Terms</h2><p>We reserve the right to modify these terms at any time. Your continued use of the website after changes have been made constitutes your acceptance of the modified terms.</p><h2>5. Governing Law</h2><p>These terms shall be governed by and construed in accordance with the laws of Belgium.</p>"
+    },
+    "privacy": {
+      "title": "Privacy Policy",
+      "content": "<p>Last updated: June 2024</p><h2>1. Information We Collect</h2><p>We may collect personal information such as your name, email address, and phone number when you contact us through our website.</p><h2>2. How We Use Your Information</h2><p>We use the information we collect to respond to your inquiries, provide the services you request, and communicate with you about church events and activities.</p><h2>3. Information Sharing</h2><p>We do not sell, trade, or otherwise transfer your personal information to outside parties.</p><h2>4. Cookies</h2><p>Our website may use cookies to enhance your experience. You can set your browser to refuse all or some browser cookies.</p><h2>5. Your Rights</h2><p>You have the right to access, correct, or delete your personal information that we hold. Please contact us if you wish to exercise these rights.</p><h2>6. Changes to Privacy Policy</h2><p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page.</p>"
     }
   }
 }

@@ -4,7 +4,12 @@ html {
 
 .services-container {
 	width: 100%;
-	overflow-x: hidden;
+	/* Remove any overflow settings that might cause a second scrollbar */
+	overflow-x: visible;
+	overflow-y: visible;
+	position: relative;
+	max-height: none;
+	height: auto;
 }
 
 /* Hero Section */
