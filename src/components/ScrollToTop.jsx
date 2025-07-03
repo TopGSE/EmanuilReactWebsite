@@ -4,6 +4,7 @@ import "../styles/ScrollToTop.css";
 
 function ScrollToTop() {
   const [isVisible, setIsVisible] = useState(false);
+  const [isHovering, setIsHovering] = useState(false);
 
   // Show button when page is scrolled down
   const toggleVisibility = () => {
@@ -31,9 +32,16 @@ function ScrollToTop() {
     <button
       className={`scroll-to-top ${isVisible ? "visible" : ""}`}
       onClick={scrollToTop}
+      onMouseEnter={() => setIsHovering(true)}
+      onMouseLeave={() => setIsHovering(false)}
       aria-label="Scroll to top"
     >
-      <FaArrowUp />
+      <FaArrowUp
+        style={{
+          fontSize: "24px",
+          animation: isHovering ? "arrowBounce 1s infinite" : "none",
+        }}
+      />
     </button>
   );
 }
