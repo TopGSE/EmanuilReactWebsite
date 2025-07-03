@@ -13,6 +13,7 @@ import ServicesPage from "./components/ServicesPage";
 import EventsPage from "./components/EventsPage";
 import GalleryPage from "./components/GalleryPage";
 import LanguagePopup from "./components/LanguagePopup"; // Import the new component
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   const { t, i18n } = useTranslation();
@@ -43,9 +44,36 @@ function App() {
     };
   }, []);
 
+  // Simplify your useEffect hooks to avoid duplication
+
+  // Keep only one useEffect for handling navigation and scroll behavior
+  useEffect(() => {
+    const handleLocationChange = () => {
+      const path = window.location.pathname;
+      setCurrentPage(path);
+      // Scroll to top on navigation change
+      window.scrollTo(0, 0);
+    };
+
+    // Listen for navigation events
+    window.addEventListener("popstate", handleLocationChange);
+    window.addEventListener("pushstate", handleLocationChange);
+
+    return () => {
+      window.removeEventListener("popstate", handleLocationChange);
+      window.removeEventListener("pushstate", handleLocationChange);
+    };
+  }, []);
+
   const navigate = (path) => {
-    window.history.pushState({}, "", path);
+    // Scroll to top when navigating
+    window.scrollTo(0, 0);
+
+    // Update the current page
     setCurrentPage(path);
+
+    // Update browser history
+    window.history.pushState({}, "", path);
   };
 
   const handleLanguageSelect = (language) => {
@@ -72,6 +100,28 @@ function App() {
         return <ServicesPage />;
       case "/events":
         return <EventsPage />;
+      case "/terms":
+        return (
+          <div className="legal-page">
+            <h1>{t("legal.terms.title")}</h1>
+            <div
+              dangerouslySetInnerHTML={{
+                __html: t("legal.terms.content"),
+              }}
+            />
+          </div>
+        );
+      case "/privacy":
+        return (
+          <div className="legal-page">
+            <h1>{t("legal.privacy.title")}</h1>
+            <div
+              dangerouslySetInnerHTML={{
+                __html: t("legal.privacy.content"),
+              }}
+            />
+          </div>
+        );
       default:
         return (
           <>
@@ -84,12 +134,6 @@ function App() {
 
   return (
     <div className="app">
-      <LanguagePopup
-        isOpen={showLanguagePopup}
-        onClose={() => setShowLanguagePopup(false)}
-        onSelectLanguage={handleLanguageSelect}
-      />
-
       <header>
         <Navbar onNavigate={navigate} />
       </header>
@@ -141,6 +185,31 @@ function App() {
             </div>
           </div>
         </div>
+
+        <div className="footer-legal">
+          <div className="legal-links">
+            <a
+              href="/terms"
+              onClick={(e) => {
+                e.preventDefault();
+                navigate("/terms");
+              }}
+            >
+              {t("footer.terms")}
+            </a>
+            <span className="separator">|</span>
+            <a
+              href="/privacy"
+              onClick={(e) => {
+                e.preventDefault();
+                navigate("/privacy");
+              }}
+            >
+              {t("footer.privacy")}
+            </a>
+          </div>
+        </div>
+
         <div className="footer-bottom">
           <p>
             &copy; {new Date().getFullYear()} {t("footer.church")}.{" "}
@@ -148,6 +217,15 @@ function App() {
           </p>
         </div>
       </footer>
+
+      {showLanguagePopup && (
+        <LanguagePopup
+          isOpen={showLanguagePopup}
+          onClose={() => setShowLanguagePopup(false)}
+          onSelectLanguage={handleLanguageSelect}
+        />
+      )}
+      <ScrollToTop />
     </div>
   );
 }
