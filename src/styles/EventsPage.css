@@ -1,9 +1,40 @@
 .events-container {
 	width: 100%;
-	overflow-x: hidden;
+	overflow-x: visible;
+	overflow-y: visible;
+	height: auto;
+	max-height: none;
+	position: relative;
 }
 
-/* Hero Section */
+html,
+body {
+	overflow-x: hidden;
+	width: 100%;
+	position: relative;
+}
+
+.events-section {
+	overflow: hidden;
+	width: 100%;
+}
+
+.past-events-gallery {
+	width: 100%;
+	max-width: 100%;
+	box-sizing: border-box;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+.events-container.no-hero {
+	overflow: visible;
+	padding-top: 40px;
+}
+
 .events-hero {
 	position: relative;
 	height: 60vh;
@@ -46,7 +77,6 @@
 	text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
-/* Section Styling */
 .events-section {
 	padding: 80px 20px;
 	opacity: 0;
@@ -74,7 +104,6 @@
 	color: #555;
 }
 
-/* Featured Event Section */
 .featured-container {
 	display: flex;
 	max-width: 1200px;
@@ -118,19 +147,11 @@
 	color: #555;
 }
 
-/* Update icon styling for React Icons */
 .event-icon {
 	margin-right: 10px;
 	color: #6366F1;
 	font-size: 1.1rem;
 }
-
-/* Remove these background-image properties that are no longer needed */
-/*.date-icon,
-.time-icon,
-.location-icon {
-  /* Remove background-image properties as we're using React icons */
-/**/
 
 .featured-description {
 	margin: 20px 0;
@@ -157,17 +178,14 @@
 	box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
 }
 
-/* Line ~154: Featured image */
 .featured-image {
 	flex: 1;
 	height: 500px;
 	background-image: url('/church-hero.jpg');
-	/* Using existing church hero image */
 	background-size: cover;
 	background-position: center;
 }
 
-/* Event Filters */
 .events-filter {
 	display: flex;
 	justify-content: center;
@@ -198,7 +216,6 @@
 	border-color: #6366F1;
 }
 
-/* Upcoming Events Grid */
 .events-grid {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
@@ -268,7 +285,6 @@
 	color: white;
 }
 
-/* Regular Events Section */
 .regular-section {
 	background-color: #f8f9fa;
 }
@@ -322,7 +338,6 @@
 	line-height: 1.6;
 }
 
-/* Past Events Gallery */
 .past-events-gallery {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -368,7 +383,6 @@
 	margin: 0;
 }
 
-/* Past events gallery items - using existing images in rotation */
 .gallery-item-1 {
 	background-image: url('/picture-emanuil-kids-hero.jpg');
 }
@@ -393,7 +407,6 @@
 	background-image: url('/picture-emanuil-kids-aleks.jpg');
 }
 
-/* Calendar Section */
 .calendar-container {
 	max-width: 1000px;
 	margin: 0 auto;
@@ -411,7 +424,6 @@
 	text-align: center;
 }
 
-/* Update icon styling for React Icons */
 .calendar-icon {
 	font-size: 3rem;
 	color: #6366F1;
@@ -448,7 +460,6 @@
 	box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
 }
 
-/* CTA Section */
 .events-cta {
 	margin-top: 80px;
 	background-image: linear-gradient(rgba(99, 102, 241, 0.9), rgba(79, 70, 229, 0.9)), url('/church-hero.jpg');
@@ -508,7 +519,6 @@
 	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* Media Queries */
 @media (max-width: 992px) {
 	.featured-container {
 		flex-direction: column;
