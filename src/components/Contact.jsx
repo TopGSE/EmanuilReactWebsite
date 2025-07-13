@@ -256,12 +256,28 @@ function Contact() {
 
       <section className="map-section">
         <h2>{t("contact.find")}</h2>
-        <div className="map-container">
+        <div
+          className="map-container"
+          style={{
+            width: "100%",
+            height: "350px",
+            maxWidth: "100%",
+            borderRadius: "16px",
+            overflow: "hidden",
+            boxShadow: "0 4px 16px rgba(0,0,0,0.08)",
+          }}
+        >
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2507.4722146391275!2d3.744343576899598!3d51.05951204744881!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c37179db47ab6f%3A0xb7f0e793429bc01b!2sLand%20van%20Waaslaan%2076%2C%209040%20Gent!5e0!3m2!1sen!2sbe!4v1719651633592!5m2!1sen!2sbe"
             width="100%"
             height="100%"
-            style={{ border: 0 }}
+            style={{
+              border: 0,
+              width: "100%",
+              height: "100%",
+              minHeight: "350px",
+              display: "block",
+            }}
             allowFullScreen=""
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
