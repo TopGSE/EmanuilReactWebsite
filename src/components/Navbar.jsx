@@ -47,7 +47,12 @@ function Navbar({ onNavigate }) {
       <div className="navbar-container">
         {/* Logo on the left */}
         <div className="navbar-logo" onClick={(e) => handleNavClick("/", e)}>
-          <h1>{t("navbar.title")}</h1>
+          <img
+            src="/church-logo.png"
+            alt={t("navbar.title") + " logo"}
+            className="navbar-logo-img"
+            style={{ height: "48px", width: "auto" }}
+          />
         </div>
 
         {/* Nav links in the center (desktop) */}
@@ -116,12 +121,14 @@ function Navbar({ onNavigate }) {
               {t("navbar.contact")}
             </a>
           </li>
+          {/* Show LanguageSwitcher inside menu on mobile only */}
+          <li className="nav-item nav-lang-mobile">
+            <LanguageSwitcher />
+          </li>
         </ul>
 
-        {/* Language switcher & hamburger menu on the far right */}
+        {/* Hamburger menu on the far right, LanguageSwitcher only on desktop */}
         <div className="navbar-right">
-          <LanguageSwitcher />
-
           <div
             className={`menu-icon ${isOpen ? "active" : ""}`}
             onClick={() => setIsOpen(!isOpen)}
@@ -135,6 +142,9 @@ function Navbar({ onNavigate }) {
             <span
               className={isOpen ? "menu-icon-bar open" : "menu-icon-bar"}
             ></span>
+          </div>
+          <div className="nav-lang-desktop">
+            <LanguageSwitcher />
           </div>
         </div>
 
