@@ -19,30 +19,12 @@ function App() {
   const { t, i18n } = useTranslation();
   const [currentPage, setCurrentPage] = useState(window.location.pathname);
 
-  // Always show the popup on refresh for testing purposes
-  const [showLanguagePopup, setShowLanguagePopup] = useState(true);
+  // Show the popup only if the user hasn't selected a language
+  const [showLanguagePopup, setShowLanguagePopup] = useState(() => {
+    return !localStorage.getItem("hasSelectedLanguage");
+  });
 
-  useEffect(() => {
-    // Remove the localStorage check so popup always appears
-    // (The original code is commented out below for reference)
-
-    // const hasSelectedLanguage = localStorage.getItem("hasSelectedLanguage");
-    // if (!hasSelectedLanguage) {
-    //   setShowLanguagePopup(true);
-    // }
-
-    const handleLocation = () => {
-      setCurrentPage(window.location.pathname);
-    };
-
-    window.addEventListener("popstate", handleLocation);
-    window.addEventListener("pushstate", handleLocation);
-
-    return () => {
-      window.removeEventListener("popstate", handleLocation);
-      window.removeEventListener("pushstate", handleLocation);
-    };
-  }, []);
+  // No need for language popup logic here, handled in useState and handleLanguageSelect
 
   // Simplify your useEffect hooks to avoid duplication
 
