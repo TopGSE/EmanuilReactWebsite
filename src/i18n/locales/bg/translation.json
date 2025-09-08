@@ -35,13 +35,14 @@
     }
   },
   "footer": {
+    "tagline": "Общност на вяра, надежда и любов",
     "church": "Християнски Център Емануил",
     "address": "Land van Waaslaan 76, 9040 Sint-Amandsberg",
     "city": "Ghent, Belgium",
     "phone": "Телефон: +32 485 08 99 66",
     "services": "Време за служби",
     "sunday": "Неделя: 11:00",
-    "prayer": "Молитвена среща: Вторник 18:30",
+    "wednesday": "Сряда: 18:00",
     "connect": "Социални мрежи",
     "rights": "Всички права запазени",
     "terms": "Общи условия",
