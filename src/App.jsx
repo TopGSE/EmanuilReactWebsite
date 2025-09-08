@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import "./App.css";
 import "./styles/shared.css";
 import "./styles/FooterModern.css";
+import "./styles/LegalPagesModern.css";
 import "./i18n/i18n"; // Import i18n configuration
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
@@ -85,24 +86,81 @@ function App() {
         return <EventsPage />;
       case "/terms":
         return (
-          <div className="legal-page">
-            <h1>{t("legal.terms.title")}</h1>
-            <div
-              dangerouslySetInnerHTML={{
-                __html: t("legal.terms.content"),
-              }}
-            />
+          <div className="legal-page-modern">
+            <div className="legal-container">
+              <div className="legal-header">
+                <h1>{t("legal.terms.title")}</h1>
+                <div className="legal-subtitle">
+                  {t(
+                    "legal.terms.subtitle",
+                    "Legal Terms and Conditions for Website Usage"
+                  )}
+                </div>
+                <div className="last-updated-modern">
+                  {t("legal.lastUpdated", "Last updated: September 2025")}
+                </div>
+              </div>
+              <div className="legal-content">
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: t("legal.terms.content"),
+                  }}
+                />
+                <div className="contact-info">
+                  <h4>{t("legal.contactTitle", "Need Help?")}</h4>
+                  <p>
+                    {t(
+                      "legal.contactText",
+                      "If you have any questions about these terms, please contact us at info@emanuil.be"
+                    )}
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         );
       case "/privacy":
         return (
-          <div className="legal-page">
-            <h1>{t("legal.privacy.title")}</h1>
-            <div
-              dangerouslySetInnerHTML={{
-                __html: t("legal.privacy.content"),
-              }}
-            />
+          <div className="legal-page-modern">
+            <div className="legal-container">
+              <div className="legal-header">
+                <h1>{t("legal.privacy.title")}</h1>
+                <div className="legal-subtitle">
+                  {t(
+                    "legal.privacy.subtitle",
+                    "How We Protect and Use Your Information"
+                  )}
+                </div>
+                <div className="last-updated-modern">
+                  {t("legal.lastUpdated", "Last updated: September 2025")}
+                </div>
+              </div>
+              <div className="legal-content">
+                <div className="important-notice">
+                  <h4>{t("legal.importantTitle", "Important Notice")}</h4>
+                  <p>
+                    {t(
+                      "legal.importantText",
+                      "Your privacy is important to us. This policy explains how we handle your information."
+                    )}
+                  </p>
+                </div>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: t("legal.privacy.content"),
+                  }}
+                />
+                <div className="contact-info">
+                  <h4>{t("legal.contactTitle", "Questions About Privacy?")}</h4>
+                  <p>
+                    {t(
+                      "legal.contactText",
+                      "If you have any questions about this privacy policy, please contact us at info@emanuil.be"
+                    )}
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         );
       default:
@@ -206,7 +264,7 @@ function App() {
                 <h4>Connect</h4>
                 <div className="social-modern">
                   <a
-                    href="https://facebook.com"
+                    href="https://www.facebook.com/Emanuil.Gent"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Facebook"
@@ -246,7 +304,7 @@ function App() {
                     </svg>
                   </a>
                   <a
-                    href="https://youtube.com"
+                    href="https://www.youtube.com/@EmanuilGent"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="YouTube"

@@ -44,23 +44,20 @@ function AboutUs() {
     };
   }, []);
 
-  // Format deacon names with line breaks
-  const formatDeaconNames = () => {
-    // Split the names at "&" and join with line breaks
-    const deaconNameString = t("about.team.deacon.name");
-    if (deaconNameString.includes("&")) {
-      const [firstName, secondName] = deaconNameString.split("&");
+  // Format couple names elegantly with line break after &
+  const formatCoupleName = (nameString) => {
+    if (nameString.includes("&")) {
+      const [firstName, secondName] = nameString.split("&");
       return (
-        <>
-          {firstName.trim()}
+        <span className="couple-name">
+          <span className="primary-name">{firstName.trim()}</span>
+          <span className="couple-connector"> &</span>
           <br />
-          &
-          <br />
-          {secondName.trim()}
-        </>
+          <span className="secondary-name">{secondName.trim()}</span>
+        </span>
       );
     }
-    return deaconNameString;
+    return nameString;
   };
 
   return (
@@ -118,7 +115,7 @@ function AboutUs() {
             <div className="member-image-placeholder">
               <div className="placeholder-initials">AE</div>
             </div>
-            <h3>{t("about.team.pastor.name")}</h3>
+            <h3>{formatCoupleName(t("about.team.pastor.name"))}</h3>
             <p className="member-role">{t("about.team.pastor.role")}</p>
             <p>{t("about.team.pastor.description")}</p>
           </div>
@@ -126,7 +123,7 @@ function AboutUs() {
             <div className="member-image-placeholder">
               <div className="placeholder-initials">AA</div>
             </div>
-            <h3>{formatDeaconNames()}</h3>
+            <h3>{formatCoupleName(t("about.team.deacon.name"))}</h3>
             <p className="member-role">{t("about.team.deacon.role")}</p>
             <p>{t("about.team.deacon.description")}</p>
           </div>
@@ -134,7 +131,7 @@ function AboutUs() {
             <div className="member-image-placeholder">
               <div className="placeholder-initials">SE</div>
             </div>
-            <h3>{t("about.team.worship.name")}</h3>
+            <h3>{formatCoupleName(t("about.team.worship.name"))}</h3>
             <p className="member-role">{t("about.team.worship.role")}</p>
             <p>{t("about.team.worship.description")}</p>
           </div>

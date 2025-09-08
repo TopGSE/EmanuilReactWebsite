@@ -199,6 +199,20 @@
 	background-color: #f8f9fa;
 }
 
+/* Remove margin between team and beliefs sections for seamless look */
+.team-section {
+	margin-bottom: 0;
+}
+
+.beliefs-section {
+	padding-top: 40px;
+	/* Reduce top padding to maintain some visual spacing */
+	margin-bottom: 0;
+	/* Remove bottom margin for seamless footer transition */
+	padding-bottom: 60px;
+	/* Add bottom padding instead of margin */
+}
+
 .team-intro {
 	max-width: 700px;
 	margin: 0 auto 50px;
@@ -273,6 +287,31 @@
 	color: #6366F1;
 	font-weight: 600;
 	margin-bottom: 15px;
+}
+
+/* Professional couple name styling with line break */
+.couple-name {
+	display: inline-block;
+	line-height: 1.4;
+	text-align: center;
+}
+
+.primary-name {
+	font-weight: 700;
+	color: #1f2937;
+}
+
+.couple-connector {
+	font-weight: 400;
+	color: #6b7280;
+	margin-left: 4px;
+}
+
+.secondary-name {
+	font-weight: 600;
+	color: #374151;
+	display: inline-block;
+	margin-top: 2px;
 }
 
 /* Beliefs section */
