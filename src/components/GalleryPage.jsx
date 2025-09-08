@@ -11,71 +11,111 @@ function GalleryPage() {
 
   // Gallery images organized by categories
   const galleryImages = [
+    // Worship & Church Services
     {
-      src: "/picture-emanuil-kids-hero.jpg",
-      caption: "Sunday Worship Service",
-      date: "April 2023",
+      src: "/Photo Church Full.jpg",
+      caption: "Sunday Service",
+      date: "2024",
       category: "worship",
-      tags: ["worship", "community", "sunday"],
+      tags: ["worship", "service", "congregation"],
     },
     {
-      src: "/picture-emanuil-kids-aleks.jpg",
-      caption: "Youth Ministry",
-      date: "May 2023",
+      src: "/Photo Church Full 2.jpg",
+      caption: "Communion Service",
+      date: "2024",
+      category: "worship",
+      tags: ["communion", "worship", "service"],
+    },
+    {
+      src: "/Photo Church Closeup People.jpg",
+      caption: "Community in Prayer",
+      date: "2024",
+      category: "worship",
+      tags: ["prayer", "community", "worship"],
+    },
+    {
+      src: "/Photo Worship Team.jpg",
+      caption: "Worship Team",
+      date: "2024",
+      category: "worship",
+      tags: ["worship", "music", "praise"],
+    },
+    {
+      src: "/Photo Worship Team_2.jpg",
+      caption: "Praise & Music Ministry",
+      date: "2024",
+      category: "worship",
+      tags: ["worship", "music", "ministry"],
+    },
+    {
+      src: "/Photo Worship Team_3.jpg",
+      caption: "Musical Worship",
+      date: "2024",
+      category: "worship",
+      tags: ["worship", "music", "praise"],
+    },
+    // Youth & Kids Ministry
+    {
+      src: "/Photo Kids Easter.jpg",
+      caption: "Easter Celebration with Kids",
+      date: "2024",
       category: "youth",
-      tags: ["youth", "ministry", "kids"],
+      tags: ["easter", "kids", "celebration"],
     },
     {
-      src: "/picture-emanuil-kids-kartiza8mimart.jpg",
-      caption: "Easter Celebration",
-      date: "March 2023",
+      src: "/Photo Kids 8 Mart.jpg",
+      caption: "Kids Ministry - March 8th",
+      date: "2024",
+      category: "youth",
+      tags: ["kids", "ministry", "celebration"],
+    },
+    {
+      src: "/Photo Kids Rojdestvo.jpg",
+      caption: "Christmas with Children",
+      date: "2024",
+      category: "youth",
+      tags: ["christmas", "kids", "holiday"],
+    },
+    {
+      src: "/Photo Kids Vodno.jpg",
+      caption: "Kids Outing at Vodno",
+      date: "2024",
+      category: "youth",
+      tags: ["kids", "outing", "nature"],
+    },
+    // Special Events & Baptisms
+    {
+      src: "/Photo Hristofor Vodno.jpg",
+      caption: "Baptism at Hristofor Vodno",
+      date: "2024",
       category: "events",
-      tags: ["easter", "celebration", "community"],
+      tags: ["baptism", "vodno", "ceremony"],
     },
+    // Leadership
     {
-      src: "/picture-leader-aleks.jpg",
-      caption: "Pastor's Message",
-      date: "June 2023",
+      src: "/Photo Leiman CloseUp.jpg",
+      caption: "Church Leadership",
+      date: "2024",
       category: "leadership",
-      tags: ["pastor", "leadership", "teaching"],
+      tags: ["leadership", "pastor", "ministry"],
     },
+    // Bible Study & Teaching
     {
-      src: "/church-hero.jpg",
-      caption: "Our Church Building",
-      date: "January 2023",
-      category: "building",
-      tags: ["church", "building", "architecture"],
-    },
-    {
-      src: "/picture-emanuil-kids-hero.jpg",
-      caption: "Praise & Worship",
-      date: "July 2023",
-      category: "worship",
-      tags: ["praise", "worship", "music"],
-    },
-    {
-      src: "/picture-emanuil-kids-aleks.jpg",
-      caption: "Children's Ministry",
-      date: "August 2023",
-      category: "youth",
-      tags: ["children", "ministry", "education"],
-    },
-    {
-      src: "/picture-emanuil-kids-kartiza8mimart.jpg",
-      caption: "Community Outreach",
-      date: "September 2023",
-      category: "events",
-      tags: ["outreach", "community", "service"],
+      src: "/Bible Study Reading.jpg",
+      caption: "Bible Study Fellowship",
+      date: "2024",
+      category: "teaching",
+      tags: ["bible", "study", "fellowship"],
     },
   ];
 
   const categories = [
     { id: "all", label: "All Photos" },
-    { id: "worship", label: "Worship" },
-    { id: "youth", label: "Youth & Kids" },
-    { id: "events", label: "Events" },
+    { id: "worship", label: "Worship & Services" },
+    { id: "youth", label: "Youth & Kids Ministry" },
+    { id: "events", label: "Special Events" },
     { id: "leadership", label: "Leadership" },
-    { id: "building", label: "Our Church" },
+    { id: "teaching", label: "Bible Study & Teaching" },
   ];
 
   // Filter images based on selected category

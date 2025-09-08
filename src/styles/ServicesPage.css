@@ -88,11 +88,20 @@ html {
 	flex: 1;
 	height: 450px;
 	border-radius: 20px;
-	background-size: cover;
-	background-position: center;
 	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 	transition: transform 0.5s ease, box-shadow 0.5s ease;
 	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+}
+
+.services-section-image img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 20px;
 }
 
 .services-section-image:hover {
@@ -100,12 +109,118 @@ html {
 	box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
 }
 
-.sunday-image {
-	background-image: url('/picture-emanuil-kids-hero.jpg');
+/* Simple Carousel Design */
+.simple-carousel {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	border-radius: 20px;
+	overflow: hidden;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
-.midweek-image {
-	background-image: url('/picture-leader-aleks.jpg');
+/* Image Wrapper for Transition Effects */
+.carousel-image-wrapper {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+.carousel-image {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 20px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	transition: opacity 0.6s ease-in-out;
+	opacity: 0;
+}
+
+.carousel-image.active {
+	opacity: 1;
+}
+
+/* Simple Carousel Controls */
+.simple-carousel-controls {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	padding: 0;
+	pointer-events: none;
+}
+
+/* Both buttons - clean white icons */
+.simple-carousel-controls .arrow-btn {
+	padding: 15px;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	background-color: transparent !important;
+}
+
+/* Indicator Dots - Hidden */
+.carousel-indicators {
+	display: none;
+}
+
+/* Clean Arrow Buttons - White Icons */
+.arrow-btn {
+	background-color: transparent !important;
+	border: none;
+	color: rgba(255, 255, 255, 0.9);
+	font-size: 24px;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 10px;
+	transition: transform 0.2s ease;
+	pointer-events: auto;
+}
+
+.arrow-btn:hover {
+	transform: scale(1.2);
+	color: rgba(255, 255, 255, 1);
+	background-color: transparent !important;
+}
+
+.arrow-btn:focus {
+	outline: none;
+	background-color: transparent !important;
+	box-shadow: none;
+}
+
+.arrow-btn svg {
+	width: 24px;
+	height: 24px;
+}
+
+.modern-carousel-btn:active {
+	transform: scale(0.95);
+}
+
+.prev-btn {
+	transform-origin: center;
+}
+
+.next-btn {
+	transform-origin: center;
+}
+
+/* Subtle Hover Effects */
+.modern-carousel:hover .carousel-image {
+	transform: scale(1.02);
+}
+
+/* Clean Focus States for Accessibility */
+.modern-carousel-btn:focus {
+	outline: 2px solid rgba(255, 255, 255, 0.8);
+	outline-offset: 2px;
 }
 
 .services-section-content h2 {
@@ -352,6 +467,12 @@ html {
 	position: relative;
 }
 
+.special-service-image img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
 .special-service-image::after {
 	content: '';
 	position: absolute;
@@ -360,6 +481,7 @@ html {
 	width: 100%;
 	height: 100%;
 	background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3));
+	z-index: 1;
 }
 
 .communion-image {

@@ -10,6 +10,8 @@ import {
   FaMusic,
   FaHandsHelping,
   FaHands,
+  FaChevronLeft,
+  FaChevronRight,
 } from "react-icons/fa";
 
 function ServicesPage() {
@@ -20,6 +22,27 @@ function ServicesPage() {
     special: false,
     participate: false,
   });
+
+  // Carousel state
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const carouselImages = [
+    { src: "/Photo Church Closeup People.jpg", alt: "Church Community" },
+    { src: "/Photo Kids Easter.jpg", alt: "Kids Easter Celebration" },
+    { src: "/Photo Worship Team_3.jpg", alt: "Worship Team" },
+  ];
+
+  // Carousel navigation functions
+  const nextImage = () => {
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex === carouselImages.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
+  const prevImage = () => {
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex === 0 ? carouselImages.length - 1 : prevIndex - 1
+    );
+  };
 
   // Animation when sections come into view
   useEffect(() => {
@@ -99,7 +122,56 @@ function ServicesPage() {
               </div>
             </div>
           </div>
-          <div className="services-section-image sunday-image"></div>
+          <div className="services-section-image sunday-image">
+            <div className="simple-carousel">
+              {/* Main Image with Transition */}
+              <div className="carousel-image-wrapper">
+                {carouselImages.map((image, index) => (
+                  <img
+                    key={index}
+                    src={image.src}
+                    alt={image.alt}
+                    className={`carousel-image ${
+                      index === currentImageIndex ? "active" : ""
+                    }`}
+                    style={{ opacity: index === currentImageIndex ? 1 : 0 }}
+                  />
+                ))}
+              </div>
+
+              {/* Simple Arrow Navigation */}
+              <div className="simple-carousel-controls">
+                <button
+                  onClick={prevImage}
+                  className="arrow-btn"
+                  aria-label="Previous image"
+                >
+                  <FaChevronLeft />
+                </button>
+                <button
+                  onClick={nextImage}
+                  className="arrow-btn"
+                  aria-label="Next image"
+                >
+                  <FaChevronRight />
+                </button>
+              </div>
+
+              {/* Indicator Dots */}
+              <div className="carousel-indicators">
+                {carouselImages.map((_, index) => (
+                  <button
+                    key={index}
+                    className={`carousel-dot ${
+                      index === currentImageIndex ? "active" : ""
+                    }`}
+                    onClick={() => setCurrentImageIndex(index)}
+                    aria-label={`Go to image ${index + 1}`}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -111,7 +183,9 @@ function ServicesPage() {
         data-section="midweek"
       >
         <div className="services-section-container reverse">
-          <div className="services-section-image midweek-image"></div>
+          <div className="services-section-image midweek-image">
+            <img src="/Bible Study Reading.jpg" alt="Bible Study Reading" />
+          </div>
           <div className="services-section-content">
             <h2>{t("services.midweek.title")}</h2>
             <p className="services-tagline">{t("services.midweek.tagline")}</p>
@@ -169,7 +243,12 @@ function ServicesPage() {
 
         <div className="special-services-grid">
           <div className="special-service-card">
-            <div className="special-service-image communion-image"></div>
+            <div className="special-service-image communion-image">
+              <img
+                src="\Photo Kids Vodno.jpg"
+                alt="Church Full Communion Service"
+              />
+            </div>
             <div className="special-service-content">
               <h3>{t("services.special.communion.title")}</h3>
               <p>{t("services.special.communion.description")}</p>
@@ -180,7 +259,12 @@ function ServicesPage() {
           </div>
 
           <div className="special-service-card">
-            <div className="special-service-image baptism-image"></div>
+            <div className="special-service-image baptism-image">
+              <img
+                src="/Photo Hristofor Vodno.jpg"
+                alt="Baptism at Hristofor Vodno"
+              />
+            </div>
             <div className="special-service-content">
               <h3>{t("services.special.baptism.title")}</h3>
               <p>{t("services.special.baptism.description")}</p>
@@ -191,7 +275,12 @@ function ServicesPage() {
           </div>
 
           <div className="special-service-card">
-            <div className="special-service-image holiday-image"></div>
+            <div className="special-service-image holiday-image">
+              <img
+                src="/Photo Kids Rojdestvo.jpg"
+                alt="Kids Christmas Service"
+              />
+            </div>
             <div className="special-service-content">
               <h3>{t("services.special.holiday.title")}</h3>
               <p>{t("services.special.holiday.description")}</p>
