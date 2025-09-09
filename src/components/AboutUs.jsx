@@ -64,9 +64,17 @@ function AboutUs() {
     <div className="about-container">
       {/* Hero Section */}
       <section className="about-hero">
-        <div className="about-hero-overlay">
-          <div className="about-hero-content">
-            <h1>{t("about.heroTitle")}</h1>
+        <div className="about-hero-background">
+          <div className="hero-pattern-overlay"></div>
+        </div>
+        <div className="about-hero-content">
+          <div className="hero-content-wrapper">
+            <div className="hero-badge">
+              <FaHeart className="hero-badge-icon" />
+              <span>{t("about.hero.badge")}</span>
+            </div>
+            <h1 className="hero-title">{t("about.heroTitle")}</h1>
+            <p className="hero-subtitle">{t("about.hero.subtitle")}</p>
           </div>
         </div>
       </section>

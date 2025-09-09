@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import "./App.css";
 import "./styles/shared.css";
@@ -15,11 +15,13 @@ import ServicesPage from "./components/ServicesPage";
 import EventsPage from "./components/EventsPage";
 import GalleryPage from "./components/GalleryPage";
 import LanguagePopup from "./components/LanguagePopup"; // Import the new component
+import CookieConsent from "./components/CookieConsent"; // Import cookie consent component
 import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   const { t, i18n } = useTranslation();
   const [currentPage, setCurrentPage] = useState(window.location.pathname);
+  const cookieConsentRef = useRef(); // Add ref for CookieConsent
 
   // Show the popup only if the user hasn't selected a language
   const [showLanguagePopup, setShowLanguagePopup] = useState(() => {
@@ -354,6 +356,13 @@ function App() {
                 >
                   {t("footer.privacy")}
                 </a>
+                <span>•</span>
+                <button
+                  className="cookie-settings-footer-btn"
+                  onClick={() => cookieConsentRef.current?.openSettings()}
+                >
+                  Cookie Settings
+                </button>
               </div>
             </div>
           </div>
@@ -367,6 +376,7 @@ function App() {
           onSelectLanguage={handleLanguageSelect}
         />
       )}
+      <CookieConsent ref={cookieConsentRef} />
       <ScrollToTop />
     </div>
   );

@@ -1,67 +1,162 @@
 .about-container {
 	width: 100%;
 	max-width: 100%;
-	/* Remove any fixed height that might be causing the scrollbar */
 	height: auto;
-	/* Change overflow-y to visible or auto */
-	overflow-y: visible;
-	overflow-x: hidden;
-	/* Keep this to prevent horizontal scrolling */
 	box-sizing: border-box;
 }
 
-/* Hero Section */
+/* Hero Section - Modern Professional Design */
 .about-hero {
 	position: relative;
-	height: 40vh;
+	height: 70vh;
+	min-height: 700px;
 	width: 100%;
-	background-image: url('/church-hero.jpg');
-	background-size: cover;
-	background-position: center;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	color: white;
-	text-align: center;
 	overflow: hidden;
-	/* Hide any overflow from the hero */
+	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
-.about-hero-overlay {
+.about-hero-background {
 	position: absolute;
 	top: 0;
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background: linear-gradient(to right, rgba(99, 102, 241, 0.8), rgba(137, 114, 240, 0.8));
-	display: flex;
-	align-items: center;
-	justify-content: center;
+	background-image: url('/church-hero.jpg');
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+	opacity: 0.15;
+	z-index: 1;
 }
 
-.about-hero-content {
-	max-width: 800px;
-	padding: 0 20px;
+.hero-pattern-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-image:
+		radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+		radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+	background-size: 400px 400px;
+	animation: float 20s ease-in-out infinite;
 	z-index: 2;
 }
 
-.about-hero-content h1 {
-	font-size: 3.5rem;
-	margin-bottom: 0;
-	animation: fadeInDown 0.8s ease-out;
-	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+@keyframes float {
+
+	0%,
+	100% {
+		transform: translateY(0px) rotate(0deg);
+	}
+
+	50% {
+		transform: translateY(-20px) rotate(1deg);
+	}
 }
 
-/* Animation for title */
-@keyframes fadeInDown {
+.about-hero-content {
+	position: relative;
+	z-index: 3;
+	text-align: center;
+	color: white;
+	max-width: 900px;
+	padding: 0 40px;
+}
+
+.hero-content-wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 32px;
+}
+
+.hero-badge {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	background: rgba(255, 255, 255, 0.15);
+	backdrop-filter: blur(10px);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	border-radius: 50px;
+	padding: 12px 24px;
+	font-size: 0.9rem;
+	font-weight: 500;
+	letter-spacing: 0.5px;
+	text-transform: uppercase;
+	animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+.hero-badge-icon {
+	color: #ff6b6b;
+	font-size: 1rem;
+}
+
+.hero-title {
+	font-size: 4.5rem;
+	font-weight: 700;
+	line-height: 1.1;
+	margin: 0;
+	background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+	text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	animation: fadeInUp 0.8s ease-out 0.4s both;
+}
+
+.hero-subtitle {
+	font-size: 1.3rem;
+	font-weight: 400;
+	line-height: 1.6;
+	margin: 0;
+	color: rgba(255, 255, 255, 0.9);
+	max-width: 600px;
+	animation: fadeInUp 0.8s ease-out 0.6s both;
+}
+
+@keyframes fadeInUp {
 	from {
 		opacity: 0;
-		transform: translateY(-20px);
+		transform: translateY(30px);
 	}
 
 	to {
 		opacity: 1;
 		transform: translateY(0);
+	}
+}
+
+/* Responsive Design for Hero */
+@media (max-width: 768px) {
+	.about-hero {
+		height: 100vh;
+		min-height: 600px;
+	}
+
+	.about-hero-content {
+		padding: 0 24px;
+	}
+
+	.hero-title {
+		font-size: 3rem;
+	}
+
+	.hero-subtitle {
+		font-size: 1.1rem;
+	}
+}
+
+@media (max-width: 480px) {
+	.hero-title {
+		font-size: 2.5rem;
+	}
+
+	.hero-subtitle {
+		font-size: 1rem;
 	}
 }
 

@@ -223,6 +223,40 @@
 	opacity: 0.6;
 }
 
+.cookie-settings-footer-btn {
+	background: none;
+	border: none;
+	color: #94a3b8;
+	text-decoration: none;
+	font-size: 0.875rem;
+	font-weight: 400;
+	padding: 6px 0;
+	position: relative;
+	transition: all 0.25s ease;
+	letter-spacing: 0.025em;
+	cursor: pointer;
+	font-family: inherit;
+}
+
+.cookie-settings-footer-btn:hover {
+	color: #e2e8f0;
+}
+
+.cookie-settings-footer-btn::after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 0;
+	height: 1px;
+	background: linear-gradient(90deg, #6366f1, #8b5cf6);
+	transition: width 0.3s ease;
+}
+
+.cookie-settings-footer-btn:hover::after {
+	width: 100%;
+}
+
 /* Mobile Responsive */
 @media (max-width: 768px) {
 	.footer-main {
