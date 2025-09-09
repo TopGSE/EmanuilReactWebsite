@@ -3,16 +3,13 @@ import { useTranslation } from "react-i18next";
 import "../styles/Navbar.css";
 import LanguageSwitcher from "./LanguageSwitcher";
 
-function Navbar({ onNavigate }) {
+function Navbar({ onNavigate, currentPage }) {
   const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
-  // Add state to track current page
-  const [currentPath, setCurrentPath] = useState(window.location.pathname);
 
   const handleNavClick = (path, e) => {
     e.preventDefault();
     onNavigate(path);
-    setCurrentPath(path); // Update current path when navigating
     setIsOpen(false);
   };
 
@@ -28,19 +25,6 @@ function Navbar({ onNavigate }) {
       document.body.style.overflow = "auto";
     };
   }, [isOpen]);
-
-  // Update current path if URL changes externally
-  useEffect(() => {
-    const handleLocationChange = () => {
-      setCurrentPath(window.location.pathname);
-    };
-
-    window.addEventListener("popstate", handleLocationChange);
-
-    return () => {
-      window.removeEventListener("popstate", handleLocationChange);
-    };
-  }, []);
 
   return (
     <nav className="navbar">
@@ -60,7 +44,7 @@ function Navbar({ onNavigate }) {
           <li className="nav-item">
             <a
               href="/"
-              className={`nav-links ${currentPath === "/" ? "active" : ""}`}
+              className={`nav-links ${currentPage === "/" ? "active" : ""}`}
               onClick={(e) => handleNavClick("/", e)}
             >
               {t("navbar.home")}
@@ -70,7 +54,7 @@ function Navbar({ onNavigate }) {
             <a
               href="/about"
               className={`nav-links ${
-                currentPath === "/about" ? "active" : ""
+                currentPage === "/about" ? "active" : ""
               }`}
               onClick={(e) => handleNavClick("/about", e)}
             >
@@ -81,7 +65,7 @@ function Navbar({ onNavigate }) {
             <a
               href="/services"
               className={`nav-links ${
-                currentPath === "/services" ? "active" : ""
+                currentPage === "/services" ? "active" : ""
               }`}
               onClick={(e) => handleNavClick("/services", e)}
             >
@@ -92,7 +76,7 @@ function Navbar({ onNavigate }) {
             <a
               href="/gallery"
               className={`nav-links ${
-                currentPath === "/gallery" ? "active" : ""
+                currentPage === "/gallery" ? "active" : ""
               }`}
               onClick={(e) => handleNavClick("/gallery", e)}
             >
@@ -103,7 +87,7 @@ function Navbar({ onNavigate }) {
             <a
               href="/events"
               className={`nav-links ${
-                currentPath === "/events" ? "active" : ""
+                currentPage === "/events" ? "active" : ""
               }`}
               onClick={(e) => handleNavClick("/events", e)}
             >
@@ -114,21 +98,20 @@ function Navbar({ onNavigate }) {
             <a
               href="/contact"
               className={`nav-links ${
-                currentPath === "/contact" ? "active" : ""
+                currentPage === "/contact" ? "active" : ""
               }`}
               onClick={(e) => handleNavClick("/contact", e)}
             >
               {t("navbar.contact")}
             </a>
           </li>
-          {/* Show LanguageSwitcher inside menu on mobile only */}
-          <li className="nav-item nav-lang-mobile">
-            <LanguageSwitcher />
-          </li>
         </ul>
 
-        {/* Hamburger menu on the far right, LanguageSwitcher only on desktop */}
+        {/* Hamburger menu and LanguageSwitcher on the right */}
         <div className="navbar-right">
+          <div className="nav-lang-always-visible">
+            <LanguageSwitcher />
+          </div>
           <div
             className={`menu-icon ${isOpen ? "active" : ""}`}
             onClick={() => setIsOpen(!isOpen)}
@@ -142,9 +125,6 @@ function Navbar({ onNavigate }) {
             <span
               className={isOpen ? "menu-icon-bar open" : "menu-icon-bar"}
             ></span>
-          </div>
-          <div className="nav-lang-desktop">
-            <LanguageSwitcher />
           </div>
         </div>
 

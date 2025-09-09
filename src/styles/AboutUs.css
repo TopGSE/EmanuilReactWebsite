@@ -160,91 +160,177 @@
 	}
 }
 
-/* Section styling */
+/* Modern Section Styling */
 .about-section {
-	padding: 80px 20px;
+	padding: 120px 40px;
+	position: relative;
+	overflow: hidden;
+}
+
+.about-section::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: linear-gradient(135deg, rgba(255, 255, 255, 0.02) 0%, rgba(102, 126, 234, 0.03) 100%);
+	pointer-events: none;
+}
+
+.about-section:nth-child(even) {
+	background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+}
+
+.about-section:nth-child(odd) {
+	background: #ffffff;
+}
+
+/* Enhanced fade-in animation */
+.about-section {
 	opacity: 0;
-	transform: translateY(30px);
-	transition: opacity 0.6s ease, transform 0.6s ease;
-	margin-bottom: 60px;
+	transform: translateY(60px) scale(0.95);
+	transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .about-section.fade-in {
 	opacity: 1;
-	transform: translateY(0);
+	transform: translateY(0) scale(1);
 }
 
 .section-container {
-	display: flex;
-	max-width: 1200px;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	max-width: 1400px;
 	width: 100%;
 	margin: 0 auto;
-	gap: 40px;
+	gap: 80px;
 	align-items: center;
-	flex-wrap: wrap;
-	min-height: auto;
-	height: auto;
-	overflow: visible;
+	position: relative;
+	z-index: 2;
 }
 
 .section-container.reverse {
-	flex-direction: row-reverse;
+	grid-template-columns: 1fr 1fr;
+}
+
+.section-container.reverse .section-content {
+	order: 2;
+}
+
+.section-container.reverse .section-image {
+	order: 1;
 }
 
 .section-content {
-	flex: 1;
+	padding: 0;
+	position: relative;
+}
+
+.section-content::before {
+	content: '';
+	position: absolute;
+	top: -20px;
+	left: 0;
+	width: 80px;
+	height: 4px;
+	background: linear-gradient(90deg, #667eea, #764ba2);
+	border-radius: 2px;
+	opacity: 0;
+	transform: translateX(-100px);
+	transition: all 0.6s ease 0.3s;
+}
+
+.about-section.fade-in .section-content::before {
+	opacity: 1;
+	transform: translateX(0);
 }
 
 .section-image {
-	flex: 1;
-	min-height: 300px;
+	position: relative;
+	height: 500px;
 	width: 100%;
-	max-width: 100%;
-	height: auto;
-	border-radius: 10px;
+	border-radius: 24px;
 	background-size: cover;
 	background-position: center;
-	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-	transition: transform 0.5s ease;
-	max-height: none;
-	/* Remove any max-height constraints */
+	overflow: hidden;
+	box-shadow:
+		0 25px 50px -12px rgba(0, 0, 0, 0.25),
+		0 0 0 1px rgba(255, 255, 255, 0.1);
+	transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+	transform: translateY(40px);
+}
+
+.about-section.fade-in .section-image {
+	transform: translateY(0);
+}
+
+.section-image::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+	opacity: 0;
+	transition: opacity 0.4s ease;
+	z-index: 1;
+}
+
+.section-image:hover::before {
+	opacity: 1;
 }
 
 .section-image:hover {
-	transform: scale(1.02);
+	transform: translateY(-8px);
+	box-shadow:
+		0 35px 70px -12px rgba(0, 0, 0, 0.3),
+		0 0 0 1px rgba(255, 255, 255, 0.2);
 }
 
 .mission-image {
-	background-image: url('/picture-emanuil-kids-hero.jpg');
+	background-image: url('/Photo Church Full 2.jpg');
 }
 
 .history-image {
-	background-image: url('/picture-emanuil-kids-kartiza8mimart.jpg');
+	background-image: url('/Photo Church Full 2.jpg');
 }
 
 .section-content h2 {
-	font-size: 2.5rem;
-	margin-bottom: 20px;
-	color: #333;
-	position: relative;
-	padding-bottom: 15px;
+	font-size: 3rem;
+	font-weight: 700;
+	margin-bottom: 24px;
+	color: #1e293b;
+	line-height: 1.2;
+	letter-spacing: -0.025em;
+	opacity: 0;
+	transform: translateY(30px);
+	transition: all 0.6s ease 0.1s;
 }
 
-.section-content h2::after {
-	content: '';
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	width: 60px;
-	height: 3px;
-	background-color: #6366F1;
+.about-section.fade-in .section-content h2 {
+	opacity: 1;
+	transform: translateY(0);
 }
 
 .section-content p {
-	font-size: 1.1rem;
+	font-size: 1.2rem;
 	line-height: 1.7;
-	color: #555;
-	margin-bottom: 20px;
+	color: #64748b;
+	margin-bottom: 24px;
+	opacity: 0;
+	transform: translateY(30px);
+	transition: all 0.6s ease 0.2s;
+}
+
+.about-section.fade-in .section-content p {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+.section-content p:last-child {
+	margin-bottom: 0;
 }
 
 /* Timeline */
@@ -501,47 +587,71 @@
 	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* Media queries */
-@media (max-width: 992px) {
+/* Media queries for modern sections */
+@media (max-width: 1200px) {
 	.section-container {
-		flex-direction: column;
+		gap: 60px;
+		max-width: 1200px;
+		padding: 0 20px;
 	}
 
-	.section-container.reverse {
-		flex-direction: column;
+	.about-section {
+		padding: 100px 20px;
+	}
+}
+
+@media (max-width: 992px) {
+	.section-container {
+		grid-template-columns: 1fr;
+		gap: 50px;
+		text-align: center;
+	}
+
+	.section-container.reverse .section-content {
+		order: 1;
+	}
+
+	.section-container.reverse .section-image {
+		order: 2;
 	}
 
 	.section-image {
-		width: 100%;
-		margin-top: 30px;
+		height: 400px;
+		transform: translateY(0);
+	}
+
+	.about-section {
+		padding: 80px 20px;
 	}
 }
 
 @media (max-width: 768px) {
 	.about-hero {
-		height: 30vh;
+		min-height: 600px;
 	}
 
-	.about-hero-content h1 {
-		font-size: 2.5rem;
+	.hero-title {
+		font-size: 3rem;
 	}
 
-	.about-hero-content p {
-		font-size: 1.2rem;
+	.hero-subtitle {
+		font-size: 1.1rem;
 	}
 
 	.section-content h2 {
-		font-size: 2rem;
+		font-size: 2.2rem;
+	}
+
+	.section-content p {
+		font-size: 1.1rem;
+	}
+
+	.section-image {
+		height: 300px;
 	}
 
 	.about-section {
 		padding: 60px 20px;
-	}
-
-	.about-section,
-	.team-section,
-	.beliefs-section {
-		padding: 60px 15px;
 	}
 
 	.section-content {
@@ -577,28 +687,32 @@
 }
 
 @media (max-width: 576px) {
-	.about-hero-content h1 {
-		font-size: 2rem;
+	.hero-title {
+		font-size: 2.5rem;
+	}
+
+	.hero-subtitle {
+		font-size: 1rem;
+	}
+
+	.section-content h2 {
+		font-size: 1.8rem;
+	}
+
+	.section-content p {
+		font-size: 1rem;
+	}
+
+	.section-image {
+		height: 250px;
+	}
+
+	.about-section {
+		padding: 50px 15px;
 	}
 
 	.team-grid,
 	.beliefs-grid {
 		grid-template-columns: 1fr;
 	}
-}
-
-/* Add or update these rules in your AboutUs.css file */
-
-/* Base fixes for mobile overflow issues */
-html,
-body {
-	overflow-x: hidden;
-	width: 100%;
-	position: relative;
-}
-
-/* Ensure images are responsive and don't overflow their containers */
-img {
-	max-width: 100%;
-	height: auto;
 }

@@ -83,7 +83,7 @@ function App() {
       case "/gallery":
         return <GalleryPage />;
       case "/services":
-        return <ServicesPage />;
+        return <ServicesPage onNavigate={navigate} />;
       case "/events":
         return <EventsPage />;
       case "/terms":
@@ -178,7 +178,7 @@ function App() {
   return (
     <div className="app">
       <header>
-        <Navbar onNavigate={navigate} />
+        <Navbar onNavigate={navigate} currentPage={currentPage} />
       </header>
 
       <main>{renderPage()}</main>

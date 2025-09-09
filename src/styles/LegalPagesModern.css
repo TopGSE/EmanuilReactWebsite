@@ -281,8 +281,6 @@
 
 /* Contact Info Box */
 .contact-info {
-	background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
-	border: 1px solid #3b82f6;
 	border-radius: 16px;
 	padding: 32px;
 	margin: 40px 0;

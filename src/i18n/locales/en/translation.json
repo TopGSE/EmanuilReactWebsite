@@ -254,6 +254,12 @@
     "content": {
       "title": "Join us in worship, prayer, fellowship, and spiritual growth"
     },
+    "hero": {
+      "title": "Join Our Community",
+      "subtitle": "Experience authentic worship, genuine community, and life-transforming messages every Sunday at 11:00 AM",
+      "joinUs": "Join This Sunday",
+      "visitUs": "Plan Your Visit"
+    },
     "time": "Service Time",
     "location": "Location",
     "address": "Land van Waaslaan 76, 9040 Sint-Amandsberg",
@@ -272,7 +278,9 @@
       "title": "Wednesday Evening",
       "tagline": "Prayer & Bible Study",
       "description": "Join us on Wednesday evenings for a time of prayer, Bible study, and fellowship. This mid-week gathering helps us stay connected and grow in our faith together.",
-      "topics": "What We Cover",
+      "verse": "\"For where two or three gather in my name, there am I with them.\"",
+      "verseReference": "Matthew 18:20",
+      "topics": "Join Us For",
       "topicItems": {
         "bibleStudy": "Bible Study",
         "prayer": "Prayer Time",

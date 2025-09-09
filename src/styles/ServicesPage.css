@@ -109,120 +109,6 @@ html {
 	box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
 }
 
-/* Simple Carousel Design */
-.simple-carousel {
-	width: 100%;
-	height: 100%;
-	position: relative;
-	border-radius: 20px;
-	overflow: hidden;
-	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-}
-
-/* Image Wrapper for Transition Effects */
-.carousel-image-wrapper {
-	position: relative;
-	width: 100%;
-	height: 100%;
-}
-
-.carousel-image {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	border-radius: 20px;
-	position: absolute;
-	top: 0;
-	left: 0;
-	transition: opacity 0.6s ease-in-out;
-	opacity: 0;
-}
-
-.carousel-image.active {
-	opacity: 1;
-}
-
-/* Simple Carousel Controls */
-.simple-carousel-controls {
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	width: 100%;
-	display: flex;
-	justify-content: space-between;
-	padding: 0;
-	pointer-events: none;
-}
-
-/* Both buttons - clean white icons */
-.simple-carousel-controls .arrow-btn {
-	padding: 15px;
-	height: 100%;
-	display: flex;
-	align-items: center;
-	background-color: transparent !important;
-}
-
-/* Indicator Dots - Hidden */
-.carousel-indicators {
-	display: none;
-}
-
-/* Clean Arrow Buttons - White Icons */
-.arrow-btn {
-	background-color: transparent !important;
-	border: none;
-	color: rgba(255, 255, 255, 0.9);
-	font-size: 24px;
-	cursor: pointer;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	padding: 10px;
-	transition: transform 0.2s ease;
-	pointer-events: auto;
-}
-
-.arrow-btn:hover {
-	transform: scale(1.2);
-	color: rgba(255, 255, 255, 1);
-	background-color: transparent !important;
-}
-
-.arrow-btn:focus {
-	outline: none;
-	background-color: transparent !important;
-	box-shadow: none;
-}
-
-.arrow-btn svg {
-	width: 24px;
-	height: 24px;
-}
-
-.modern-carousel-btn:active {
-	transform: scale(0.95);
-}
-
-.prev-btn {
-	transform-origin: center;
-}
-
-.next-btn {
-	transform-origin: center;
-}
-
-/* Subtle Hover Effects */
-.modern-carousel:hover .carousel-image {
-	transform: scale(1.02);
-}
-
-/* Clean Focus States for Accessibility */
-.modern-carousel-btn:focus {
-	outline: 2px solid rgba(255, 255, 255, 0.8);
-	outline-offset: 2px;
-}
-
 .services-section-content h2 {
 	font-size: 2.5rem;
 	margin-bottom: 15px;
@@ -922,5 +808,413 @@ h6 {
 	to {
 		width: 100%;
 		left: 0;
+	}
+}
+
+/* Modern Sunday Section Design */
+.sunday-section {
+	padding: 80px 0;
+	position: relative;
+	overflow: hidden;
+}
+
+.sunday-section::before {
+	content: '';
+	position: absolute;
+	top: -50%;
+	right: -20%;
+	width: 100%;
+	height: 200%;
+	background: radial-gradient(circle, rgba(99, 102, 241, 0.05) 0%, transparent 70%);
+	z-index: 0;
+}
+
+.sunday-section-wrapper {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 24px;
+	position: relative;
+	z-index: 1;
+}
+
+.sunday-content-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 60px;
+	align-items: start;
+}
+
+.sunday-main-content h2 {
+	font-size: 3rem;
+	font-weight: 800;
+	color: #1e293b;
+	margin-bottom: 16px;
+	line-height: 1.1;
+	letter-spacing: -0.04em;
+}
+
+.sunday-main-content .services-tagline {
+	font-size: 1rem;
+	font-weight: 600;
+	color: #6366f1;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	margin-bottom: 24px;
+	position: relative;
+	display: inline-block;
+}
+
+.sunday-main-content .services-tagline::after {
+	content: '';
+	position: absolute;
+	bottom: -8px;
+	left: 0;
+	width: 40px;
+	height: 3px;
+	background: linear-gradient(90deg, #6366f1, #8b5cf6);
+	border-radius: 2px;
+}
+
+.sunday-main-content p {
+	font-size: 1.2rem;
+	line-height: 1.75;
+	color: #64748b;
+	margin-bottom: 0;
+}
+
+.sunday-details-grid {
+	display: flex;
+	flex-direction: column;
+	gap: 32px;
+}
+
+.schedule-card {
+	background: white;
+	padding: 32px;
+	border-radius: 20px;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+	border: 1px solid rgba(226, 232, 240, 0.8);
+	transition: all 0.3s ease;
+}
+
+.schedule-card:hover {
+	transform: translateY(-4px);
+	box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.schedule-card h3 {
+	font-size: 1.3rem;
+	font-weight: 700;
+	color: #1e293b;
+	margin-bottom: 24px;
+	text-align: center;
+	position: relative;
+}
+
+.schedule-card h3::after {
+	content: '';
+	position: absolute;
+	bottom: -8px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 30px;
+	height: 3px;
+	background: linear-gradient(90deg, #6366f1, #8b5cf6);
+	border-radius: 2px;
+}
+
+.schedule-timeline {
+	position: relative;
+}
+
+.schedule-timeline::before {
+	content: '';
+	position: absolute;
+	left: 20px;
+	top: 0;
+	bottom: 0;
+	width: 2px;
+	background: linear-gradient(to bottom, #e2e8f0, #6366f1, #e2e8f0);
+}
+
+.schedule-item {
+	display: flex;
+	align-items: center;
+	gap: 24px;
+	margin-bottom: 24px;
+	position: relative;
+	padding-left: 48px;
+}
+
+.schedule-item:last-child {
+	margin-bottom: 0;
+}
+
+.schedule-item::before {
+	content: '';
+	position: absolute;
+	left: 16px;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 10px;
+	height: 10px;
+	background: #6366f1;
+	border-radius: 50%;
+	border: 3px solid white;
+	box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
+}
+
+.schedule-time {
+	font-size: 0.95rem;
+	font-weight: 700;
+	color: #6366f1;
+	min-width: 80px;
+	text-align: left;
+}
+
+.schedule-activity {
+	font-size: 1rem;
+	color: #64748b;
+	line-height: 1.5;
+}
+
+/* Responsive Design for Sunday Section */
+@media (max-width: 768px) {
+	.sunday-content-grid {
+		grid-template-columns: 1fr;
+		gap: 40px;
+	}
+
+	.sunday-main-content h2 {
+		font-size: 2.5rem;
+	}
+
+	.schedule-card {
+		padding: 24px;
+	}
+
+	.schedule-item {
+		padding-left: 40px;
+	}
+
+	.schedule-timeline::before {
+		left: 16px;
+	}
+
+	.schedule-item::before {
+		left: 12px;
+	}
+}
+
+/* Midweek Section Styles */
+.midweek-section {
+	padding: 120px 0;
+	background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+	position: relative;
+	overflow: hidden;
+}
+
+.midweek-section::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background:
+		radial-gradient(circle at 20% 80%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+		radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.15) 0%, transparent 50%);
+	pointer-events: none;
+	z-index: 0;
+}
+
+.midweek-section-wrapper {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 24px;
+	position: relative;
+	z-index: 1;
+}
+
+.midweek-content-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 60px;
+	align-items: start;
+}
+
+.midweek-main-content h2 {
+	font-size: 3rem;
+	font-weight: 800;
+	color: #1e293b;
+	margin-bottom: 16px;
+	line-height: 1.1;
+	letter-spacing: -0.04em;
+}
+
+.midweek-main-content .services-tagline {
+	font-size: 1rem;
+	font-weight: 600;
+	color: #6366f1;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	margin-bottom: 24px;
+	position: relative;
+	display: inline-block;
+}
+
+.midweek-main-content .services-tagline::after {
+	content: '';
+	position: absolute;
+	bottom: -8px;
+	left: 0;
+	width: 40px;
+	height: 3px;
+	background: linear-gradient(90deg, #6366f1, #8b5cf6);
+	border-radius: 2px;
+}
+
+.midweek-main-content p {
+	font-size: 1.2rem;
+	line-height: 1.75;
+	color: #64748b;
+	margin-bottom: 0;
+}
+
+.bible-verse {
+	margin-top: 32px;
+	padding: 24px;
+	background: rgba(255, 255, 255, 0.7);
+	border-radius: 16px;
+	border-left: 4px solid #6366f1;
+	backdrop-filter: blur(10px);
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+.bible-verse blockquote {
+	font-size: 1.1rem;
+	font-style: italic;
+	color: #374151;
+	margin: 0 0 12px 0;
+	line-height: 1.6;
+	font-weight: 500;
+	quotes: none;
+}
+
+.bible-verse cite {
+	display: block;
+	font-size: 0.9rem;
+	color: #6366f1;
+	font-weight: 600;
+	font-style: normal;
+	text-align: right;
+}
+
+.midweek-details-grid {
+	display: flex;
+	flex-direction: column;
+	gap: 32px;
+}
+
+.topics-card {
+	background: white;
+	padding: 32px;
+	border-radius: 20px;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+	border: 1px solid rgba(226, 232, 240, 0.8);
+	transition: all 0.3s ease;
+}
+
+.topics-card:hover {
+	transform: translateY(-4px);
+	box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.topics-card h3 {
+	font-size: 1.3rem;
+	font-weight: 700;
+	color: #1e293b;
+	margin-bottom: 24px;
+	text-align: center;
+	position: relative;
+}
+
+.topics-card h3::after {
+	content: '';
+	position: absolute;
+	bottom: -8px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 30px;
+	height: 3px;
+	background: linear-gradient(90deg, #6366f1, #8b5cf6);
+	border-radius: 2px;
+}
+
+.topics-grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 20px;
+}
+
+.topic-item {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	padding: 16px;
+	background: #f8fafc;
+	border-radius: 12px;
+	transition: all 0.3s ease;
+	border: 1px solid rgba(226, 232, 240, 0.6);
+}
+
+.topic-item:hover {
+	background: #f1f5f9;
+	transform: translateY(-2px);
+	border-color: #6366f1;
+}
+
+.topic-icon {
+	font-size: 1.8rem;
+	color: #6366f1;
+	margin-bottom: 8px;
+	transition: all 0.3s ease;
+}
+
+.topic-item:hover .topic-icon {
+	color: #4f46e5;
+	transform: scale(1.1);
+}
+
+.topic-item p {
+	font-size: 0.9rem;
+	font-weight: 600;
+	color: #475569;
+	margin: 0;
+	line-height: 1.4;
+}
+
+/* Responsive Design for Midweek Section */
+@media (max-width: 768px) {
+	.midweek-section {
+		padding: 80px 0;
+	}
+
+	.midweek-content-grid {
+		grid-template-columns: 1fr;
+		gap: 40px;
+	}
+
+	.midweek-main-content h2 {
+		font-size: 2.5rem;
+	}
+
+	.topics-card {
+		padding: 24px;
+	}
+
+	.topics-grid {
+		grid-template-columns: 1fr;
 	}
 }

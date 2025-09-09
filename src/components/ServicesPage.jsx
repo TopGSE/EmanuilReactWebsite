@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import "../styles/ServicesPage.css";
+import HeroCarousel from "./HeroCarousel";
 import {
   FaClock,
   FaMapMarkerAlt,
@@ -10,11 +11,9 @@ import {
   FaMusic,
   FaHandsHelping,
   FaHands,
-  FaChevronLeft,
-  FaChevronRight,
 } from "react-icons/fa";
 
-function ServicesPage() {
+function ServicesPage({ onNavigate }) {
   const { t } = useTranslation();
   const [isVisible, setIsVisible] = useState({
     sunday: false,
@@ -23,26 +22,18 @@ function ServicesPage() {
     participate: false,
   });
 
-  // Carousel state
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const handleNavigateToContact = () => {
+    if (onNavigate) {
+      onNavigate("/contact");
+    }
+  };
+
+  // Images for the hero carousel
   const carouselImages = [
     { src: "/Photo Church Closeup People.jpg", alt: "Church Community" },
     { src: "/Photo Kids Easter.jpg", alt: "Kids Easter Celebration" },
     { src: "/Photo Worship Team_3.jpg", alt: "Worship Team" },
   ];
-
-  // Carousel navigation functions
-  const nextImage = () => {
-    setCurrentImageIndex((prevIndex) =>
-      prevIndex === carouselImages.length - 1 ? 0 : prevIndex + 1
-    );
-  };
-
-  const prevImage = () => {
-    setCurrentImageIndex((prevIndex) =>
-      prevIndex === 0 ? carouselImages.length - 1 : prevIndex - 1
-    );
-  };
 
   // Animation when sections come into view
   useEffect(() => {
@@ -73,8 +64,9 @@ function ServicesPage() {
   }, []);
 
   return (
-    <div className="services-container no-hero">
-      {/* Services intro removed - content starts with first section */}
+    <div className="services-container">
+      {/* Hero Carousel */}
+      <HeroCarousel images={carouselImages} />
 
       {/* Sunday Service Section */}
       <section
@@ -83,92 +75,37 @@ function ServicesPage() {
         }`}
         data-section="sunday"
       >
-        <div className="services-section-container">
-          <div className="services-section-content">
-            <h2>{t("services.sunday.title")}</h2>
-            <p className="services-tagline">{t("services.sunday.tagline")}</p>
-            <p>{t("services.sunday.description")}</p>
-            <div className="service-details">
-              <div className="service-detail-item">
-                <FaClock className="service-icon-react" />
-                <h3>{t("services.time")}</h3>
-                <p>11:00 AM</p>
-              </div>
-              <div className="service-detail-item">
-                <FaMapMarkerAlt className="service-icon-react" />
-                <h3>{t("services.location")}</h3>
-                <p>Land van Waaslaan 76, 9040 Sint-Amandsberg</p>
-              </div>
+        <div className="sunday-section-wrapper">
+          <div className="sunday-content-grid">
+            <div className="sunday-main-content">
+              <h2>{t("services.sunday.title")}</h2>
+              <p className="services-tagline">{t("services.sunday.tagline")}</p>
+              <p>{t("services.sunday.description")}</p>
             </div>
-            <div className="service-schedule-list">
-              <h3>{t("services.sunday.schedule")}</h3>
-              <div className="schedule-item">
-                <span className="schedule-time">11:00 AM</span>
-                <span className="schedule-activity">
-                  {t("services.sunday.scheduleItems.worship")}
-                </span>
-              </div>
-              <div className="schedule-item">
-                <span className="schedule-time">12:00 PM</span>
-                <span className="schedule-activity">
-                  {t("services.sunday.scheduleItems.message")}
-                </span>
-              </div>
-              <div className="schedule-item">
-                <span className="schedule-time">13:00 PM</span>
-                <span className="schedule-activity">
-                  {t("services.sunday.scheduleItems.fellowship")}
-                </span>
-              </div>
-            </div>
-          </div>
-          <div className="services-section-image sunday-image">
-            <div className="simple-carousel">
-              {/* Main Image with Transition */}
-              <div className="carousel-image-wrapper">
-                {carouselImages.map((image, index) => (
-                  <img
-                    key={index}
-                    src={image.src}
-                    alt={image.alt}
-                    className={`carousel-image ${
-                      index === currentImageIndex ? "active" : ""
-                    }`}
-                    style={{ opacity: index === currentImageIndex ? 1 : 0 }}
-                  />
-                ))}
-              </div>
 
-              {/* Simple Arrow Navigation */}
-              <div className="simple-carousel-controls">
-                <button
-                  onClick={prevImage}
-                  className="arrow-btn"
-                  aria-label="Previous image"
-                >
-                  <FaChevronLeft />
-                </button>
-                <button
-                  onClick={nextImage}
-                  className="arrow-btn"
-                  aria-label="Next image"
-                >
-                  <FaChevronRight />
-                </button>
-              </div>
-
-              {/* Indicator Dots */}
-              <div className="carousel-indicators">
-                {carouselImages.map((_, index) => (
-                  <button
-                    key={index}
-                    className={`carousel-dot ${
-                      index === currentImageIndex ? "active" : ""
-                    }`}
-                    onClick={() => setCurrentImageIndex(index)}
-                    aria-label={`Go to image ${index + 1}`}
-                  />
-                ))}
+            <div className="sunday-details-grid">
+              <div className="schedule-card">
+                <h3>{t("services.sunday.schedule")}</h3>
+                <div className="schedule-timeline">
+                  <div className="schedule-item">
+                    <span className="schedule-time">11:00 AM</span>
+                    <span className="schedule-activity">
+                      {t("services.sunday.scheduleItems.worship")}
+                    </span>
+                  </div>
+                  <div className="schedule-item">
+                    <span className="schedule-time">12:00 PM</span>
+                    <span className="schedule-activity">
+                      {t("services.sunday.scheduleItems.message")}
+                    </span>
+                  </div>
+                  <div className="schedule-item">
+                    <span className="schedule-time">13:00 PM</span>
+                    <span className="schedule-activity">
+                      {t("services.sunday.scheduleItems.fellowship")}
+                    </span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -182,47 +119,20 @@ function ServicesPage() {
         }`}
         data-section="midweek"
       >
-        <div className="services-section-container reverse">
-          <div className="services-section-image midweek-image">
-            <img src="/Bible Study Reading.jpg" alt="Bible Study Reading" />
-          </div>
-          <div className="services-section-content">
-            <h2>{t("services.midweek.title")}</h2>
-            <p className="services-tagline">{t("services.midweek.tagline")}</p>
-            <p>{t("services.midweek.description")}</p>
-            <div className="service-details">
-              <div className="service-detail-item">
-                <FaClock className="service-icon-react" />
-                <h3>{t("services.time")}</h3>
-                <p>19:00 PM</p>{" "}
-                {/* Hardcoded time instead of using translation */}
-              </div>
-              <div className="service-detail-item">
-                <FaMapMarkerAlt className="service-icon-react" />
-                <h3>{t("services.location")}</h3>
-                <p>Land van Waaslaan 76, 9040 Sint-Amandsberg</p>{" "}
-                {/* Same location as Sunday service */}
-              </div>
+        <div className="midweek-section-wrapper">
+          <div className="midweek-content-grid">
+            <div className="midweek-main-content">
+              <h2>{t("services.midweek.title")}</h2>
+              <p className="services-tagline">
+                {t("services.midweek.tagline")}
+              </p>
+              <p>{t("services.midweek.description")}</p>
             </div>
-            <div className="service-topics-list">
-              <h3>{t("services.midweek.topics")}</h3>
-              <div className="topic-grid">
-                <div className="topic-item">
-                  <FaBible className="service-icon-react" />
-                  <p>{t("services.midweek.topicItems.bibleStudy")}</p>
-                </div>
-                <div className="topic-item">
-                  <FaPray className="service-icon-react" />
-                  <p>{t("services.midweek.topicItems.prayer")}</p>
-                </div>
-                <div className="topic-item">
-                  <FaUsers className="service-icon-react" />
-                  <p>{t("services.midweek.topicItems.fellowship")}</p>
-                </div>
-                <div className="topic-item">
-                  <FaMusic className="service-icon-react" />
-                  <p>{t("services.midweek.topicItems.worship")}</p>
-                </div>
+
+            <div className="midweek-details-grid">
+              <div className="bible-verse">
+                <blockquote>{t("services.midweek.verse")}</blockquote>
+                <cite>- {t("services.midweek.verseReference")}</cite>
               </div>
             </div>
           </div>
@@ -310,7 +220,10 @@ function ServicesPage() {
               <FaMusic className="service-icon-react" />
               <h3>{t("services.participate.worship.title")}</h3>
               <p>{t("services.participate.worship.description")}</p>
-              <button className="participate-button">
+              <button
+                className="participate-button"
+                onClick={handleNavigateToContact}
+              >
                 {t("services.participate.worship.button")}
               </button>
             </div>
@@ -319,7 +232,10 @@ function ServicesPage() {
               <FaHandsHelping className="service-icon-react" />
               <h3>{t("services.participate.volunteer.title")}</h3>
               <p>{t("services.participate.volunteer.description")}</p>
-              <button className="participate-button">
+              <button
+                className="participate-button"
+                onClick={handleNavigateToContact}
+              >
                 {t("services.participate.volunteer.button")}
               </button>
             </div>
@@ -328,7 +244,10 @@ function ServicesPage() {
               <FaHands className="service-icon-react" />
               <h3>{t("services.participate.prayer.title")}</h3>
               <p>{t("services.participate.prayer.description")}</p>
-              <button className="participate-button">
+              <button
+                className="participate-button"
+                onClick={handleNavigateToContact}
+              >
                 {t("services.participate.prayer.button")}
               </button>
             </div>
