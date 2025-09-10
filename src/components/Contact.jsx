@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import "../styles/Contact.css";
+import { contactAPI, prayerAPI } from "../lib/api";
 import {
   FaMapMarkerAlt,
   FaPhoneAlt,
@@ -11,7 +12,7 @@ import {
 } from "react-icons/fa";
 
 function Contact() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const form = useRef();
   const [formData, setFormData] = useState({
     name: "",
@@ -44,6 +45,47 @@ function Contact() {
     });
 
     try {
+      // Prepare form data with language info
+      const submissionData = {
+        ...formData,
+        language: i18n.language || "en",
+      };
+
+      // Save to database via API
+      let dbResult = null;
+      try {
+        const isPrayerRequest =
+          formData.subject.toLowerCase().includes("prayer") ||
+          formData.message.toLowerCase().includes("pray");
+
+        if (isPrayerRequest) {
+          // Handle prayer request
+          dbResult = await prayerAPI.create({
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone,
+            requestText: formData.message,
+            isAnonymous: false,
+            language: i18n.language,
+          });
+        } else {
+          // Handle contact submission
+          dbResult = await contactAPI.create(submissionData);
+        }
+
+        if (dbResult.success) {
+          console.log("✅ Saved to database:", dbResult);
+        } else {
+          console.warn("Database save failed, continuing with Formspree");
+        }
+      } catch (dbError) {
+        console.warn(
+          "Database save failed, continuing with Formspree:",
+          dbError
+        );
+      }
+
+      // Also send to Formspree as backup
       const response = await fetch("https://formspree.io/f/mkgjndnl", {
         method: "POST",
         headers: {
@@ -56,7 +98,9 @@ function Contact() {
         setFormStatus({
           submitted: true,
           error: false,
-          message: t("contact.form.success"),
+          message: dbResult
+            ? t("contact.form.success") + ` (DB ID: ${dbResult.id})`
+            : t("contact.form.success"),
         });
         setFormData({
           name: "",
@@ -74,7 +118,7 @@ function Contact() {
         error: true,
         message: t("contact.form.error"),
       });
-      console.error("Formspree error:", error);
+      console.error("Form submission error:", error);
     }
   };
 

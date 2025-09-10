@@ -17,11 +17,20 @@ import GalleryPage from "./components/GalleryPage";
 import LanguagePopup from "./components/LanguagePopup"; // Import the new component
 import CookieConsent from "./components/CookieConsent"; // Import cookie consent component
 import ScrollToTop from "./components/ScrollToTop";
+import AdminDashboard from "./components/AdminDashboard";
+import Toast from "./components/Toast";
+import AdminRegister from "./components/AdminRegister";
+import AdminManagement from "./components/AdminManagement";
 
 function App() {
   const { t, i18n } = useTranslation();
   const [currentPage, setCurrentPage] = useState(window.location.pathname);
   const cookieConsentRef = useRef(); // Add ref for CookieConsent
+  const [toast, setToast] = useState({
+    isVisible: false,
+    message: "",
+    type: "info",
+  });
 
   // Show the popup only if the user hasn't selected a language
   const [showLanguagePopup, setShowLanguagePopup] = useState(() => {
@@ -86,6 +95,43 @@ function App() {
         return <ServicesPage onNavigate={navigate} />;
       case "/events":
         return <EventsPage />;
+      case "/admin-register":
+        return <AdminRegister />;
+      case "/super-admin":
+        // Only accessible by you (the website creator) - hardcoded for now
+        const isSuperAdmin =
+          localStorage.getItem("superAdminAccess") === "true";
+        if (isSuperAdmin) {
+          return <AdminManagement />;
+        } else {
+          // Just redirect without state updates during render
+          window.history.replaceState(null, null, "/");
+          return (
+            <>
+              <Hero />
+              <Welcome />
+            </>
+          );
+        }
+      case "/admin":
+        // Check if user is authenticated before allowing access to admin
+        const isAdminLoggedIn =
+          localStorage.getItem("adminLoggedIn") === "true";
+        const isSuperAdminAccess =
+          localStorage.getItem("superAdminAccess") === "true";
+
+        if (isAdminLoggedIn || isSuperAdminAccess) {
+          return <AdminDashboard />;
+        } else {
+          // Just redirect without state updates during render
+          window.history.replaceState(null, null, "/");
+          return (
+            <>
+              <Hero />
+              <Welcome />
+            </>
+          );
+        }
       case "/terms":
         return (
           <div className="legal-page-modern">
@@ -378,6 +424,14 @@ function App() {
       )}
       <CookieConsent ref={cookieConsentRef} />
       <ScrollToTop />
+
+      {/* Toast Notifications */}
+      <Toast
+        message={toast.message}
+        isVisible={toast.isVisible}
+        type={toast.type}
+        onClose={() => setToast({ ...toast, isVisible: false })}
+      />
     </div>
   );
 }

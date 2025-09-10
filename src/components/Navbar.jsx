@@ -2,10 +2,46 @@ import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import "../styles/Navbar.css";
 import LanguageSwitcher from "./LanguageSwitcher";
+import LoginModal from "./LoginModal";
 
 function Navbar({ onNavigate, currentPage }) {
   const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
+  const [showLoginModal, setShowLoginModal] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  // Check login status on component mount
+  useEffect(() => {
+    const adminLoggedIn = localStorage.getItem("adminLoggedIn") === "true";
+    const superAdminAccess =
+      localStorage.getItem("superAdminAccess") === "true";
+    setIsLoggedIn(adminLoggedIn || superAdminAccess);
+  }, []);
+
+  const handleLogin = () => {
+    setIsLoggedIn(true);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("adminLoggedIn");
+    localStorage.removeItem("adminLoginTime");
+    // Note: We don't remove superAdminAccess as it's meant to be persistent for development
+    // If you want to remove super admin access too, uncomment the next line:
+    // localStorage.removeItem("superAdminAccess");
+
+    const superAdminAccess =
+      localStorage.getItem("superAdminAccess") === "true";
+    setIsLoggedIn(superAdminAccess); // Keep logged in state if super admin access is still active
+
+    // Redirect to home if currently on admin page and no super admin access
+    if (currentPage === "/admin" && !superAdminAccess) {
+      onNavigate("/");
+    }
+  };
+
+  const handleLoginClick = () => {
+    setShowLoginModal(true);
+  };
 
   const handleNavClick = (path, e) => {
     e.preventDefault();
@@ -105,6 +141,22 @@ function Navbar({ onNavigate, currentPage }) {
               {t("navbar.contact")}
             </a>
           </li>
+
+          {/* Admin link - only visible when logged in */}
+          {isLoggedIn && (
+            <li className="nav-item">
+              <a
+                href="/admin"
+                className={`nav-links ${
+                  currentPage === "/admin" ? "active" : ""
+                }`}
+                onClick={(e) => handleNavClick("/admin", e)}
+                style={{ fontSize: "0.9rem", opacity: "0.8" }}
+              >
+                🏛️ Admin
+              </a>
+            </li>
+          )}
         </ul>
 
         {/* Hamburger menu and LanguageSwitcher on the right */}
@@ -112,6 +164,28 @@ function Navbar({ onNavigate, currentPage }) {
           <div className="nav-lang-always-visible">
             <LanguageSwitcher />
           </div>
+
+          {/* Admin Login/Logout Button */}
+          <div className="admin-auth-btn">
+            {isLoggedIn ? (
+              <button
+                onClick={handleLogout}
+                className="logout-btn"
+                title="Logout from admin"
+              >
+                👤 Logout
+              </button>
+            ) : (
+              <button
+                onClick={handleLoginClick}
+                className="login-btn-nav"
+                title="Admin login"
+              >
+                Login
+              </button>
+            )}
+          </div>
+
           <div
             className={`menu-icon ${isOpen ? "active" : ""}`}
             onClick={() => setIsOpen(!isOpen)}
@@ -134,6 +208,13 @@ function Navbar({ onNavigate, currentPage }) {
           onClick={() => setIsOpen(false)}
         ></div>
       </div>
+
+      {/* Login Modal */}
+      <LoginModal
+        isOpen={showLoginModal}
+        onClose={() => setShowLoginModal(false)}
+        onLogin={handleLogin}
+      />
     </nav>
   );
 }

@@ -417,3 +417,56 @@
 body {
 	padding-top: 80px;
 }
+
+/* Admin Authentication Buttons */
+.admin-auth-btn {
+	display: flex;
+	align-items: center;
+	margin-right: 8px;
+}
+
+.login-btn-nav,
+.logout-btn {
+	background: none;
+	border: 2px solid transparent;
+	color: #4a5568;
+	padding: 6px 12px;
+	border-radius: 20px;
+	font-size: 0.85rem;
+	font-weight: 600;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	white-space: nowrap;
+}
+
+.login-btn-nav:hover {
+	background-color: rgba(102, 126, 234, 0.1);
+	border-color: rgba(102, 126, 234, 0.3);
+	color: #667eea;
+	transform: translateY(-1px);
+}
+
+.logout-btn {
+	background-color: rgba(220, 38, 38, 0.1);
+	color: #dc2626;
+	border-color: rgba(220, 38, 38, 0.2);
+}
+
+.logout-btn:hover {
+	background-color: rgba(220, 38, 38, 0.2);
+	border-color: #dc2626;
+	transform: translateY(-1px);
+}
+
+/* Mobile responsiveness for auth buttons */
+@media screen and (max-width: 960px) {
+	.admin-auth-btn {
+		margin-right: 4px;
+	}
+
+	.login-btn-nav,
+	.logout-btn {
+		padding: 4px 8px;
+		font-size: 0.8rem;
+	}
+}

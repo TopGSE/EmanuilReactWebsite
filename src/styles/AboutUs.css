@@ -133,7 +133,7 @@
 /* Responsive Design for Hero */
 @media (max-width: 768px) {
 	.about-hero {
-		height: 100vh;
+		height: 70vh;
 		min-height: 600px;
 	}
 
@@ -648,6 +648,12 @@
 
 	.section-image {
 		height: 300px;
+	}
+
+	/* Hide specific section images on mobile */
+	.mission-image,
+	.history-image {
+		display: none;
 	}
 
 	.about-section {

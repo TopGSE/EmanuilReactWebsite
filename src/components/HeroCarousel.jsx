@@ -63,11 +63,11 @@ function HeroCarousel({ images }) {
           <h1 className="hero-title">{t("services.hero.title")}</h1>
           <p className="hero-subtitle">{t("services.hero.subtitle")}</p>
           <div className="hero-cta">
-            <button className="hero-btn primary">
-              {t("services.hero.joinUs")}
-            </button>
             <button className="hero-btn secondary">
               {t("services.hero.visitUs")}
+            </button>
+            <button className="hero-btn primary">
+              {t("services.hero.joinUs")}
             </button>
           </div>
         </div>
