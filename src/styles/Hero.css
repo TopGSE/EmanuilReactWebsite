@@ -89,6 +89,37 @@
 	box-shadow: 0 6px 20px rgba(79, 70, 229, 0.6);
 }
 
+.hero-button-donate {
+	background: linear-gradient(135deg, #DC2626 0%, #EF4444 100%);
+	border: 2px solid #DC2626;
+	color: white;
+	position: relative;
+	overflow: hidden;
+	font-weight: 600;
+}
+
+.hero-button-donate:hover {
+	background: linear-gradient(135deg, #B91C1C 0%, #DC2626 100%);
+	border-color: #B91C1C;
+	transform: translateY(-3px);
+	box-shadow: 0 8px 25px rgba(220, 38, 38, 0.4);
+}
+
+.hero-button-donate::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: -100%;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+	transition: left 0.5s;
+}
+
+.hero-button-donate:hover::before {
+	left: 100%;
+}
+
 /* Social Media Links styling with animations */
 .hero-social-links {
 	display: flex;

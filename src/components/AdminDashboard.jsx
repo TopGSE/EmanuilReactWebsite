@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import "../styles/AdminDashboard.css";
-import { contactAPI, prayerAPI } from "../lib/api";
+import { contactAPI } from "../lib/api";
+import AdminPayments from "./AdminPayments";
 
 function AdminDashboard() {
+  const { t } = useTranslation();
   const [contacts, setContacts] = useState([]);
-  const [prayers, setPrayers] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState("contacts");
+  const [activeTab, setActiveTab] = useState("payments");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
@@ -29,18 +31,12 @@ function AdminDashboard() {
     try {
       setLoading(true);
 
-      // Fetch contact submissions and prayer requests
-      const [contactData, prayerData] = await Promise.all([
-        contactAPI.getAll(),
-        prayerAPI.getAll(),
-      ]);
-
+      // Fetch contact submissions
+      const contactData = await contactAPI.getAll();
       setContacts(Array.isArray(contactData) ? contactData : []);
-      setPrayers(Array.isArray(prayerData) ? prayerData : []);
     } catch (error) {
       console.error("Failed to load admin data:", error);
       setContacts([]);
-      setPrayers([]);
     } finally {
       setLoading(false);
     }
@@ -62,11 +58,9 @@ function AdminDashboard() {
       <div className="admin-dashboard">
         <div className="auth-required">
           <div className="auth-message">
-            <h2>🔐 Authentication Required</h2>
-            <p>Please log in to access the admin dashboard.</p>
-            <p>
-              Click the "🔐 Login" button in the navigation bar to authenticate.
-            </p>
+            <h2>🔐 {t("admin.auth.required")}</h2>
+            <p>{t("admin.auth.message")}</p>
+            <p>{t("admin.auth.instruction")}</p>
           </div>
         </div>
       </div>
@@ -76,7 +70,7 @@ function AdminDashboard() {
   if (loading) {
     return (
       <div className="admin-dashboard">
-        <div className="loading">Loading admin data...</div>
+        <div className="loading">{t("admin.dashboard.loading")}</div>
       </div>
     );
   }
@@ -84,31 +78,33 @@ function AdminDashboard() {
   return (
     <div className="admin-dashboard">
       <div className="admin-header">
-        <h1>🏛️ Church Admin Dashboard</h1>
-        <p>Manage contact submissions and prayer requests</p>
+        <h1>🏛️ {t("admin.dashboard.title")}</h1>
+        <p>{t("admin.dashboard.subtitle")}</p>
       </div>
 
       <div className="admin-tabs">
         <button
+          className={`tab-button ${activeTab === "payments" ? "active" : ""}`}
+          onClick={() => setActiveTab("payments")}
+        >
+          {t("admin.tabs.payments")}
+        </button>
+        <button
           className={`tab-button ${activeTab === "contacts" ? "active" : ""}`}
           onClick={() => setActiveTab("contacts")}
         >
-          Contact Submissions ({contacts.length})
-        </button>
-        <button
-          className={`tab-button ${activeTab === "prayers" ? "active" : ""}`}
-          onClick={() => setActiveTab("prayers")}
-        >
-          Prayer Requests ({prayers.length})
+          {t("admin.tabs.contacts")} ({contacts.length})
         </button>
       </div>
 
       <div className="admin-content">
+        {activeTab === "payments" && <AdminPayments />}
+
         {activeTab === "contacts" && (
           <div className="submissions-grid">
-            <h2>Contact Submissions</h2>
+            <h2>{t("admin.contacts.title")}</h2>
             {contacts.length === 0 ? (
-              <p>No contact submissions yet.</p>
+              <p>{t("admin.contacts.noSubmissions")}</p>
             ) : (
               <div className="cards-grid">
                 {contacts.map((contact) => (
@@ -121,69 +117,30 @@ function AdminDashboard() {
                     </div>
                     <div className="card-details">
                       <p>
-                        <strong>Email:</strong> {contact.email}
+                        <strong>{t("admin.contacts.fields.email")}:</strong>{" "}
+                        {contact.email}
                       </p>
                       {contact.phone && (
                         <p>
-                          <strong>Phone:</strong> {contact.phone}
+                          <strong>{t("admin.contacts.fields.phone")}:</strong>{" "}
+                          {contact.phone}
                         </p>
                       )}
                       <p>
-                        <strong>Subject:</strong> {contact.subject}
+                        <strong>{t("admin.contacts.fields.subject")}:</strong>{" "}
+                        {contact.subject}
                       </p>
                       <p>
-                        <strong>Message:</strong> {contact.message}
+                        <strong>{t("admin.contacts.fields.message")}:</strong>{" "}
+                        {contact.message}
                       </p>
                       <p>
-                        <strong>Language:</strong> {contact.language}
+                        <strong>{t("admin.contacts.fields.language")}:</strong>{" "}
+                        {contact.language}
                       </p>
                       <p>
-                        <strong>Submitted:</strong>{" "}
+                        <strong>{t("admin.contacts.fields.submitted")}:</strong>{" "}
                         {formatDate(contact.createdAt)}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-        )}
-
-        {activeTab === "prayers" && (
-          <div className="submissions-grid">
-            <h2>Prayer Requests</h2>
-            {prayers.length === 0 ? (
-              <p>No prayer requests yet.</p>
-            ) : (
-              <div className="cards-grid">
-                {prayers.map((prayer) => (
-                  <div key={prayer.id} className="submission-card">
-                    <div className="card-header">
-                      <h3>{prayer.isAnonymous ? "Anonymous" : prayer.name}</h3>
-                      <span className={`status-badge ${prayer.status}`}>
-                        {prayer.status}
-                      </span>
-                    </div>
-                    <div className="card-details">
-                      {prayer.email && (
-                        <p>
-                          <strong>Email:</strong> {prayer.email}
-                        </p>
-                      )}
-                      {prayer.phone && (
-                        <p>
-                          <strong>Phone:</strong> {prayer.phone}
-                        </p>
-                      )}
-                      <p>
-                        <strong>Prayer Request:</strong> {prayer.requestText}
-                      </p>
-                      <p>
-                        <strong>Language:</strong> {prayer.language}
-                      </p>
-                      <p>
-                        <strong>Submitted:</strong>{" "}
-                        {formatDate(prayer.createdAt)}
                       </p>
                     </div>
                   </div>
@@ -196,7 +153,7 @@ function AdminDashboard() {
 
       <div className="admin-actions">
         <button onClick={loadData} className="refresh-button">
-          🔄 Refresh Data
+          🔄 {t("admin.dashboard.refreshData")}
         </button>
       </div>
     </div>

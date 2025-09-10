@@ -151,16 +151,38 @@ function Navbar({ onNavigate, currentPage }) {
                   currentPage === "/admin" ? "active" : ""
                 }`}
                 onClick={(e) => handleNavClick("/admin", e)}
-                style={{ fontSize: "0.9rem", opacity: "0.8" }}
               >
-                🏛️ Admin
+                {t("navbar.admin")}
               </a>
             </li>
           )}
+
+          {/* Donate button - only visible in mobile menu */}
+          <li className="nav-item mobile-only">
+            <a
+              href="/donate"
+              className={`nav-links donate-link ${
+                currentPage === "/donate" ? "active" : ""
+              }`}
+              onClick={(e) => handleNavClick("/donate", e)}
+            >
+              ❤️ {t("navbar.donate")}
+            </a>
+          </li>
         </ul>
 
         {/* Hamburger menu and LanguageSwitcher on the right */}
         <div className="navbar-right">
+          {/* Donate Button - Hidden on mobile */}
+          <button
+            onClick={(e) => handleNavClick("/donate", e)}
+            className="donate-btn desktop-only"
+            title={t("navbar.donate")}
+            style={{ display: "none" }}
+          >
+            {t("navbar.donate")}
+          </button>
+
           <div className="nav-lang-always-visible">
             <LanguageSwitcher />
           </div>

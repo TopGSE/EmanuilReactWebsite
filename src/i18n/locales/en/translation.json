@@ -3,7 +3,58 @@
     "welcome": "Christian Center Emmanuel",
     "join": "Join us in worship, fellowship, and spiritual growth",
     "learnMore": "Learn More About Us",
-    "becomeMember": "Become a Member"
+    "becomeMember": "Become a Member",
+    "supportOurMission": "Support Our Mission"
+  },
+  "payment": {
+    "title": "Donations & Membership",
+    "selectType": "Select Payment Type",
+    "donation": "Donation",
+    "membership": "Membership",
+    "selectAmount": "Select Amount",
+    "customAmount": "Other Amount",
+    "membershipTitle": "Monthly Membership",
+    "membershipDetails": "Membership Details",
+    "membershipDescription": "Become a member of our church with a monthly donation",
+    "benefit1": "Access to all church events and activities",
+    "benefit2": "Monthly newsletter and updates",
+    "benefit3": "Priority seating for special services",
+    "benefit4": "Access to member-only Bible studies",
+    "month": "month",
+    "recurringNote": "This is a recurring monthly subscription. You can cancel anytime.",
+    "memberInfo": "Member Information",
+    "donorInfo": "Donor Information",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "namePlaceholder": "Enter your full name",
+    "emailPlaceholder": "Enter your email address",
+    "phonePlaceholder": "Enter your phone number (optional)",
+    "proceedToCheckout": "Proceed to Secure Checkout",
+    "proceedToPayment": "Proceed to Payment",
+    "secureStripeCheckout": "You will be redirected to Stripe's secure checkout page",
+    "cardDetails": "Card Details",
+    "cancel": "Cancel",
+    "pay": "Pay",
+    "processing": "Processing...",
+    "success": {
+      "title": "Payment Successful!",
+      "processing_title": "Payment Processing",
+      "completed": "Your payment has been completed successfully. Thank you for your contribution!",
+      "processing": "Your payment is being processed. You will receive a confirmation email shortly.",
+      "back_home": "Back to Home"
+    },
+    "fillRequiredFields": "Please fill in all required fields",
+    "back": "Back",
+    "securePayment": "Secure Payment",
+    "recurringMonthly": "Recurring monthly",
+    "paymentMethod": "Payment Method",
+    "cardNumber": "Card Number",
+    "expiry": "Expiry",
+    "cvc": "CVC",
+    "billingDetails": "Billing Details",
+    "payAmount": "Pay {{amount}}",
+    "secureProcessing": "All payments are processed securely through Stripe"
   },
   "navbar": {
     "title": "Christian Center Emmanuel",
@@ -13,7 +64,9 @@
     "gallery": "Gallery",
     "events": "Events",
     "contact": "Contact",
-    "kids": "Kids"
+    "kids": "Kids",
+    "donate": "Donate",
+    "admin": "Admin"
   },
   "welcome": {
     "title": "Welcome to Our Church",
@@ -499,6 +552,74 @@
       "rightsTitle": "Your Privacy Rights:",
       "rightsDescription": "You have the right to access, update, or delete your personal information. For more details, please read our",
       "privacyPolicyLink": "Privacy Policy"
+    }
+  },
+  "admin": {
+    "dashboard": {
+      "title": "Church Admin Dashboard",
+      "subtitle": "Manage payments and contact submissions",
+      "loading": "Loading admin data...",
+      "refreshData": "Refresh Data"
+    },
+    "auth": {
+      "required": "Authentication Required",
+      "message": "Please log in to access the admin dashboard.",
+      "instruction": "Click the \"🔐 Login\" button in the navigation bar to authenticate."
+    },
+    "tabs": {
+      "payments": "Payments",
+      "contacts": "Contact Submissions"
+    },
+    "contacts": {
+      "title": "Contact Submissions",
+      "noSubmissions": "No contact submissions yet.",
+      "fields": {
+        "email": "Email",
+        "phone": "Phone",
+        "subject": "Subject",
+        "message": "Message",
+        "language": "Language",
+        "submitted": "Submitted"
+      }
+    },
+    "payments": {
+      "title": "Payment Management",
+      "search": {
+        "placeholder": "Search by donor name, email, or Stripe ID...",
+        "results": "Showing {{count}} result for \"{{term}}\"",
+        "resultsPlural": "Showing {{count}} results for \"{{term}}\""
+      },
+      "stats": {
+        "totalDonations": "Total Donations",
+        "totalMembership": "Total Membership",
+        "totalRevenue": "Total Revenue"
+      },
+      "filters": {
+        "all": "All Payments ({{count}})",
+        "donations": "Donations ({{count}})",
+        "membership": "Membership ({{count}})"
+      },
+      "table": {
+        "date": "Date",
+        "type": "Type",
+        "amount": "Amount",
+        "donor": "Donor",
+        "email": "Email",
+        "status": "Status",
+        "stripeId": "Stripe ID"
+      },
+      "noPayments": "No payments found for the selected filter.",
+      "monthlyStats": "Monthly Membership Overview",
+      "types": {
+        "donation": "Donation",
+        "membership": "Membership"
+      },
+      "status": {
+        "pending": "Pending",
+        "completed": "Completed",
+        "failed": "Failed",
+        "refunded": "Refunded"
+      }
     }
   }
 }

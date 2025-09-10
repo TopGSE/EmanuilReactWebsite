@@ -57,14 +57,22 @@ model AdminUser {
   @@map("admin_users")
 }
 
-// One-time registration tokens
-model RegistrationToken {
-  id        Int      @id @default(autoincrement())
-  token     String   @unique
-  email     String
-  isUsed    Boolean  @default(false)
-  expiresAt DateTime
-  createdAt DateTime @default(now())
+// Payment transactions
+model Payment {
+  id                Int      @id @default(autoincrement())
+  stripePaymentId   String   @unique
+  amount            Int      // Amount in cents
+  currency          String   @default("eur")
+  type              String   // "donation" or "membership"
+  status            String   @default("pending") // pending, completed, failed, refunded
+  donorName         String?
+  donorEmail        String?
+  donorPhone        String?
+  membershipMonth   String?  // Format: "YYYY-MM" for membership payments
+  description       String?
+  metadata          Json?    // Additional Stripe metadata
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
   
-  @@map("registration_tokens")
+  @@map("payments")
 }

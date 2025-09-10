@@ -5,6 +5,7 @@ import { PrismaClient } from '@prisma/client';
 import dotenv from 'dotenv';
 import bcrypt from 'bcryptjs';
 import crypto from 'crypto';
+import stripeRoutes from './api/stripe.js';
 
 // Load environment variables
 dotenv.config();
@@ -377,6 +378,9 @@ app.post('/api/admin/login', async (req, res) => {
     res.status(500).json({ success: false, message: 'Login failed' });
   }
 });
+
+// Stripe payment routes
+app.use('/api/stripe', stripeRoutes);
 
 // Start server
 app.listen(PORT, () => {

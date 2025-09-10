@@ -17,10 +17,13 @@ import GalleryPage from "./components/GalleryPage";
 import LanguagePopup from "./components/LanguagePopup"; // Import the new component
 import CookieConsent from "./components/CookieConsent"; // Import cookie consent component
 import ScrollToTop from "./components/ScrollToTop";
+import FloatingDonateButton from "./components/FloatingDonateButton";
 import AdminDashboard from "./components/AdminDashboard";
 import Toast from "./components/Toast";
 import AdminRegister from "./components/AdminRegister";
 import AdminManagement from "./components/AdminManagement";
+import Payment from "./components/Payment";
+import PaymentSuccess from "./components/PaymentSuccess";
 
 function App() {
   const { t, i18n } = useTranslation();
@@ -209,6 +212,25 @@ function App() {
                 </div>
               </div>
             </div>
+          </div>
+        );
+      case "/donate":
+        return <Payment />;
+      case "/payment/success":
+        return <PaymentSuccess />;
+      case "/payment/cancel":
+        return (
+          <div className="payment-cancel">
+            <h2>{t("payment.cancelled.title", "Payment Cancelled")}</h2>
+            <p>
+              {t(
+                "payment.cancelled.message",
+                "Your payment was cancelled. You can try again anytime."
+              )}
+            </p>
+            <button onClick={() => navigate("/")} className="btn-primary">
+              {t("payment.success.back_home", "Back to Home")}
+            </button>
           </div>
         );
       default:
@@ -424,6 +446,7 @@ function App() {
       )}
       <CookieConsent ref={cookieConsentRef} />
       <ScrollToTop />
+      <FloatingDonateButton onNavigate={navigate} />
 
       {/* Toast Notifications */}
       <Toast
