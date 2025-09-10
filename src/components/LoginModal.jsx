@@ -9,6 +9,7 @@ function LoginModal({ isOpen, onClose, onLogin }) {
   });
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -53,16 +54,26 @@ function LoginModal({ isOpen, onClose, onLogin }) {
   };
 
   const handleClose = () => {
-    setCredentials({ username: "", password: "" });
-    setError("");
-    onClose();
+    setIsClosing(true);
+    setTimeout(() => {
+      setCredentials({ username: "", password: "" });
+      setError("");
+      setIsClosing(false);
+      onClose();
+    }, 400); // Match animation duration
   };
 
-  if (!isOpen) return null;
+  if (!isOpen && !isClosing) return null;
 
   return (
-    <div className="login-modal-overlay" onClick={handleClose}>
-      <div className="login-modal" onClick={(e) => e.stopPropagation()}>
+    <div
+      className={`login-modal-overlay ${isClosing ? "closing" : ""}`}
+      onClick={handleClose}
+    >
+      <div
+        className={`login-modal ${isClosing ? "closing" : ""}`}
+        onClick={(e) => e.stopPropagation()}
+      >
         <div className="login-modal-header">
           <div className="header-content">
             <div className="admin-icon">🛡️</div>
