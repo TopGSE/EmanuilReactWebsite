@@ -233,34 +233,38 @@ app.post('/api/admin/create-registration-token', async (req, res) => {
 });
 
 // Verify registration token
-app.get('/api/admin/verify-token/:token', async (req, res) => {
+app.get('/api/admin/verify-token', async (req, res) => {
   try {
-    const { token } = req.params;
-    
+    const { token } = req.query;
+
+    if (!token) {
+      return res.status(400).json({ success: false, message: 'Token is required' });
+    }
+
     const registrationToken = await prisma.registrationToken.findUnique({
       where: { token }
     });
-    
+
     if (!registrationToken) {
       return res.status(404).json({ success: false, message: 'Invalid token' });
     }
-    
+
     if (registrationToken.isUsed) {
       return res.status(400).json({ success: false, message: 'Token already used' });
     }
-    
+
     if (new Date() > registrationToken.expiresAt) {
       return res.status(400).json({ success: false, message: 'Token expired' });
     }
-    
-    res.json({ 
-      success: true, 
+
+    res.json({
+      success: true,
       tokenInfo: {
         email: registrationToken.email,
         expiresAt: registrationToken.expiresAt
       }
     });
-    
+
   } catch (error) {
     console.error('Error verifying token:', error);
     res.status(500).json({ success: false, message: 'Token verification failed' });
