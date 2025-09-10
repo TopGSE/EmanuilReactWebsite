@@ -2,7 +2,8 @@
   "main": {
     "welcome": "Christian Center Emmanuel",
     "join": "Join us in worship, fellowship, and spiritual growth",
-    "learnMore": "Learn More About Us"
+    "learnMore": "Learn More About Us",
+    "becomeMember": "Become a Member"
   },
   "navbar": {
     "title": "Christian Center Emmanuel",

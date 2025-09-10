@@ -155,7 +155,7 @@ function ServicesPage({ onNavigate }) {
           <div className="special-service-card">
             <div className="special-service-image communion-image">
               <img
-                src="\Photo Kids Vodno.jpg"
+                src="/Photo Gospodna.jpg"
                 alt="Church Full Communion Service"
               />
             </div>

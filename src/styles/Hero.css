@@ -43,6 +43,14 @@
 	text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
+.hero-buttons {
+	display: flex;
+	gap: 20px;
+	justify-content: center;
+	flex-wrap: wrap;
+	margin-bottom: 30px;
+}
+
 .hero-button {
 	background-color: #6366F1;
 	color: white;
@@ -53,12 +61,32 @@
 	cursor: pointer;
 	transition: all 0.3s ease;
 	box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+	min-width: 160px;
+}
+
+.hero-button-secondary {
+	background-color: transparent;
+	border: 2px solid #6366F1;
+	color: #6366F1;
+}
+
+.hero-button-secondary:hover {
+	background-color: #6366F1;
+	color: white;
 }
 
 .hero-button:hover {
 	background-color: #4F46E5;
 	transform: translateY(-3px);
 	box-shadow: 0 6px 20px rgba(99, 102, 241, 0.6);
+}
+
+.hero-button-secondary:hover {
+	background-color: #4F46E5;
+	border-color: #4F46E5;
+	color: white;
+	transform: translateY(-3px);
+	box-shadow: 0 6px 20px rgba(79, 70, 229, 0.6);
 }
 
 /* Social Media Links styling with animations */
