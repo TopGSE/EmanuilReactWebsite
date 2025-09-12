@@ -3,7 +3,9 @@ import { useTranslation } from "react-i18next";
 import { loadStripe } from "@stripe/stripe-js";
 import "../styles/Payment.css";
 
-const stripePromise = loadStripe(import.meta.env?.VITE_STRIPE_PUBLISHABLE_KEY || '');
+// Only load Stripe if we have a publishable key
+const stripePublishableKey = import.meta.env?.VITE_STRIPE_PUBLISHABLE_KEY;
+const stripePromise = stripePublishableKey ? loadStripe(stripePublishableKey) : null;
 
 function Payment() {
   const { t } = useTranslation();
@@ -19,6 +21,12 @@ function Payment() {
   const handleCheckout = async () => {
     if (!memberInfo.name || !memberInfo.email) {
       alert(t("payment.fillRequiredFields"));
+      return;
+    }
+
+    // Check if Stripe is configured
+    if (!stripePromise) {
+      alert("Payment system is not configured yet. Please contact the church administration.");
       return;
     }
 
@@ -63,6 +71,21 @@ function Payment() {
 
     setLoading(false);
   };
+
+  // If Stripe is not configured, show a message
+  if (!stripePromise) {
+    return (
+      <div className="payment-app">
+        <div className="payment-container" style={{ textAlign: 'center', padding: '50px' }}>
+          <h2>{t("payment.title")}</h2>
+          <p>Payment system is currently being configured. Please contact the church administration for membership information.</p>
+          <div className="church-contact">
+            <p>You can reach us at: admin@emanuelchurchbg.be</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="payment-app">
