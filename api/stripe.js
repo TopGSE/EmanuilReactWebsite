@@ -12,9 +12,20 @@ router.post('/create-payment-intent', async (req, res) => {
   try {
     const { amount, type, donorName, donorEmail, donorPhone, membershipMonth, description } = req.body;
 
-    // Create payment record in database
+    // Create Stripe payment intent first
+    const paymentIntent = await stripe.paymentIntents.create({
+      amount: Math.round(amount * 100),
+      currency: 'eur',
+      metadata: {
+        type,
+        donorEmail: donorEmail || ''
+      }
+    });
+
+    // Create payment record with Stripe payment ID
     const payment = await prisma.payment.create({
       data: {
+        stripePaymentId: paymentIntent.id,
         amount: Math.round(amount * 100), // Convert to cents
         type,
         donorName,
@@ -26,21 +37,13 @@ router.post('/create-payment-intent', async (req, res) => {
       }
     });
 
-    // Create Stripe payment intent
-    const paymentIntent = await stripe.paymentIntents.create({
-      amount: Math.round(amount * 100),
-      currency: 'eur',
+    // Update payment intent metadata with payment ID
+    await stripe.paymentIntents.update(paymentIntent.id, {
       metadata: {
         paymentId: payment.id.toString(),
         type,
         donorEmail: donorEmail || ''
       }
-    });
-
-    // Update payment with Stripe payment ID
-    await prisma.payment.update({
-      where: { id: payment.id },
-      data: { stripePaymentId: paymentIntent.id }
     });
 
     res.json({
@@ -58,21 +61,7 @@ router.post('/create-checkout-session', async (req, res) => {
   try {
     const { priceAmount, customerName, customerEmail, customerPhone, mode } = req.body;
 
-    // Create customer in database first
-    const payment = await prisma.payment.create({
-      data: {
-        amount: Math.round(priceAmount * 100), // Convert to cents
-        type: 'membership',
-        donorName: customerName,
-        donorEmail: customerEmail,
-        donorPhone: customerPhone,
-        membershipMonth: new Date().toISOString().slice(0, 7), // Current month
-        description: 'Monthly membership',
-        status: 'pending'
-      }
-    });
-
-    // Create Stripe checkout session
+    // Create Stripe checkout session first
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
       mode: mode || 'subscription', // 'subscription' for recurring, 'payment' for one-time
@@ -96,16 +85,33 @@ router.post('/create-checkout-session', async (req, res) => {
       success_url: `${process.env.CLIENT_URL || 'http://localhost:5173'}/payment/success?session_id={CHECKOUT_SESSION_ID}&auto_complete=true`,
       cancel_url: `${process.env.CLIENT_URL || 'http://localhost:5173'}/payment/cancel`,
       metadata: {
-        paymentId: payment.id.toString(),
         customerName,
         customerPhone: customerPhone || '',
       },
     });
 
-    // Update payment record with Stripe session ID
-    await prisma.payment.update({
-      where: { id: payment.id },
-      data: { stripePaymentId: session.id }
+    // Now create payment record with Stripe session ID
+    const payment = await prisma.payment.create({
+      data: {
+        stripePaymentId: session.id,
+        amount: Math.round(priceAmount * 100), // Convert to cents
+        type: 'membership',
+        donorName: customerName,
+        donorEmail: customerEmail,
+        donorPhone: customerPhone,
+        membershipMonth: new Date().toISOString().slice(0, 7), // Current month
+        description: 'Monthly membership',
+        status: 'pending'
+      }
+    });
+
+    // Update session metadata with payment ID
+    await stripe.checkout.sessions.update(session.id, {
+      metadata: {
+        paymentId: payment.id.toString(),
+        customerName,
+        customerPhone: customerPhone || '',
+      },
     });
 
     res.json({ id: session.id, url: session.url });

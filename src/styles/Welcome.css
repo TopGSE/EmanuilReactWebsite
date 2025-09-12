@@ -185,15 +185,15 @@
 }
 
 .service-card .btn-primary {
-	background: linear-gradient(50deg, #c378db, #c62828);
+	background: #c378db;
 }
 
 .mission-card .btn-primary {
-	background: linear-gradient(50deg, #c378db, #c62828);
+	background: #c378db;
 }
 
 .involved-card .btn-primary {
-	background: linear-gradient(50deg, #c378db, #c62828);
+	background: #c378db;
 }
 
 .btn-primary:hover {
