@@ -24,16 +24,16 @@ function Payment() {
       return;
     }
 
-    // Check if Stripe is configured
-    if (!stripePromise) {
-      alert("Payment system is not configured yet. Please contact the church administration.");
-      return;
-    }
-
     setLoading(true);
 
     try {
-      const stripe = await stripePromise;
+      const stripe = stripePromise ? await stripePromise : null;
+
+      if (!stripe) {
+        alert("Payment system is temporarily unavailable. Please try again later.");
+        setLoading(false);
+        return;
+      }
 
       // Create checkout session
       const response = await fetch("/api/stripe/create-checkout-session", {
@@ -71,21 +71,6 @@ function Payment() {
 
     setLoading(false);
   };
-
-  // If Stripe is not configured, show a message
-  if (!stripePromise) {
-    return (
-      <div className="payment-app">
-        <div className="payment-container" style={{ textAlign: 'center', padding: '50px' }}>
-          <h2>{t("payment.title")}</h2>
-          <p>Payment system is currently being configured. Please contact the church administration for membership information.</p>
-          <div className="church-contact">
-            <p>You can reach us at: admin@emanuelchurchbg.be</p>
-          </div>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="payment-app">

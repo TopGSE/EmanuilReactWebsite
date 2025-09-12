@@ -32,8 +32,13 @@ function AdminDashboard() {
       setLoading(true);
 
       // Fetch contact submissions
-      const contactData = await contactAPI.getAll();
-      setContacts(Array.isArray(contactData) ? contactData : []);
+      const contactResponse = await contactAPI.getAll();
+      if (contactResponse.success && contactResponse.contacts) {
+        setContacts(Array.isArray(contactResponse.contacts) ? contactResponse.contacts : []);
+      } else {
+        console.error("Invalid contact response:", contactResponse);
+        setContacts([]);
+      }
     } catch (error) {
       console.error("Failed to load admin data:", error);
       setContacts([]);

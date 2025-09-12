@@ -19,9 +19,15 @@ function AdminPayments() {
     try {
       const response = await fetch("/api/stripe/payments");
       const data = await response.json();
-      setPayments(data);
+      if (data.success && data.payments) {
+        setPayments(data.payments);
+      } else {
+        console.error("Invalid payments response:", data);
+        setPayments([]);
+      }
     } catch (error) {
       console.error("Error fetching payments:", error);
+      setPayments([]);
     }
   };
 
@@ -29,9 +35,15 @@ function AdminPayments() {
     try {
       const response = await fetch("/api/stripe/payments/stats");
       const data = await response.json();
-      setStats(data);
+      if (data.success && data.stats) {
+        setStats(data.stats);
+      } else {
+        console.error("Invalid stats response:", data);
+        setStats({});
+      }
     } catch (error) {
       console.error("Error fetching stats:", error);
+      setStats({});
     } finally {
       setLoading(false);
     }
