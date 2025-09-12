@@ -4,7 +4,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import "../styles/Payment.css";
 
 // Only load Stripe if we have a publishable key
-const stripePublishableKey = import.meta.env?.VITE_STRIPE_PUBLISHABLE_KEY;
+const stripePublishableKey = import.meta.env?.VITE_STRIPE_PUBLISHABLE_KEY || import.meta.env?.STRIPE_PUBLISHABLE_KEY;
 const stripePromise = stripePublishableKey ? loadStripe(stripePublishableKey) : null;
 
 function Payment() {
