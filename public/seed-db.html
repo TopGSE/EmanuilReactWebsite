@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seed Production Database - Christian Center Emmanuel</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            color: #2d3748;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #2d3748;
+            margin-bottom: 10px;
+            font-size: 2rem;
+        }
+        .subtitle {
+            color: #718096;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+        .seed-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 20px 0;
+        }
+        .seed-button:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+        }
+        .seed-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .status {
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: 500;
+        }
+        .success {
+            background: #f0fff4;
+            color: #22543d;
+            border: 1px solid #9ae6b4;
+        }
+        .error {
+            background: #fed7d7;
+            color: #742a2a;
+            border: 1px solid #feb2b2;
+        }
+        .info {
+            background: #ebf8ff;
+            color: #2a4365;
+            border: 1px solid #90cdf4;
+        }
+        .admin-info {
+            background: #f7fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: left;
+        }
+        .admin-info h3 {
+            margin: 0 0 15px 0;
+            color: #2d3748;
+        }
+        .admin-info p {
+            margin: 8px 0;
+            color: #4a5568;
+        }
+        .warning {
+            background: #fffaf0;
+            color: #744210;
+            border: 1px solid #fbbf24;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌱 Seed Production Database</h1>
+        <p class="subtitle">Set up your production database with initial data</p>
+
+        <div class="warning">
+            <strong>⚠️ Important:</strong> This will create an admin user and sample data in your production database. Only run this once!
+        </div>
+
+        <button id="seedButton" class="seed-button" onclick="seedDatabase()">
+            🚀 Seed Production Database
+        </button>
+
+        <div id="status" class="status info" style="display: none;">
+            Preparing to seed database...
+        </div>
+
+        <div id="adminInfo" class="admin-info" style="display: none;">
+            <h3>✅ Database Seeded Successfully!</h3>
+            <p><strong>Admin Email:</strong> <span id="adminEmail"></span></p>
+            <p><strong>Admin Password:</strong> <span id="adminPassword"></span></p>
+            <p><strong>⚠️ Security Note:</strong> Please change this password after your first login!</p>
+            <p><strong>Login URL:</strong> <a href="/admin" target="_blank">/admin</a></p>
+        </div>
+    </div>
+
+    <script>
+        async function seedDatabase() {
+            const button = document.getElementById('seedButton');
+            const status = document.getElementById('status');
+            const adminInfo = document.getElementById('adminInfo');
+
+            // Disable button and show loading
+            button.disabled = true;
+            button.textContent = '🌱 Seeding Database...';
+            status.style.display = 'block';
+            status.className = 'status info';
+            status.textContent = 'Seeding database... This may take a moment.';
+
+            try {
+                const response = await fetch('/api/seed', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
+                });
+
+                const data = await response.json();
+
+                if (response.ok && data.success) {
+                    status.style.display = 'none';
+                    adminInfo.style.display = 'block';
+
+                    document.getElementById('adminEmail').textContent = data.admin.email;
+                    document.getElementById('adminPassword').textContent = data.admin.password;
+
+                    button.textContent = '✅ Database Seeded!';
+                    button.style.background = '#48bb78';
+
+                } else {
+                    status.className = 'status error';
+                    status.textContent = data.message || 'Failed to seed database';
+                    button.disabled = false;
+                    button.textContent = '❌ Try Again';
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                status.className = 'status error';
+                status.textContent = 'Network error. Please try again.';
+                button.disabled = false;
+                button.textContent = '❌ Try Again';
+            }
+        }
+    </script>
+</body>
+</html>
