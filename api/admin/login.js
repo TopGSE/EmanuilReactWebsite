@@ -1,6 +1,8 @@
-// Import the shared admins map
-import { admins } from './register.js';
+// Import Prisma client for database access
+import { PrismaClient } from '@prisma/client';
 import bcrypt from 'bcrypt';
+
+const prisma = new PrismaClient();
 
 export default async function handler(req, res) {
   // Set CORS headers
@@ -27,8 +29,10 @@ export default async function handler(req, res) {
       });
     }
 
-    // Check if admin exists
-    const admin = admins.get(email);
+    // Check if admin exists in database
+    const admin = await prisma.adminUser.findUnique({
+      where: { email: email }
+    });
     
     if (!admin) {
       return res.status(401).json({ 
@@ -37,8 +41,16 @@ export default async function handler(req, res) {
       });
     }
 
+    // Check if admin is active
+    if (!admin.isActive) {
+      return res.status(401).json({ 
+        success: false, 
+        message: 'Account is deactivated' 
+      });
+    }
+
     // Verify password
-    const passwordValid = await bcrypt.compare(password, admin.password);
+    const passwordValid = await bcrypt.compare(password, admin.passwordHash);
     
     if (!passwordValid) {
       return res.status(401).json({ 
@@ -56,7 +68,7 @@ export default async function handler(req, res) {
         id: admin.id,
         name: admin.name,
         email: admin.email,
-        role: admin.role,
+        role: 'admin',
         createdAt: admin.createdAt
       }
     });
@@ -67,5 +79,7 @@ export default async function handler(req, res) {
       success: false, 
       message: 'Login failed' 
     });
+  } finally {
+    await prisma.$disconnect();
   }
 }
