@@ -30,7 +30,7 @@ function App() {
   const [currentPage, setCurrentPage] = useState(() => {
     // Ensure we always have a valid string path
     const path = window.location?.pathname;
-    return typeof path === 'string' ? path : '/';
+    return typeof path === "string" ? path : "/";
   });
   const cookieConsentRef = useRef(); // Add ref for CookieConsent
   const [toast, setToast] = useState({
@@ -52,7 +52,7 @@ function App() {
   useEffect(() => {
     const handleLocationChange = () => {
       const path = window.location?.pathname;
-      const validPath = typeof path === 'string' ? path : '/';
+      const validPath = typeof path === "string" ? path : "/";
       setCurrentPage(validPath);
       // Scroll to top on navigation change
       window.scrollTo(0, 0);

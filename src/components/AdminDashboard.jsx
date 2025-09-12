@@ -2,13 +2,11 @@ import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import "../styles/AdminDashboard.css";
 import { contactAPI } from "../lib/api";
-import AdminPayments from "./AdminPayments";
 
 function AdminDashboard() {
   const { t } = useTranslation();
   const [contacts, setContacts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState("payments");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
@@ -34,7 +32,11 @@ function AdminDashboard() {
       // Fetch contact submissions
       const contactResponse = await contactAPI.getAll();
       if (contactResponse.success && contactResponse.contacts) {
-        setContacts(Array.isArray(contactResponse.contacts) ? contactResponse.contacts : []);
+        setContacts(
+          Array.isArray(contactResponse.contacts)
+            ? contactResponse.contacts
+            : []
+        );
       } else {
         console.error("Invalid contact response:", contactResponse);
         setContacts([]);
@@ -88,72 +90,59 @@ function AdminDashboard() {
       </div>
 
       <div className="admin-tabs">
-        <button
-          className={`tab-button ${activeTab === "payments" ? "active" : ""}`}
-          onClick={() => setActiveTab("payments")}
-        >
-          {t("admin.tabs.payments")}
-        </button>
-        <button
-          className={`tab-button ${activeTab === "contacts" ? "active" : ""}`}
-          onClick={() => setActiveTab("contacts")}
-        >
+        <button className="tab-button active">
           {t("admin.tabs.contacts")} ({contacts.length})
         </button>
       </div>
 
       <div className="admin-content">
-        {activeTab === "payments" && <AdminPayments />}
-
-        {activeTab === "contacts" && (
-          <div className="submissions-grid">
-            <h2>{t("admin.contacts.title")}</h2>
-            {contacts.length === 0 ? (
-              <p>{t("admin.contacts.noSubmissions")}</p>
-            ) : (
-              <div className="cards-grid">
-                {contacts.map((contact) => (
-                  <div key={contact.id} className="submission-card">
-                    <div className="card-header">
-                      <h3>{contact.name}</h3>
-                      <span className={`status-badge ${contact.status}`}>
-                        {contact.status}
-                      </span>
-                    </div>
-                    <div className="card-details">
-                      <p>
-                        <strong>{t("admin.contacts.fields.email")}:</strong>{" "}
-                        {contact.email}
-                      </p>
-                      {contact.phone && (
-                        <p>
-                          <strong>{t("admin.contacts.fields.phone")}:</strong>{" "}
-                          {contact.phone}
-                        </p>
-                      )}
-                      <p>
-                        <strong>{t("admin.contacts.fields.subject")}:</strong>{" "}
-                        {contact.subject}
-                      </p>
-                      <p>
-                        <strong>{t("admin.contacts.fields.message")}:</strong>{" "}
-                        {contact.message}
-                      </p>
-                      <p>
-                        <strong>{t("admin.contacts.fields.language")}:</strong>{" "}
-                        {contact.language}
-                      </p>
-                      <p>
-                        <strong>{t("admin.contacts.fields.submitted")}:</strong>{" "}
-                        {formatDate(contact.createdAt)}
-                      </p>
-                    </div>
+        <div className="submissions-grid">
+          <h2>{t("admin.contacts.title")}</h2>
+          {contacts.length === 0 ? (
+            <p>{t("admin.contacts.noSubmissions")}</p>
+          ) : (
+            <div className="cards-grid">
+              {contacts.map((contact) => (
+                <div key={contact.id} className="submission-card">
+                  <div className="card-header">
+                    <h3>{contact.name}</h3>
+                    <span className={`status-badge ${contact.status}`}>
+                      {contact.status}
+                    </span>
                   </div>
-                ))}
-              </div>
-            )}
-          </div>
-        )}
+                  <div className="card-details">
+                    <p>
+                      <strong>{t("admin.contacts.fields.email")}:</strong>{" "}
+                      {contact.email}
+                    </p>
+                    {contact.phone && (
+                      <p>
+                        <strong>{t("admin.contacts.fields.phone")}:</strong>{" "}
+                        {contact.phone}
+                      </p>
+                    )}
+                    <p>
+                      <strong>{t("admin.contacts.fields.subject")}:</strong>{" "}
+                      {contact.subject}
+                    </p>
+                    <p>
+                      <strong>{t("admin.contacts.fields.message")}:</strong>{" "}
+                      {contact.message}
+                    </p>
+                    <p>
+                      <strong>{t("admin.contacts.fields.language")}:</strong>{" "}
+                      {contact.language}
+                    </p>
+                    <p>
+                      <strong>{t("admin.contacts.fields.submitted")}:</strong>{" "}
+                      {formatDate(contact.createdAt)}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
 
       <div className="admin-actions">
