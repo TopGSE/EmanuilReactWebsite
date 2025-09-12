@@ -18,6 +18,7 @@ export default async function handler(req, res) {
     const contactCount = await prisma.contactSubmission.count();
     const prayerCount = await prisma.prayerRequest.count();
     const paymentCount = await prisma.payment.count();
+    const adminCount = await prisma.adminUser.count();
 
     res.json({
       status: 'OK',
@@ -26,12 +27,15 @@ export default async function handler(req, res) {
       environment,
       database: {
         connected: true,
-        counts: {
+        records: {
           contacts: contactCount,
           prayers: prayerCount,
-          payments: paymentCount
+          payments: paymentCount,
+          admins: adminCount
         }
-      }
+      },
+      admin_exists: adminCount > 0,
+      seed_url: 'https://www.emanuelchurchbg.be/seed-db'
     });
   } catch (error) {
     console.error('Database connection error:', error);
