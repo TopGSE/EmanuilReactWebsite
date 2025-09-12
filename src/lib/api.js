@@ -74,6 +74,5 @@ export const adminAPI = {
 };
 
 export const healthAPI = {
-  check: () => apiCall('/health'),
-  testDb: () => apiCall('/test-db')
+  check: () => apiCall('/health')
 };

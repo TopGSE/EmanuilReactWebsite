@@ -1,14 +1,51 @@
-import express from 'express';
+// Consolidated Stripe API endpoints
 import { PrismaClient } from '@prisma/client';
 import Stripe from 'stripe';
 
-const router = express.Router();
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
-
 const prisma = new PrismaClient();
 
-// Create payment intent
-router.post('/create-payment-intent', async (req, res) => {
+export default async function handler(req, res) {
+  // Set CORS headers
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
+  }
+
+  try {
+    const url = new URL(req.url, `http://${req.headers.host}`);
+    const path = url.pathname.replace('/api/stripe', '');
+
+    // Route to appropriate handler based on path
+    if (path === '/create-payment-intent' && req.method === 'POST') {
+      return await handleCreatePaymentIntent(req, res);
+    } else if (path === '/create-checkout-session' && req.method === 'POST') {
+      return await handleCreateCheckoutSession(req, res);
+    } else if (path === '/webhook' && req.method === 'POST') {
+      return await handleWebhook(req, res);
+    } else if (path === '/payments' && req.method === 'GET') {
+      return await handleGetPayments(req, res);
+    } else if (path === '/payments/stats' && req.method === 'GET') {
+      return await handleGetPaymentStats(req, res);
+    } else if (path === '/payment-success' && req.method === 'GET') {
+      return await handlePaymentSuccess(req, res);
+    } else if (path === '/mark-payment-completed' && req.method === 'POST') {
+      return await handleMarkPaymentCompleted(req, res);
+    } else {
+      return res.status(404).json({ success: false, message: 'Stripe endpoint not found' });
+    }
+  } catch (error) {
+    console.error('Stripe API error:', error);
+    return res.status(500).json({ success: false, message: 'Internal server error' });
+  } finally {
+    await prisma.$disconnect();
+  }
+}
+
+async function handleCreatePaymentIntent(req, res) {
   try {
     const { amount, type, donorName, donorEmail, donorPhone, membershipMonth, description } = req.body;
 
@@ -54,10 +91,9 @@ router.post('/create-payment-intent', async (req, res) => {
     console.error('Error creating payment intent:', error);
     res.status(500).json({ error: 'Failed to create payment intent' });
   }
-});
+}
 
-// Create Stripe Checkout session for membership
-router.post('/create-checkout-session', async (req, res) => {
+async function handleCreateCheckoutSession(req, res) {
   try {
     const { priceAmount, customerName, customerEmail, customerPhone, mode } = req.body;
 
@@ -119,10 +155,9 @@ router.post('/create-checkout-session', async (req, res) => {
     console.error('Error creating checkout session:', error);
     res.status(500).json({ error: 'Failed to create checkout session' });
   }
-});
+}
 
-// Webhook to handle Stripe events
-router.post('/webhook', express.raw({ type: 'application/json' }), async (req, res) => {
+async function handleWebhook(req, res) {
   const sig = req.headers['stripe-signature'];
   const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET;
 
@@ -182,7 +217,7 @@ router.post('/webhook', express.raw({ type: 'application/json' }), async (req, r
       // Handle recurring subscription payments
       const invoice = event.data.object;
       const subscriptionId = invoice.subscription;
-      
+
       // You can handle recurring payments here if needed
       console.log('Subscription payment succeeded:', subscriptionId);
     }
@@ -192,30 +227,101 @@ router.post('/webhook', express.raw({ type: 'application/json' }), async (req, r
     console.error('Error processing webhook:', error);
     res.status(500).json({ error: 'Webhook processing failed' });
   }
-});
+}
 
-// Get all payments (for admin dashboard)
-router.get('/payments', async (req, res) => {
+async function handleGetPayments(req, res) {
   try {
     const payments = await prisma.payment.findMany({
-      orderBy: { createdAt: 'desc' }
+      orderBy: {
+        createdAt: 'desc'
+      }
     });
-    res.json(payments);
+
+    res.json({
+      success: true,
+      payments
+    });
   } catch (error) {
     console.error('Error fetching payments:', error);
-    res.status(500).json({ error: 'Failed to fetch payments' });
+    res.status(500).json({
+      success: false,
+      error: 'Failed to fetch payments'
+    });
   }
-});
+}
 
-// Handle successful payment redirect and update status
-router.get('/payment-success', async (req, res) => {
+async function handleGetPaymentStats(req, res) {
+  try {
+    // Get total payments count
+    const totalPayments = await prisma.payment.count();
+
+    // Get total amount (sum of all payments in cents, convert to euros)
+    const payments = await prisma.payment.findMany({
+      select: {
+        amount: true,
+        type: true,
+        status: true
+      }
+    });
+
+    const totalAmount = payments.reduce((sum, payment) => sum + payment.amount, 0) / 100; // Convert cents to euros
+
+    // Get payments by type
+    const paymentsByType = payments.reduce((acc, payment) => {
+      acc[payment.type] = (acc[payment.type] || 0) + 1;
+      return acc;
+    }, {});
+
+    // Get payments by status
+    const paymentsByStatus = payments.reduce((acc, payment) => {
+      acc[payment.status] = (acc[payment.status] || 0) + 1;
+      return acc;
+    }, {});
+
+    // Get recent payments (last 10)
+    const recentPayments = await prisma.payment.findMany({
+      orderBy: {
+        createdAt: 'desc'
+      },
+      take: 10,
+      select: {
+        id: true,
+        amount: true,
+        type: true,
+        donorName: true,
+        donorEmail: true,
+        status: true,
+        createdAt: true
+      }
+    });
+
+    res.json({
+      success: true,
+      stats: {
+        totalPayments,
+        totalAmount,
+        paymentsByType,
+        paymentsByStatus,
+        recentPayments
+      }
+    });
+  } catch (error) {
+    console.error('Error fetching payment stats:', error);
+    res.status(500).json({
+      success: false,
+      error: 'Failed to fetch payment statistics'
+    });
+  }
+}
+
+async function handlePaymentSuccess(req, res) {
   try {
     const { session_id } = req.query;
-    
+
     if (session_id) {
       // Retrieve the session from Stripe
       const session = await stripe.checkout.sessions.retrieve(session_id);
-      
+
       if (session.payment_status === 'paid' && session.metadata.paymentId) {
         // Update payment status to completed
         await prisma.payment.update({
@@ -225,36 +331,35 @@ router.get('/payment-success', async (req, res) => {
             metadata: session
           }
         });
-        
+
         console.log('Payment marked as completed:', session.metadata.paymentId);
       }
     }
-    
+
     res.json({ success: true, message: 'Payment processed successfully' });
   } catch (error) {
     console.error('Error processing payment success:', error);
     res.status(500).json({ error: 'Failed to process payment success' });
   }
-});
+}
 
-// Manual route to mark payment as completed (for development/testing)
-router.post('/mark-payment-completed', async (req, res) => {
+async function handleMarkPaymentCompleted(req, res) {
   try {
     const { paymentId, stripeSessionId } = req.body;
-    
+
     if (!paymentId) {
       return res.status(400).json({ error: 'Payment ID required' });
     }
-    
+
     // If we have a Stripe session ID, verify it first
     if (stripeSessionId) {
       const session = await stripe.checkout.sessions.retrieve(stripeSessionId);
-      
+
       if (session.payment_status !== 'paid') {
         return res.status(400).json({ error: 'Payment not completed in Stripe' });
       }
     }
-    
+
     // Update payment status to completed
     const updatedPayment = await prisma.payment.update({
       where: { id: parseInt(paymentId) },
@@ -263,51 +368,10 @@ router.post('/mark-payment-completed', async (req, res) => {
         updatedAt: new Date()
       }
     });
-    
+
     res.json({ success: true, payment: updatedPayment });
   } catch (error) {
     console.error('Error marking payment as completed:', error);
     res.status(500).json({ error: 'Failed to mark payment as completed' });
   }
-});
-
-// Get payment statistics
-router.get('/payments/stats', async (req, res) => {
-  try {
-    const totalDonations = await prisma.payment.aggregate({
-      where: { type: 'donation', status: 'completed' },
-      _sum: { amount: true }
-    });
-
-    const totalMemberships = await prisma.payment.aggregate({
-      where: { type: 'membership', status: 'completed' },
-      _sum: { amount: true }
-    });
-
-    const monthlyStats = await prisma.payment.groupBy({
-      by: ['membershipMonth'],
-      where: {
-        type: 'membership',
-        status: 'completed',
-        membershipMonth: { not: null }
-      },
-      _sum: { amount: true },
-      _count: true
-    });
-
-    res.json({
-      totalDonations: (totalDonations._sum.amount || 0) / 100, // Convert from cents
-      totalMemberships: (totalMemberships._sum.amount || 0) / 100,
-      monthlyStats: monthlyStats.map(stat => ({
-        month: stat.membershipMonth,
-        amount: (stat._sum.amount || 0) / 100,
-        count: stat._count
-      }))
-    });
-  } catch (error) {
-    console.error('Error fetching payment stats:', error);
-    res.status(500).json({ error: 'Failed to fetch payment statistics' });
-  }
-});
-
-export default router;
+}
