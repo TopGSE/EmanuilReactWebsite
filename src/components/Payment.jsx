@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { loadStripe } from "@stripe/stripe-js";
 import "../styles/Payment.css";
 
-const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
+const stripePromise = loadStripe(import.meta.env?.VITE_STRIPE_PUBLISHABLE_KEY || '');
 
 function Payment() {
   const { t } = useTranslation();

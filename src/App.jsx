@@ -27,7 +27,11 @@ import PaymentSuccess from "./components/PaymentSuccess";
 
 function App() {
   const { t, i18n } = useTranslation();
-  const [currentPage, setCurrentPage] = useState(window.location.pathname);
+  const [currentPage, setCurrentPage] = useState(() => {
+    // Ensure we always have a valid string path
+    const path = window.location?.pathname;
+    return typeof path === 'string' ? path : '/';
+  });
   const cookieConsentRef = useRef(); // Add ref for CookieConsent
   const [toast, setToast] = useState({
     isVisible: false,
@@ -47,8 +51,9 @@ function App() {
   // Keep only one useEffect for handling navigation and scroll behavior
   useEffect(() => {
     const handleLocationChange = () => {
-      const path = window.location.pathname;
-      setCurrentPage(path);
+      const path = window.location?.pathname;
+      const validPath = typeof path === 'string' ? path : '/';
+      setCurrentPage(validPath);
       // Scroll to top on navigation change
       window.scrollTo(0, 0);
     };
