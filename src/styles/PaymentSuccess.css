@@ -1,126 +1,517 @@
-/* Payment Success Page Styles */
-.payment-success {
+/* Modern Payment Success Page - Apple Pay/Stripe Inspired */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.success-app {
 	min-height: 100vh;
+	background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'SF Pro Display', Roboto, 'Helvetica Neue', Arial, sans-serif;
+	color: #1a1a1a;
+	line-height: 1.6;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+/* Header */
+.success-header {
+	background: rgba(255, 255, 255, 0.95);
+	backdrop-filter: blur(20px);
+	border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+	position: sticky;
+	top: 0;
+	z-index: 100;
+}
+
+.header-content {
+	max-width: 640px;
+	margin: 0 auto;
+	padding: 20px 24px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.church-branding {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+}
+
+.church-icon {
+	width: 48px;
+	height: 48px;
+	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	border-radius: 12px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-	padding: 20px;
+	color: white;
+	font-size: 24px;
+	font-weight: 300;
+	box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
 }
 
-.payment-success-container {
-	background: white;
-	border-radius: 12px;
-	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-	padding: 40px;
-	text-align: center;
-	max-width: 500px;
+.church-info {
+	display: flex;
+	flex-direction: column;
+}
+
+.church-name {
+	font-size: 20px;
+	font-weight: 600;
+	color: #1a1a1a;
+	letter-spacing: -0.025em;
+	margin-bottom: 2px;
+}
+
+.church-subtitle {
+	font-size: 14px;
+	color: #6b7280;
+	font-weight: 400;
+}
+
+/* Main Content */
+.success-main {
+	padding: 40px 24px;
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	min-height: calc(100vh - 88px);
+}
+
+.success-container {
+	max-width: 640px;
 	width: 100%;
+	background: white;
+	border-radius: 20px;
+	box-shadow:
+		0 1px 3px rgba(0, 0, 0, 0.05),
+		0 10px 15px -3px rgba(0, 0, 0, 0.08),
+		0 20px 25px -5px rgba(0, 0, 0, 0.06);
+	overflow: hidden;
+	border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.payment-success-icon {
+/* Status Section */
+.status-section {
+	padding: 48px 40px 32px 40px;
+	text-align: center;
+	border-bottom: 1px solid #f3f4f6;
+}
+
+.status-icon-container {
+	margin-bottom: 24px;
+	display: flex;
+	justify-content: center;
+}
+
+.status-icon {
 	width: 80px;
 	height: 80px;
-	margin: 0 auto 20px;
 	border-radius: 50%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	font-size: 40px;
-	font-weight: bold;
-	color: white;
-	animation: pulse 2s infinite;
 }
 
-.payment-success-icon.success {
-	background: linear-gradient(45deg, #4CAF50, #45a049);
+.status-section.success .status-icon {
+	color: #059669;
+	background: #ecfdf5;
+	border: 1px solid #a7f3d0;
 }
 
-.payment-success-icon.processing {
-	background: linear-gradient(45deg, #ff9800, #f57c00);
-	animation: spin 1s linear infinite;
+.status-section.processing .status-icon {
+	color: #d97706;
+	background: #fffbeb;
+	border: 1px solid #fed7aa;
 }
 
-.payment-success-icon.warning {
-	background: linear-gradient(45deg, #ff5722, #e64a19);
+.status-section.warning .status-icon {
+	color: #dc2626;
+	background: #fef2f2;
+	border: 1px solid #fca5a5;
 }
 
-.payment-success-title {
-	color: #333;
-	font-size: 28px;
-	font-weight: 600;
-	margin-bottom: 16px;
+.status-icon.processing {
+	animation: rotate 2s linear infinite;
 }
 
-.payment-success-message {
-	color: #666;
-	font-size: 16px;
-	line-height: 1.6;
-	margin-bottom: 30px;
-}
-
-.payment-success-actions {
-	display: flex;
-	gap: 12px;
-	justify-content: center;
-	flex-wrap: wrap;
-}
-
-.btn-primary {
-	background: linear-gradient(45deg, #d32f2f, #c62828);
-	color: white;
-	border: none;
-	padding: 12px 24px;
-	border-radius: 6px;
-	font-size: 16px;
-	font-weight: 500;
-	cursor: pointer;
-	text-decoration: none;
-	display: inline-block;
-	transition: all 0.3s ease;
-}
-
-.btn-primary:hover {
-	transform: translateY(-2px);
-	box-shadow: 0 5px 15px rgba(211, 47, 47, 0.4);
-}
-
-@keyframes pulse {
-	0% {
-		transform: scale(1);
-	}
-
-	50% {
-		transform: scale(1.05);
-	}
-
-	100% {
-		transform: scale(1);
-	}
-}
-
-@keyframes spin {
-	0% {
+@keyframes rotate {
+	from {
 		transform: rotate(0deg);
 	}
 
-	100% {
+	to {
 		transform: rotate(360deg);
 	}
 }
 
+.status-title {
+	font-size: 32px;
+	font-weight: 700;
+	color: #1a1a1a;
+	margin-bottom: 12px;
+	letter-spacing: -0.025em;
+}
+
+.status-message {
+	font-size: 18px;
+	color: #6b7280;
+	font-weight: 400;
+	line-height: 1.6;
+}
+
+/* Details Section */
+.details-section {
+	padding: 32px 40px;
+	border-bottom: 1px solid #f3f4f6;
+}
+
+.details-section h3 {
+	font-size: 20px;
+	font-weight: 600;
+	color: #1a1a1a;
+	margin-bottom: 24px;
+	letter-spacing: -0.025em;
+}
+
+.detail-row {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 16px 0;
+	border-bottom: 1px solid #f3f4f6;
+}
+
+.detail-row:last-child {
+	border-bottom: none;
+}
+
+.detail-row.total {
+	margin-top: 8px;
+	padding-top: 24px;
+	border-top: 2px solid #f3f4f6;
+	border-bottom: none;
+}
+
+.detail-label {
+	font-size: 15px;
+	color: #6b7280;
+	font-weight: 500;
+}
+
+.detail-value {
+	font-size: 15px;
+	color: #1a1a1a;
+	font-weight: 600;
+}
+
+.status-badge {
+	background: #ecfdf5;
+	color: #059669;
+	padding: 6px 12px;
+	border-radius: 20px;
+	font-size: 13px;
+	font-weight: 500;
+	border: 1px solid #a7f3d0;
+}
+
+/* What's Next Section */
+.next-steps {
+	padding: 32px 40px;
+	border-bottom: 1px solid #f3f4f6;
+}
+
+.next-steps h3 {
+	font-size: 20px;
+	font-weight: 600;
+	color: #1a1a1a;
+	margin-bottom: 24px;
+	letter-spacing: -0.025em;
+}
+
+.steps-grid {
+	display: grid;
+	gap: 20px;
+}
+
+.step-item {
+	display: flex;
+	align-items: flex-start;
+	gap: 16px;
+	padding: 20px;
+	background: #f9fafb;
+	border-radius: 12px;
+	border: 1px solid #f3f4f6;
+	transition: all 0.2s ease;
+}
+
+.step-item:hover {
+	background: #f3f4f6;
+	transform: translateY(-1px);
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.step-icon {
+	font-size: 24px;
+	width: 40px;
+	height: 40px;
+	background: white;
+	border-radius: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 1px solid #e5e7eb;
+	flex-shrink: 0;
+}
+
+.step-title {
+	font-size: 16px;
+	font-weight: 600;
+	color: #1a1a1a;
+	margin-bottom: 4px;
+}
+
+.step-description {
+	font-size: 14px;
+	color: #6b7280;
+	line-height: 1.5;
+}
+
+/* Action Buttons */
+.action-section {
+	padding: 32px 40px;
+	display: flex;
+	gap: 16px;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.primary-btn {
+	background: #000000;
+	color: white;
+	border: none;
+	padding: 16px 32px;
+	border-radius: 12px;
+	font-size: 16px;
+	font-weight: 600;
+	font-family: inherit;
+	cursor: pointer;
+	transition: all 0.2s ease;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	min-width: 180px;
+	justify-content: center;
+	letter-spacing: -0.025em;
+}
+
+.primary-btn:hover {
+	background: #1a1a1a;
+	transform: translateY(-2px);
+	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.primary-btn:active {
+	transform: translateY(-1px);
+}
+
+.secondary-btn {
+	background: transparent;
+	color: #6b7280;
+	border: 2px solid #e5e7eb;
+	padding: 14px 32px;
+	border-radius: 12px;
+	font-size: 16px;
+	font-weight: 600;
+	font-family: inherit;
+	cursor: pointer;
+	transition: all 0.2s ease;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	min-width: 160px;
+	justify-content: center;
+	letter-spacing: -0.025em;
+}
+
+.secondary-btn:hover {
+	border-color: #9ca3af;
+	color: #374151;
+	background: #f9fafb;
+	transform: translateY(-1px);
+}
+
+.btn-icon {
+	width: 18px;
+	height: 18px;
+}
+
+/* Support Section */
+.support-section {
+	padding: 24px 40px 32px 40px;
+	text-align: center;
+	background: #f9fafb;
+}
+
+.support-text {
+	font-size: 14px;
+	color: #6b7280;
+}
+
+.support-link {
+	color: #667eea;
+	text-decoration: none;
+	font-weight: 500;
+}
+
+.support-link:hover {
+	text-decoration: underline;
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
-	.payment-success-container {
-		padding: 30px 20px;
+	.success-main {
+		padding: 24px 16px;
 	}
 
-	.payment-success-title {
+	.success-container {
+		border-radius: 16px;
+	}
+
+	.header-content {
+		padding: 16px 20px;
+	}
+
+	.church-name {
+		font-size: 18px;
+	}
+
+	.church-icon {
+		width: 40px;
+		height: 40px;
+		font-size: 20px;
+	}
+
+	.status-section {
+		padding: 32px 24px 24px 24px;
+	}
+
+	.status-icon {
+		width: 64px;
+		height: 64px;
+	}
+
+	.status-title {
+		font-size: 28px;
+	}
+
+	.status-message {
+		font-size: 16px;
+	}
+
+	.details-section,
+	.next-steps,
+	.action-section {
+		padding: 24px;
+	}
+
+	.support-section {
+		padding: 20px 24px 24px 24px;
+	}
+
+	.action-section {
+		flex-direction: column;
+	}
+
+	.primary-btn,
+	.secondary-btn {
+		width: 100%;
+		min-width: auto;
+	}
+}
+
+@media (max-width: 480px) {
+	.church-branding {
+		gap: 12px;
+	}
+
+	.church-name {
+		font-size: 16px;
+	}
+
+	.church-subtitle {
+		font-size: 13px;
+	}
+
+	.status-section {
+		padding: 24px 20px;
+	}
+
+	.status-title {
 		font-size: 24px;
 	}
 
-	.payment-success-icon {
-		width: 60px;
-		height: 60px;
-		font-size: 30px;
+	.details-section,
+	.next-steps,
+	.action-section {
+		padding: 20px;
+	}
+
+	.step-item {
+		padding: 16px;
+	}
+
+	.step-icon {
+		width: 36px;
+		height: 36px;
+		font-size: 20px;
+	}
+}
+
+/* Animation for success state */
+.status-section.success .status-icon {
+	animation: successPulse 0.6s ease-out;
+}
+
+@keyframes successPulse {
+	0% {
+		transform: scale(0.8);
+		opacity: 0.8;
+	}
+
+	50% {
+		transform: scale(1.1);
+	}
+
+	100% {
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+
+/* Focus and Accessibility */
+.primary-btn:focus-visible,
+.secondary-btn:focus-visible {
+	outline: 2px solid #667eea;
+	outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+	.primary-btn {
+		background: #0000ff;
+	}
+
+	.primary-btn:hover {
+		background: #0000cc;
+	}
+
+	.secondary-btn {
+		border-color: #000000;
+		color: #000000;
 	}
 }
