@@ -1,7 +1,7 @@
 {
   "rewrites": [
     {
-      "source": "/((?!api/.*|create-admin).*)",
+      "source": "/((?!api/.*|create-admin|seed-db).*)",
       "destination": "/index.html"
     }
   ]
