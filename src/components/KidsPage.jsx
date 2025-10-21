@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import "../styles/KidsPage.css";
 import {
@@ -8,25 +8,19 @@ import {
   FaBook,
   FaHandPaper,
   FaQuoteLeft,
+  FaArrowRight,
+  FaCalendarAlt,
+  FaClock,
+  FaUsers,
 } from "react-icons/fa";
 
 function KidsPage() {
   const { t } = useTranslation();
-  const [isVisible, setIsVisible] = useState({
-    intro: false,
-    whatWeDo: false,
-    gallery: false,
-  });
-
-  // Interactive elements state
-  const [bubblePositions, setBubblePositions] = useState([]);
-  const [showStar, setShowStar] = useState(false);
   const [activeSlide, setActiveSlide] = useState(0);
-
-  // Daily Bible verse
   const [dailyVerseIndex, setDailyVerseIndex] = useState(0);
+  const [isVisible, setIsVisible] = useState({});
 
-  // Sample images for the gallery - replace with your actual images
+  // Sample images for the gallery
   const galleryImages = [
     "/picture-emanuil-kids-hero.jpg",
     "/picture-emanuil-kids-kartiza8mimart.jpg",
@@ -35,7 +29,7 @@ function KidsPage() {
     "/picture-emanuil-kids-aleks.jpg",
   ];
 
-  // Animation when sections come into view
+  // Intersection Observer for scroll animations
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -48,38 +42,14 @@ function KidsPage() {
           }
         });
       },
-      { threshold: 0.2 }
+      { threshold: 0.1 }
     );
 
-    const sections = document.querySelectorAll(".kids-section");
-    sections.forEach((section) => {
-      observer.observe(section);
+    document.querySelectorAll("[data-section]").forEach((el) => {
+      observer.observe(el);
     });
 
-    return () => {
-      sections.forEach((section) => {
-        observer.unobserve(section);
-      });
-    };
-  }, []);
-
-  // Generate random bubbles and select daily Bible verse on load
-  useEffect(() => {
-    // Generate random bubbles
-    const bubbles = Array.from({ length: 15 }, () => ({
-      left: `${Math.random() * 90 + 5}%`,
-      top: `${Math.random() * 70 + 15}%`,
-      size: `${Math.random() * 30 + 20}px`,
-      delay: `${Math.random() * 5}s`,
-      duration: `${Math.random() * 5 + 5}s`,
-    }));
-
-    setBubblePositions(bubbles);
-
-    // Show star after a delay
-    setTimeout(() => {
-      setShowStar(true);
-    }, 2000);
+    return () => observer.disconnect();
 
     // Get daily Bible verse based on the current date
     const bibleVerses = t("kids.intro.bibleVerses", { returnObjects: true });
@@ -129,181 +99,182 @@ function KidsPage() {
     setActiveSlide(index);
   };
 
-  const handleBubblePop = (index) => {
-    // Create a copy of the bubblePositions array
-    const updatedBubbles = [...bubblePositions];
-    // Mark the bubble as popped by setting a popped property
-    updatedBubbles[index] = { ...updatedBubbles[index], popped: true };
-    setBubblePositions(updatedBubbles);
-
-    // After animation, remove the bubble
-    setTimeout(() => {
-      const filtered = bubblePositions.filter((_, i) => i !== index);
-      setBubblePositions(filtered);
-    }, 500);
-  };
-
   return (
-    <div className="kids-container no-hero">
-      {/* Content starts immediately - no hero section */}
-      <div className="kids-intro">
-        <h1>{t("kids.title")}</h1>
-        <p className="kids-description">{t("kids.subtitle")}</p>
-      </div>
-
-      {/* Introduction Section with Playful Elements */}
-      <section
-        className={`kids-section intro-section ${
-          isVisible.intro ? "fade-in" : ""
-        }`}
-        data-section="intro"
-      >
-        <div className="crayon-border"></div>
-        <div className="section-container">
-          <div className="section-content">
-            <h2 className="wiggle-text">{t("kids.intro.title")}</h2>
-            <p className="handwritten-style">{t("kids.intro.description1")}</p>
-            <p className="handwritten-style">{t("kids.intro.description2")}</p>
-
-            {/* Bible verse box - updated with daily verse */}
-            <div className="fun-fact-container bible-verse-container">
-              <div className="fun-fact-icon">
-                <FaQuoteLeft className="quote-icon" />
-              </div>
-              <div className="bible-verse">
-                <p className="verse-title">{t("kids.intro.funFactTitle")}</p>
-                <p className="verse-text">
-                  {t(`kids.intro.bibleVerses.${dailyVerseIndex}`)}
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="section-image happy-kids-image jump-animation">
-            <div className="image-decoration top-left"></div>
-            <div className="image-decoration top-right"></div>
-            <div className="image-decoration bottom-left"></div>
-            <div className="image-decoration bottom-right"></div>
-          </div>
+    <div className="kids-page-energetic">
+      {/* Hero Section - Modern Vibrant */}
+      <section className="hero-section-modern">
+        <div className="hero-wave-bg">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1440 320"
+            preserveAspectRatio="none"
+          >
+            <path
+              fill="#8B5CF6"
+              fillOpacity="1"
+              d="M0,96L48,112C96,128,192,160,288,154.7C384,149,480,107,576,101.3C672,96,768,128,864,144C960,160,1056,160,1152,138.7C1248,117,1344,75,1392,53.3L1440,32L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"
+            ></path>
+          </svg>
         </div>
-      </section>
 
-      {/* What We Did This Week Gallery with Playful Controls */}
-      <section
-        className={`kids-section gallery-section ${
-          isVisible.gallery ? "fade-in" : ""
-        }`}
-        data-section="gallery"
-      >
-        <h2 className="gallery-title">{t("kids.gallery.title")}</h2>
-        <p className="gallery-description">{t("kids.gallery.description")}</p>
+        <div className="container-energetic">
+          <div className="hero-content-wrapper">
+            <div className="hero-text-section">
+              <div className="hero-badge-modern">
+                <FaStar className="badge-star" />
+                <span>{t("kidsPage.hero.label", "Kids Ministry")}</span>
+              </div>
 
-        <div className="carousel-container">
-          <div className="carousel-wrapper">
-            <button
-              className="carousel-btn prev crayon-button"
-              onClick={prevSlide}
-            >
-              <span className="btn-face">&#10094;</span>
-            </button>
+              <h1 className="hero-main-title">{t("kids.title")}</h1>
+              <p className="hero-main-description">{t("kids.subtitle")}</p>
 
-            <div className="carousel-content">
-              {galleryImages.map((image, index) => (
-                <div
-                  key={index}
-                  className={`carousel-slide ${
-                    index === activeSlide ? "active" : ""
-                  }`}
-                >
-                  <div className="polaroid-frame">
-                    <img src={image} alt={`Kids activity ${index + 1}`} />
-                  </div>
-                  <div className="slide-caption">
-                    <h3>{t(`kids.gallery.slides.${index}.title`)}</h3>
-                    <p>{t(`kids.gallery.slides.${index}.description`)}</p>
+              <div className="hero-info-cards">
+                <div className="info-card purple-card">
+                  <FaCalendarAlt />
+                  <div>
+                    <span className="info-label">
+                      {t("kidsPage.hero.whenLabel", "When")}
+                    </span>
+                    <span className="info-value">
+                      {t("kidsPage.hero.badge1", "Every Sunday")}
+                    </span>
                   </div>
                 </div>
-              ))}
+                <div className="info-card pink-card">
+                  <FaClock />
+                  <div>
+                    <span className="info-label">
+                      {t("kidsPage.hero.timeLabel", "Time")}
+                    </span>
+                    <span className="info-value">
+                      {t("kidsPage.hero.badge2", "10:00 AM")}
+                    </span>
+                  </div>
+                </div>
+                <div className="info-card blue-card">
+                  <FaUsers />
+                  <div>
+                    <span className="info-label">
+                      {t("kidsPage.hero.ageLabel", "Ages")}
+                    </span>
+                    <span className="info-value">
+                      {t("kidsPage.hero.badge3", "4-12 Years")}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <button className="hero-cta-btn">
+                <span>{t("kidsPage.hero.cta", "Join Our Kids Club")}</span>
+                <FaArrowRight />
+              </button>
             </div>
-
-            <button
-              className="carousel-btn next crayon-button"
-              onClick={nextSlide}
-            >
-              <span className="btn-face">&#10095;</span>
-            </button>
-          </div>
-
-          <div className="carousel-dots">
-            {galleryImages.map((_, index) => (
-              <span
-                key={index}
-                className={`dot ${index === activeSlide ? "active" : ""}`}
-                onClick={() => goToSlide(index)}
-              ></span>
-            ))}
           </div>
         </div>
       </section>
 
-      {/* What We Do Section with Animated Icons */}
+      {/* Welcome Section */}
       <section
-        className={`kids-section what-we-do-section ${
-          isVisible.whatWeDo ? "fade-in" : ""
+        className={`welcome-section-energetic ${
+          isVisible.welcome ? "visible" : ""
         }`}
-        data-section="whatWeDo"
+        data-section="welcome"
       >
-        <div className="paper-background">
-          <div className="paper-holes"></div>
-          <h2>{t("kids.activities.title")}</h2>
-          <div className="activities-grid">
-            <div className="activity-card pop-on-hover">
-              <div className="activity-icon-wrapper">
-                <FaBook className="activity-icon-react" />
-              </div>
-              <h3 className="marker-text">
-                {t("kids.activities.bible.title")}
-              </h3>
-              <p>{t("kids.activities.bible.description")}</p>
+        <div className="container-energetic">
+          <div className="welcome-layout">
+            <div className="welcome-text-side">
+              <h2 className="section-heading">{t("kids.intro.title")}</h2>
+              <p className="section-text">{t("kids.intro.description1")}</p>
+              <p className="section-text">{t("kids.intro.description2")}</p>
             </div>
-
-            <div className="activity-card pop-on-hover">
-              <div className="activity-icon-wrapper">
-                <FaPuzzlePiece className="activity-icon-react" />
+            <div className="welcome-verse-card">
+              <div className="verse-icon">
+                <FaQuoteLeft />
               </div>
-              <h3 className="marker-text">
-                {t("kids.activities.crafts.title")}
-              </h3>
-              <p>{t("kids.activities.crafts.description")}</p>
-            </div>
-
-            <div className="activity-card pop-on-hover">
-              <div className="activity-icon-wrapper">
-                <FaHandPaper className="activity-icon-react" />
-              </div>
-              <h3 className="marker-text">
-                {t("kids.activities.games.title")}
-              </h3>
-              <p>{t("kids.activities.games.description")}</p>
-            </div>
-
-            <div className="activity-card pop-on-hover">
-              <div className="activity-icon-wrapper">
-                <FaMusic className="activity-icon-react" />
-              </div>
-              <h3 className="marker-text">
-                {t("kids.activities.music.title")}
-              </h3>
-              <p>{t("kids.activities.music.description")}</p>
+              <p className="verse-label">{t("kids.intro.funFactTitle")}</p>
+              <p className="verse-text">
+                {t(`kids.intro.bibleVerses.${dailyVerseIndex}`)}
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Removed sections: 
-         - Weekly Schedule section
-         - Team section with Cartoon-style Images
-         - Contact / Sign Up Section with Playful Buttons
-      */}
+      {/* Activities Section - Colorful Grid */}
+      <section
+        className={`activities-section-energetic ${
+          isVisible.activities ? "visible" : ""
+        }`}
+        data-section="activities"
+      >
+        <div className="container-energetic">
+          <h2 className="section-heading centered">
+            {t("kids.activities.title")}
+          </h2>
+
+          <div className="activities-grid-energetic">
+            <div className="activity-tile purple">
+              <div className="tile-icon">
+                <FaBook />
+              </div>
+              <h3>{t("kids.activities.bible.title")}</h3>
+              <p>{t("kids.activities.bible.description")}</p>
+              <div className="tile-number">01</div>
+            </div>
+
+            <div className="activity-tile pink">
+              <div className="tile-icon">
+                <FaPuzzlePiece />
+              </div>
+              <h3>{t("kids.activities.crafts.title")}</h3>
+              <p>{t("kids.activities.crafts.description")}</p>
+              <div className="tile-number">02</div>
+            </div>
+
+            <div className="activity-tile blue">
+              <div className="tile-icon">
+                <FaHandPaper />
+              </div>
+              <h3>{t("kids.activities.games.title")}</h3>
+              <p>{t("kids.activities.games.description")}</p>
+              <div className="tile-number">03</div>
+            </div>
+
+            <div className="activity-tile orange">
+              <div className="tile-icon">
+                <FaMusic />
+              </div>
+              <h3>{t("kids.activities.music.title")}</h3>
+              <p>{t("kids.activities.music.description")}</p>
+              <div className="tile-number">04</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Call to Action */}
+      <section className="cta-section-energetic">
+        <div className="cta-background-circles">
+          <div className="circle-decoration c1"></div>
+          <div className="circle-decoration c2"></div>
+          <div className="circle-decoration c3"></div>
+        </div>
+
+        <div className="cta-content">
+          <h2>Come Join the Adventure!</h2>
+          <p>
+            Be part of our vibrant community where kids learn, play, and grow in
+            faith together
+          </p>
+          <div className="cta-buttons">
+            <button className="cta-btn primary">
+              Register Now
+              <FaArrowRight />
+            </button>
+            <button className="cta-btn secondary">Contact Us</button>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

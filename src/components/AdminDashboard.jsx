@@ -96,50 +96,63 @@ function AdminDashboard() {
       </div>
 
       <div className="admin-content">
-        <div className="submissions-grid">
-          <h2>{t("admin.contacts.title")}</h2>
+        <div className="submissions-section">
+          <div className="section-header">
+            <h2>{t("admin.contacts.title")}</h2>
+            <span className="count-badge">{contacts.length} submissions</span>
+          </div>
+
           {contacts.length === 0 ? (
-            <p>{t("admin.contacts.noSubmissions")}</p>
+            <div className="empty-state">
+              <p>📭 {t("admin.contacts.noSubmissions")}</p>
+            </div>
           ) : (
-            <div className="cards-grid">
-              {contacts.map((contact) => (
-                <div key={contact.id} className="submission-card">
-                  <div className="card-header">
-                    <h3>{contact.name}</h3>
-                    <span className={`status-badge ${contact.status}`}>
-                      {contact.status}
-                    </span>
-                  </div>
-                  <div className="card-details">
-                    <p>
-                      <strong>{t("admin.contacts.fields.email")}:</strong>{" "}
-                      {contact.email}
-                    </p>
-                    {contact.phone && (
-                      <p>
-                        <strong>{t("admin.contacts.fields.phone")}:</strong>{" "}
-                        {contact.phone}
-                      </p>
-                    )}
-                    <p>
-                      <strong>{t("admin.contacts.fields.subject")}:</strong>{" "}
-                      {contact.subject}
-                    </p>
-                    <p>
-                      <strong>{t("admin.contacts.fields.message")}:</strong>{" "}
-                      {contact.message}
-                    </p>
-                    <p>
-                      <strong>{t("admin.contacts.fields.language")}:</strong>{" "}
-                      {contact.language}
-                    </p>
-                    <p>
-                      <strong>{t("admin.contacts.fields.submitted")}:</strong>{" "}
-                      {formatDate(contact.createdAt)}
-                    </p>
-                  </div>
-                </div>
-              ))}
+            <div className="table-container">
+              <table className="submissions-table">
+                <thead>
+                  <tr>
+                    <th>Status</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Subject</th>
+                    <th>Message</th>
+                    <th>Language</th>
+                    <th>Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {contacts.map((contact) => (
+                    <tr key={contact.id} className={`row-${contact.status}`}>
+                      <td>
+                        <span className={`status-badge ${contact.status}`}>
+                          {contact.status === "new" ? "🆕" : "✓"}
+                        </span>
+                      </td>
+                      <td className="name-cell">{contact.name}</td>
+                      <td className="email-cell">
+                        <a href={`mailto:${contact.email}`}>{contact.email}</a>
+                      </td>
+                      <td>{contact.phone || "-"}</td>
+                      <td className="subject-cell">{contact.subject}</td>
+                      <td className="message-cell">
+                        <div
+                          className="message-preview"
+                          title={contact.message}
+                        >
+                          {contact.message}
+                        </div>
+                      </td>
+                      <td>
+                        <span className="lang-badge">{contact.language}</span>
+                      </td>
+                      <td className="date-cell">
+                        {formatDate(contact.createdAt)}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           )}
         </div>

@@ -94,62 +94,171 @@
 	min-height: 400px;
 }
 
-.submissions-grid h2 {
-	color: #1e293b;
-	font-size: 1.8rem;
-	margin-bottom: 1.5rem;
-	text-align: center;
-}
-
-.cards-grid {
-	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-	gap: 1.5rem;
-	margin-bottom: 2rem;
-}
-
-.submission-card {
+/* Submissions Section */
+.submissions-section {
 	background: white;
-	border: 1px solid #e2e8f0;
 	border-radius: 12px;
-	padding: 1.5rem;
+	padding: 2rem;
 	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-	transition: all 0.3s ease;
+	border: 1px solid #e2e8f0;
 }
 
-.submission-card:hover {
-	transform: translateY(-2px);
-	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-	border-color: #cbd5e1;
-}
-
-.card-header {
+.section-header {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	margin-bottom: 1rem;
+	margin-bottom: 1.5rem;
 	padding-bottom: 1rem;
-	border-bottom: 1px solid #f1f5f9;
+	border-bottom: 2px solid #f1f5f9;
 }
 
-.card-header h3 {
-	margin: 0;
+.section-header h2 {
 	color: #1e293b;
-	font-size: 1.2rem;
+	font-size: 1.8rem;
+	margin: 0;
+	font-weight: 700;
+}
+
+.count-badge {
+	background: #667eea;
+	color: white;
+	padding: 0.5rem 1rem;
+	border-radius: 20px;
+	font-size: 0.9rem;
 	font-weight: 600;
 }
 
-.status-badge {
-	padding: 0.25rem 0.75rem;
-	border-radius: 20px;
-	font-size: 0.8rem;
+.empty-state {
+	text-align: center;
+	padding: 4rem 2rem;
+	color: #94a3b8;
+	font-size: 1.2rem;
+}
+
+/* Table Styles */
+.table-container {
+	overflow-x: auto;
+	border-radius: 8px;
+	border: 1px solid #e2e8f0;
+}
+
+.submissions-table {
+	width: 100%;
+	border-collapse: collapse;
+	background: white;
+}
+
+.submissions-table thead {
+	background: #f8fafc;
+	border-bottom: 2px solid #e2e8f0;
+}
+
+.submissions-table th {
+	padding: 1rem;
+	text-align: left;
+	font-weight: 600;
+	color: #475569;
+	font-size: 0.85rem;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+	white-space: nowrap;
+}
+
+.submissions-table tbody tr {
+	border-bottom: 1px solid #f1f5f9;
+	transition: background-color 0.2s ease;
+}
+
+.submissions-table tbody tr:hover {
+	background-color: #f8fafc;
+}
+
+.submissions-table tbody tr.row-new {
+	background-color: #fef3c7;
+}
+
+.submissions-table tbody tr.row-new:hover {
+	background-color: #fde68a;
+}
+
+.submissions-table td {
+	padding: 1rem;
+	color: #334155;
+	font-size: 0.9rem;
+	vertical-align: top;
+}
+
+/* Cell Specific Styles */
+.name-cell {
+	font-weight: 600;
+	color: #1e293b;
+	white-space: nowrap;
+}
+
+.email-cell a {
+	color: #667eea;
+	text-decoration: none;
+	transition: color 0.2s ease;
+}
+
+.email-cell a:hover {
+	color: #764ba2;
+	text-decoration: underline;
+}
+
+.subject-cell {
+	max-width: 200px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.message-cell {
+	max-width: 300px;
+}
+
+.message-preview {
+	max-height: 60px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+	line-height: 1.4;
+	cursor: help;
+}
+
+.date-cell {
+	white-space: nowrap;
+	font-size: 0.85rem;
+	color: #64748b;
+}
+
+.lang-badge {
+	display: inline-block;
+	padding: 0.25rem 0.6rem;
+	background: #e0e7ff;
+	color: #4338ca;
+	border-radius: 12px;
+	font-size: 0.75rem;
 	font-weight: 600;
 	text-transform: uppercase;
 }
 
+.status-badge {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 32px;
+	height: 32px;
+	border-radius: 50%;
+	font-size: 1rem;
+	font-weight: 600;
+}
+
 .status-badge.new {
-	background-color: #dbeafe;
-	color: #1d4ed8;
+	background: #fef3c7;
+	color: #d97706;
 }
 
 .status-badge.active {
@@ -158,8 +267,8 @@
 }
 
 .status-badge.processed {
-	background-color: #fef3c7;
-	color: #92400e;
+	background-color: #e0e7ff;
+	color: #4338ca;
 }
 
 .card-details p {
@@ -210,6 +319,25 @@
 }
 
 /* Responsive Design */
+@media (max-width: 1024px) {
+	.submissions-table {
+		font-size: 0.85rem;
+	}
+
+	.submissions-table th,
+	.submissions-table td {
+		padding: 0.75rem;
+	}
+
+	.subject-cell {
+		max-width: 150px;
+	}
+
+	.message-cell {
+		max-width: 200px;
+	}
+}
+
 @media (max-width: 768px) {
 	.admin-dashboard {
 		padding: 1rem;
@@ -223,13 +351,22 @@
 		font-size: 2rem;
 	}
 
-	.cards-grid {
-		grid-template-columns: 1fr;
-		gap: 1rem;
+	.submissions-section {
+		padding: 1rem;
 	}
 
-	.submission-card {
-		padding: 1rem;
+	.section-header {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 0.75rem;
+	}
+
+	.table-container {
+		overflow-x: scroll;
+	}
+
+	.submissions-table {
+		min-width: 900px;
 	}
 
 	.admin-tabs {
