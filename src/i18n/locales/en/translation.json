@@ -302,7 +302,7 @@
       "title": "Our Weekly Schedule",
       "sunday": {
         "title": "Sunday Morning",
-        "time": "10:00 AM - 11:30 AM",
+        "time": "11:00 AM - 11:30 AM",
         "description": "Kids worship and Bible adventure during the main service."
       },
       "wednesday": {
@@ -454,7 +454,7 @@
       "event3": {
         "title": "Community Outreach",
         "date": "July 2, 2024",
-        "time": "10:00 AM - 2:00 PM",
+        "time": "11:00 AM - 2:00 PM",
         "location": "City Park",
         "description": "Serving our community with free food and family activities."
       },
