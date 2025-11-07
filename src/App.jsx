@@ -20,8 +20,6 @@ import ScrollToTop from "./components/ScrollToTop";
 import FloatingDonateButton from "./components/FloatingDonateButton";
 import AdminDashboard from "./components/AdminDashboard";
 import Toast from "./components/Toast";
-import AdminRegister from "./components/AdminRegister";
-import AdminManagement from "./components/AdminManagement";
 import Payment from "./components/Payment";
 import PaymentSuccess from "./components/PaymentSuccess";
 
@@ -103,24 +101,6 @@ function App() {
         return <ServicesPage onNavigate={navigate} />;
       case "/events":
         return <EventsPage />;
-      case "/admin-register":
-        return <AdminRegister />;
-      case "/super-admin":
-        // Only accessible by you (the website creator) - hardcoded for now
-        const isSuperAdmin =
-          localStorage.getItem("superAdminAccess") === "true";
-        if (isSuperAdmin) {
-          return <AdminManagement />;
-        } else {
-          // Just redirect without state updates during render
-          window.history.replaceState(null, null, "/");
-          return (
-            <>
-              <Hero />
-              <Welcome />
-            </>
-          );
-        }
       case "/admin":
         // Check if user is authenticated before allowing access to admin
         const isAdminLoggedIn =

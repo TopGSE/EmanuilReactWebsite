@@ -43,27 +43,23 @@ const CookieConsent = forwardRef((props, ref) => {
     // Apply analytics cookies (Google Analytics, etc.)
     if (consentSettings.analytics) {
       // Enable Google Analytics or other analytics tools
-      console.log("Analytics cookies enabled");
       // Example: gtag('consent', 'update', { 'analytics_storage': 'granted' });
     } else {
-      console.log("Analytics cookies disabled");
       // Example: gtag('consent', 'update', { 'analytics_storage': 'denied' });
     }
 
     // Apply marketing cookies (Facebook Pixel, etc.)
     if (consentSettings.marketing) {
-      console.log("Marketing cookies enabled");
       // Example: gtag('consent', 'update', { 'ad_storage': 'granted' });
     } else {
-      console.log("Marketing cookies disabled");
       // Example: gtag('consent', 'update', { 'ad_storage': 'denied' });
     }
 
     // Apply preference cookies
     if (consentSettings.preferences) {
-      console.log("Preference cookies enabled");
+      //
     } else {
-      console.log("Preference cookies disabled");
+      //
     }
   };
 

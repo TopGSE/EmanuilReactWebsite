@@ -61,16 +61,7 @@ export const adminAPI = {
   login: (credentials) => apiCall('/admin/login', {
     method: 'POST',
     body: JSON.stringify(credentials)
-  }),
-  register: (data) => apiCall('/admin/register', {
-    method: 'POST',
-    body: JSON.stringify(data)
-  }),
-  createRegistrationToken: (email) => apiCall('/admin/create-registration-token', {
-    method: 'POST',
-    body: JSON.stringify({ email })
-  }),
-  verifyToken: (token) => apiCall(`/admin/verify-token?token=${token}`)
+  })
 };
 
 export const healthAPI = {

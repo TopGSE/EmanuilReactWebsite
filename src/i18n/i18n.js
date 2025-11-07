@@ -31,7 +31,7 @@ i18n
   .init({
     resources,
     fallbackLng: 'en',
-    debug: process.env.NODE_ENV !== 'production',
+    debug: false,
     interpolation: {
       escapeValue: false, // not needed for react as it escapes by default
     },
